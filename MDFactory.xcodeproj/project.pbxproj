@@ -12,6 +12,10 @@
 		03C2024E28BA6DC400E5FFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024D28BA6DC400E5FFF3 /* Assets.xcassets */; };
 		03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024F28BA6DC400E5FFF3 /* LaunchScreen.storyboard */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
+		A078FD0128C2545F0051E23B /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078FD0028C2545F0051E23B /* BottomSheetController.swift */; };
+		A078FD0428C254F20051E23B /* BottomSheetControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078FD0328C254F20051E23B /* BottomSheetControllerDelegate.swift */; };
+		A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B349828C1097800C4B05E /* ProfileTabBarController.swift */; };
+		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
 		DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +29,10 @@
 		0C5B0CFE6594C3F5393CB201 /* Pods-MDFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.debug.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		1347F47AC005B057B07830F4 /* Pods-MDFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.release.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.release.xcconfig"; sourceTree = "<group>"; };
 		26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A078FD0028C2545F0051E23B /* BottomSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
+		A078FD0328C254F20051E23B /* BottomSheetControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetControllerDelegate.swift; sourceTree = "<group>"; };
+		A07B349828C1097800C4B05E /* ProfileTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabBarController.swift; sourceTree = "<group>"; };
+		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +83,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A078FD0228C254C00051E23B /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				A078FD0028C2545F0051E23B /* BottomSheetController.swift */,
+				A078FD0328C254F20051E23B /* BottomSheetControllerDelegate.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		A0C90E8828C0F79F00630E61 /* MDF-4 */ = {
+			isa = PBXGroup;
+			children = (
+				A078FD0228C254C00051E23B /* BottomSheet */,
+				A0C90E8928C0F86900630E61 /* ProfileViewController.swift */,
+				A07B349828C1097800C4B05E /* ProfileTabBarController.swift */,
+			);
+			path = "MDF-4";
+			sourceTree = "<group>";
+		};
 		B3F02D1E21566D468A29EC8A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +150,7 @@
 		DDB01FCD28BFBC7E00E67A34 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A0C90E8828C0F79F00630E61 /* MDF-4 */,
 				DDB01FCE28BFBC8B00E67A34 /* Main */,
 			);
 			path = Scenes;
@@ -258,9 +286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */,
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
+				A078FD0428C254F20051E23B /* BottomSheetControllerDelegate.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
+				A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
+				A078FD0128C2545F0051E23B /* BottomSheetController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +434,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T99AX3SG2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MDFactory/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -429,6 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T99AX3SG2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MDFactory/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
