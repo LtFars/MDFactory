@@ -35,7 +35,6 @@ class ProfileTabBarController: UITabBarController {
         return navigationViewController
     }
     
-    //UISheetPresentationController
     func showMyViewControllerInACustomizedSheet() {
         
         let viewControllerToPresent = ProfileViewController()
@@ -43,11 +42,12 @@ class ProfileTabBarController: UITabBarController {
         viewControllerToPresent.preferredSheetCornerRadius = 40
         viewControllerToPresent.preferredSheetSizing = .large
         
-                
         present(viewControllerToPresent, animated: true, completion: nil)
+   
     }
-    
+      
 private func tabButton() {
+
         showMyViewControllerInACustomizedSheet()
     }
 }

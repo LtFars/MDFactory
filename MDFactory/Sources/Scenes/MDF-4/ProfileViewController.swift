@@ -8,9 +8,10 @@
 import UIKit
 
 class ProfileViewController: BottomSheetController {
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        view = ProfileView()
         view.backgroundColor = .gray
     }    
 }

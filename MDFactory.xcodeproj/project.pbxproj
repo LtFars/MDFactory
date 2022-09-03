@@ -15,6 +15,8 @@
 		A078FD0128C2545F0051E23B /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078FD0028C2545F0051E23B /* BottomSheetController.swift */; };
 		A078FD0428C254F20051E23B /* BottomSheetControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078FD0328C254F20051E23B /* BottomSheetControllerDelegate.swift */; };
 		A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B349828C1097800C4B05E /* ProfileTabBarController.swift */; };
+		A0BDD44728C37FBF00786300 /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDD44628C37FBF00786300 /* ProfileCollectionViewController.swift */; };
+		A0BDD44F28C3906A00786300 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDD44E28C3906A00786300 /* ProfileView.swift */; };
 		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
 		DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,8 @@
 		A078FD0028C2545F0051E23B /* BottomSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
 		A078FD0328C254F20051E23B /* BottomSheetControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetControllerDelegate.swift; sourceTree = "<group>"; };
 		A07B349828C1097800C4B05E /* ProfileTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabBarController.swift; sourceTree = "<group>"; };
+		A0BDD44628C37FBF00786300 /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		A0BDD44E28C3906A00786300 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ../../../../../../../../Desktop/ProfileView.swift; sourceTree = "<group>"; };
 		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,12 +96,22 @@
 			path = BottomSheet;
 			sourceTree = "<group>";
 		};
+		A0BDD44D28C3904800786300 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0BDD44E28C3906A00786300 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A0C90E8828C0F79F00630E61 /* MDF-4 */ = {
 			isa = PBXGroup;
 			children = (
+				A0BDD44D28C3904800786300 /* View */,
 				A078FD0228C254C00051E23B /* BottomSheet */,
 				A0C90E8928C0F86900630E61 /* ProfileViewController.swift */,
 				A07B349828C1097800C4B05E /* ProfileTabBarController.swift */,
+				A0BDD44628C37FBF00786300 /* ProfileCollectionViewController.swift */,
 			);
 			path = "MDF-4";
 			sourceTree = "<group>";
@@ -287,9 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */,
+				A0BDD44F28C3906A00786300 /* ProfileView.swift in Sources */,
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
 				A078FD0428C254F20051E23B /* BottomSheetControllerDelegate.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
+				A0BDD44728C37FBF00786300 /* ProfileCollectionViewController.swift in Sources */,
 				A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				A078FD0128C2545F0051E23B /* BottomSheetController.swift in Sources */,
@@ -368,6 +384,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"SWIFT_PRECOMPILE_BRIDGING_HEADER[arch=*]" = YES;
 			};
 			name = Debug;
 		};

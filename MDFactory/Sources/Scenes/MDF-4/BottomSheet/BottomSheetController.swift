@@ -22,23 +22,9 @@ class BottomSheetController: UIViewController {
         preferredSheetCornerRadius: preferredSheetCornerRadius,
         preferredSheetSizingFactor: preferredSheetSizing.rawValue,
         preferredSheetBackdropColor: preferredSheetBackdropColor
-        
+
     )
         
-//    override var additionalSafeAreaInsets: UIEdgeInsets {
-//        get {
-//            .init(
-//                top: super.additionalSafeAreaInsets.top + preferredSheetCornerRadius/2,
-//                left: super.additionalSafeAreaInsets.left,
-//                bottom: super.additionalSafeAreaInsets.bottom,
-//                right: super.additionalSafeAreaInsets.right
-//            )
-//        }
-//        set {
-//            super.additionalSafeAreaInsets = newValue
-//        }
-//    }
-
     override var modalPresentationStyle: UIModalPresentationStyle {
         get {
             .custom
@@ -58,35 +44,22 @@ class BottomSheetController: UIViewController {
             bottomSheetTransitioningDelegate.preferredSheetTopInset = preferredSheetTopInset
         }
     }
-
+//
     var preferredSheetCornerRadius: CGFloat = 8 {
         didSet {
             bottomSheetTransitioningDelegate.preferredSheetCornerRadius = preferredSheetCornerRadius
         }
     }
-
+//
     var preferredSheetSizing: PreferredSheetSizing = .small {
         didSet {
             bottomSheetTransitioningDelegate.preferredSheetSizingFactor = preferredSheetSizing.rawValue
         }
     }
-
+//
     var preferredSheetBackdropColor: UIColor = .white {
         didSet {
             bottomSheetTransitioningDelegate.preferredSheetBackdropColor = preferredSheetBackdropColor
         }
     }
-
-//    var tapToDismissEnabled: Bool = false {
-//        didSet {
-//            bottomSheetTransitioningDelegate.tapToDismissEnabled = tapToDismissEnabled
-//        }
-//    }
-//
-//    var panToDismissEnabled: Bool = false {
-//        didSet {
-//            bottomSheetTransitioningDelegate.panToDismissEnabled = panToDismissEnabled
-//        }
-
-//    }
 }
