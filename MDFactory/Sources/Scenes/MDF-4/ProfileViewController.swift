@@ -12,7 +12,7 @@ class ProfileViewController: BottomSheetController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = ProfileView()
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
     }    
 }
 

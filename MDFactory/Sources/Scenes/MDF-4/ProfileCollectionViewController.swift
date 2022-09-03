@@ -12,5 +12,6 @@ class ProfileCollectionViewController: BottomSheetController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        
     }
 }

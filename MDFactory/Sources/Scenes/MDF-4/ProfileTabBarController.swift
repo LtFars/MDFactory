@@ -9,17 +9,18 @@ import UIKit
 
 class ProfileTabBarController: UITabBarController {
     
-//    let profilController = ProfileViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 0.9999999404, alpha: 1)
+        setupView()
         setupProfileView()
     }
-
+    
+    private func setupView() {
+        view.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.2784313725, blue: 0.3568627451, alpha: 1)
+    }
+    
     private func setupProfileView() {
-        viewControllers =  [generateNavigationController(title: "Profile", image: UIImage(systemName: "person"))
+        viewControllers =  [generateBarController(title: "Profile", image: UIImage(systemName: "person"))
         ]
     }
     
@@ -27,12 +28,14 @@ class ProfileTabBarController: UITabBarController {
         tabButton()
     }
     
-    private func generateNavigationController(title: String, image: UIImage?) -> UIViewController {
-        let navigationViewController = UINavigationController()
-        
-        navigationViewController.tabBarItem.title = title
-        navigationViewController.tabBarItem.image = image
-        return navigationViewController
+    private func generateBarController(title: String, image: UIImage?) -> UIViewController {
+        let tabBarViewController = UINavigationController()
+    
+        tabBarViewController.tabBarItem.title = title
+        tabBarViewController.tabBarItem.image = image
+        tabBarViewController.navigationBar.isHidden = true
+
+        return tabBarViewController
     }
     
     func showMyViewControllerInACustomizedSheet() {

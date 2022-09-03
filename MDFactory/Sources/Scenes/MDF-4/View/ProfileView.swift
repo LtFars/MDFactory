@@ -16,7 +16,7 @@ class ProfileView: UIView {
         let imageHeightWidth: CGFloat = 170
         imageView.image = image
         imageView.layer.borderWidth = 10
-        imageView.layer.borderColor = UIColor.gray.cgColor
+        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -28,7 +28,7 @@ class ProfileView: UIView {
     private lazy var nameLabel: UILabel = {
         var name = UILabel()
         name.text = "Robert Jakson"
-        name.font = UIFont(name: "Red Hat Display", size: 20.0)
+        name.font = UIFont(name: "RedHatDisplay", size: 20.0)
         name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }()

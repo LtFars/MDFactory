@@ -109,27 +109,28 @@ final class BottomSheetPresentationController: UIPresentationController {
     }
     
     // MARK: UIPresentationController
-    
     override func presentationTransitionWillBegin() {
         guard let presentedView = presentedView else {
             return
         }
         
         presentedView.layer.cornerRadius = sheetCornerRadius
-        presentedView.layer.maskedCorners = [
-            .layerMinXMinYCorner,
-            .layerMaxXMinYCorner
-        ]
         
         guard let containerView = containerView else {
             return
         }
         
         containerView.addGestureRecognizer(tapGestureRecognizer)
-        
         containerView.addSubview(backdropView)
         
         backdropView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            backdropView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            backdropView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            backdropView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            backdropView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+        ])
         
         containerView.addSubview(presentedView)
         
@@ -141,21 +142,28 @@ final class BottomSheetPresentationController: UIPresentationController {
         )
         
         preferredHeightConstraint.priority = .fittingSizeLevel
+        
         let bottomConstraint = presentedView.bottomAnchor.constraint(
             equalTo: containerView.bottomAnchor
         )
         
         NSLayoutConstraint.activate([
-            presentedView.leadingAnchor.constraint(
-                equalTo: containerView.leadingAnchor
-            ),
-            presentedView.trailingAnchor.constraint(
-                equalTo: containerView.trailingAnchor
-            ),
+            
+            presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             bottomConstraint,
             preferredHeightConstraint
         ])
+        
+        guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
+            return
+        }
+        
+        transitionCoordinator.animate { context in
+            self.backdropView.alpha = 0.30
+        }
     }
+    
 }
 
 

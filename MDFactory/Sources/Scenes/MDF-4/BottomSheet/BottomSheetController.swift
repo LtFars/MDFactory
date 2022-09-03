@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BottomSheetController: UIViewController {
-
+class BottomSheetController: UITabBarController {
+    
     enum PreferredSheetSizing: CGFloat {
         case fit = 0 // Fit, based on the view's constraints
         case small = 0.25
@@ -44,19 +44,19 @@ class BottomSheetController: UIViewController {
             bottomSheetTransitioningDelegate.preferredSheetTopInset = preferredSheetTopInset
         }
     }
-//
+
     var preferredSheetCornerRadius: CGFloat = 8 {
         didSet {
             bottomSheetTransitioningDelegate.preferredSheetCornerRadius = preferredSheetCornerRadius
         }
     }
-//
+
     var preferredSheetSizing: PreferredSheetSizing = .small {
         didSet {
             bottomSheetTransitioningDelegate.preferredSheetSizingFactor = preferredSheetSizing.rawValue
         }
     }
-//
+
     var preferredSheetBackdropColor: UIColor = .white {
         didSet {
             bottomSheetTransitioningDelegate.preferredSheetBackdropColor = preferredSheetBackdropColor
