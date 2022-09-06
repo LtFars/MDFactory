@@ -76,6 +76,9 @@
 		0C5B0CFE6594C3F5393CB201 /* Pods-MDFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.debug.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		1347F47AC005B057B07830F4 /* Pods-MDFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.release.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.release.xcconfig"; sourceTree = "<group>"; };
 		26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BADD53C528C0A1EE0084419D /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		BADD53EB28C620470084419D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		BADD53ED28C6291E0084419D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		841121DD28DA2D3400983ACA /* MainCusomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCusomButton.swift; sourceTree = "<group>"; };
 		841121DF28DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ExtensionWithCoreGraphics.swift"; sourceTree = "<group>"; };
 		844B109928DF07610043FEB8 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
@@ -436,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				0327CE7228F586610096084C /* Extensions */,
+				BADD53EA28C61FFB0084419D /* Extension */,
 				DDB01FCC28BFBC7300E67A34 /* Application */,
 				DDB01FCD28BFBC7E00E67A34 /* Scenes */,
 				DD73E7F928F42EF400931654 /* Services */,
@@ -462,6 +466,24 @@
 				DD64000628F6DCB600C68EAE /* MDF-7 */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DDB01FCE28BFBC8B00E67A34 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DDB01FCF28BFBC9E00E67A34 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DDB01FCF28BFBC9E00E67A34 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */,
+				BADD53C528C0A1EE0084419D /* MainPage.swift */,
+				BADD53ED28C6291E0084419D /* CollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -579,6 +601,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BADD53C628C0A1EE0084419D /* MainPage.swift in Sources */,
+				BADD53EE28C6291E0084419D /* CollectionViewCell.swift in Sources */,
 				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
 				0327CEA528F5A34A0096084C /* UIViewController+Extension.swift in Sources */,
 				BA62B08228F8CA0F00A22370 /* CollectionViewCellGrid.swift in Sources */,
@@ -604,7 +628,6 @@
 				BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */,
 				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
 				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
-				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
 				0327CEA028F5A2510096084C /* HeaderCollectionView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				BADD53EC28C620470084419D /* UIColor+Extension.swift in Sources */,
