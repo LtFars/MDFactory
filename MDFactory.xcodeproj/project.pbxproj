@@ -76,6 +76,8 @@
 		0C5B0CFE6594C3F5393CB201 /* Pods-MDFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.debug.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		1347F47AC005B057B07830F4 /* Pods-MDFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.release.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.release.xcconfig"; sourceTree = "<group>"; };
 		26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA2F24B128C730C30043E253 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
+		BA2F24B328C77F390043E253 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BADD53C528C0A1EE0084419D /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		BADD53EB28C620470084419D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		BADD53ED28C6291E0084419D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -482,6 +484,8 @@
 				DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */,
 				BADD53C528C0A1EE0084419D /* MainPage.swift */,
 				BADD53ED28C6291E0084419D /* CollectionViewCell.swift */,
+				BA2F24B128C730C30043E253 /* HeaderCollectionView.swift */,
+				BA2F24B328C77F390043E253 /* Model.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,57 +607,7 @@
 			files = (
 				BADD53C628C0A1EE0084419D /* MainPage.swift in Sources */,
 				BADD53EE28C6291E0084419D /* CollectionViewCell.swift in Sources */,
-				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
-				0327CEA528F5A34A0096084C /* UIViewController+Extension.swift in Sources */,
-				BA62B08228F8CA0F00A22370 /* CollectionViewCellGrid.swift in Sources */,
-				0327CEA628F5A34A0096084C /* UIWindow+Extension.swift in Sources */,
-				0327CEA728F5A34A0096084C /* CustomLoginTextField.swift in Sources */,
-				0327CEA828F5A34A0096084C /* LoginPageViewController.swift in Sources */,
-				0327CEA928F5A34A0096084C /* FirstPageViewController.swift in Sources */,
-				0327CEAA28F5A34A0096084C /* WelcomeLabel.swift in Sources */,
-				0327CEAB28F5A34A0096084C /* MainCusomButton.swift in Sources */,
-				0327CEAC28F5A34A0096084C /* AchievementsModel.swift in Sources */,
-				0327CEAD28F5A34A0096084C /* ProfileViewController.swift in Sources */,
-				0327CEAE28F5A34A0096084C /* ColorView.swift in Sources */,
-				BA62B08E2906AE9400A22370 /* CollectionViewCellProtocol.swift in Sources */,
-				0327CEAF28F5A34A0096084C /* CircularView.swift in Sources */,
-				0327CEB028F5A34A0096084C /* ProgressView.swift in Sources */,
-				0327CEB128F5A34A0096084C /* ProfileView.swift in Sources */,
-				0327CEB228F5A34A0096084C /* SheetProfileView.swift in Sources */,
-				0327CEB328F5A34A0096084C /* ProfileCollectionViewCell.swift in Sources */,
-				0327CEB428F5A34A0096084C /* MainTabBarController.swift in Sources */,
-				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
-				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
-				0327CEA128F5A2510096084C /* MainPageModel.swift in Sources */,
-				BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */,
-				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
-				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
-				0327CEA028F5A2510096084C /* HeaderCollectionView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
-				BADD53EC28C620470084419D /* UIColor+Extension.swift in Sources */,
-				BA2F24B428C77F390043E253 /* Model.swift in Sources */,
-				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
-				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,
-				DD64000928F6DD1B00C68EAE /* TestViewController.swift in Sources */,
-				A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */,
-				A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */,
-				A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */,
-				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
-				A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */,
-				84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */,
-				841121E028DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
-				0327CE7128F2E7680096084C /* AchievementsModel.swift in Sources */,
-				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,
-				DD64000B28F6DD2900C68EAE /* TestView.swift in Sources */,
-				844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */,
-				841121DE28DA2D3400983ACA /* MainCusomButton.swift in Sources */,
-				844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */,
-				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
-				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
-				DD3C696D28F5A5CF001DA207 /* FirebaseService.swift in Sources */,
-				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
-				A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */,
-				DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
