@@ -42,7 +42,9 @@ class MainPage: UIViewController {
     
     func changeMode() {
         layout = getLayout(flag: Model.gridMode)
+        mainCollection.reloadData()
         mainCollection.setCollectionViewLayout(layout, animated: true)
+        
     }
     
     @objc func openProfile() {
@@ -213,6 +215,7 @@ extension MainPage: UICollectionViewDataSource {
             ) as? HeaderCollectionView else {
                 return UICollectionReusableView()
             }
+            header.configure()
             header.changeViewCollectionCompletion = { [unowned self] in
                 Model.gridMode.toggle()
                 layout = getLayout(flag: Model.gridMode)
