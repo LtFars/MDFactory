@@ -5,7 +5,7 @@ class CollectionViewCell: UICollectionViewCell {
     static let identifier = "CollectionViewCell"
     
     private lazy var cellView: UIButton = {
-        let button = UIButton(type: .system)
+        let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 20
         return button
@@ -13,22 +13,28 @@ class CollectionViewCell: UICollectionViewCell {
     
     private let image: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "person")
         return image
     }()
     
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "123123eqweqwe"
         return label
     }()
+    
+    // MARK: - Lifecycle
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupHierarchy()
         setupLayout()
     }
+    
+    // MARK: - Settings
     
     func setupHierarchy() {
         contentView.addSubview(cellView)
@@ -38,9 +44,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     func setupLayout() {
         cellView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(30)
-            make.width.equalToSuperview()
-            make.height.equalTo(100)
+            make.edges.equalToSuperview()
         }
         image.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(30)
@@ -52,8 +56,8 @@ class CollectionViewCell: UICollectionViewCell {
             make.centerY.equalToSuperview()
         }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
+    func configure() {
+        label.text = "Text"
+        image.image = UIImage(systemName: "person")
     }
 }
