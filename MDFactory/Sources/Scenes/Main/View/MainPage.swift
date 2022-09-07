@@ -42,7 +42,9 @@ class MainPage: UIViewController {
     
     public func changeMode() {
         layout = getLayout(flag: Model.gridMode)
+        mainCollection.reloadData()
         mainCollection.setCollectionViewLayout(layout, animated: true)
+        
     }
     
     @objc func openProfile() {
@@ -202,11 +204,15 @@ extension MainPage: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            return mainCollection.dequeueReusableSupplementaryView(
+            guard let header = mainCollection.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: HeaderCollectionView.identifier,
                 for: indexPath
-            )
+            ) as? HeaderCollectionView else {
+                return UICollectionReusableView()
+            }
+            header.configure()
+            return header
         } else {
             assert(false)
         }
