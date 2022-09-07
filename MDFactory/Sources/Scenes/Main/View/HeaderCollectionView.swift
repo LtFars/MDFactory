@@ -71,7 +71,7 @@ class HeaderCollectionView: UICollectionReusableView {
     
     func configure() {
         label.text = "Your Lessons"
-        changeMode()
+//        changeMode()
     }
     
     func changeMode() {
@@ -91,11 +91,12 @@ class HeaderCollectionView: UICollectionReusableView {
     }
     
     @objc func changeMode(_ sender: UIButton) {
-        if sender == buttonGrid {
-            Model.gridMode = true
-        } else {
-            Model.gridMode = false
-        }
-        changeMode()
+//        if sender == buttonGrid {
+//            Model.gridMode = true
+//        } else {
+//            Model.gridMode = false
+//        }
+//        changeMode()
+        changeViewCollectionCompletion?()
     }
 }
