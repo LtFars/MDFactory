@@ -42,7 +42,7 @@ class HeaderCollectionView: UICollectionReusableView {
         super.init(frame: frame)
         setupHierarchy()
         setupLayout()
-        configure()
+        //configure()
     }
     
     // MARK: - Settings
