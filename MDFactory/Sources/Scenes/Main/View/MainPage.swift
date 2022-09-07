@@ -42,7 +42,9 @@ class MainPage: UIViewController {
     
     func changeMode() {
         layout = getLayout(flag: Model.gridMode)
+        mainCollection.reloadData()
         mainCollection.setCollectionViewLayout(layout, animated: true)
+        
     }
     
     @objc func openProfile() {
