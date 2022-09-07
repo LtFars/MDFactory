@@ -2,7 +2,9 @@ import UIKit
 import SnapKit
 
 class MainPage: UIViewController {
+    static let identifier = "MainPage"
     let userName = "Henry"
+    lazy var layout = getLayout(flag: Model.gridMode)
     
     // MARK: - Top bar
     
@@ -38,8 +40,14 @@ class MainPage: UIViewController {
         return button
     }()
     
+    public func changeMode() {
+        layout = getLayout(flag: Model.gridMode)
+        mainCollection.setCollectionViewLayout(layout, animated: true)
+    }
+    
     @objc func openProfile() {
-        //navigationController?.pushViewController(ProfilePage(), animated: true)
+        Model.gridMode.toggle()
+        changeMode()
     }
     
     // MARK: - Bottom bar
@@ -65,6 +73,7 @@ class MainPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: Metrics.backgroungColorHex)
+        navigationController?.navigationBar.isHidden = true
         configureCollectionView()
         mainCollection.dataSource = self
         setupHierachy()
@@ -81,6 +90,7 @@ class MainPage: UIViewController {
         view.addSubview(bottomBar)
         view.addSubview(conteinerView)
         conteinerView.addSubview(mainCollection)
+        
     }
     
     func setupLayout() {
@@ -124,41 +134,82 @@ class MainPage: UIViewController {
     
     func configureCollectionView() {
         let collectionView = UICollectionView(
-            frame: conteinerView.bounds,
-            collectionViewLayout: UICollectionViewCompositionalLayout(section: generateLayout())
+            frame: .zero,
+            collectionViewLayout: layout
         )
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
+        collectionView.register(
+            CollectionViewCell.self,
+            forCellWithReuseIdentifier: CollectionViewCell.identifier
+        )
+        collectionView.register(
+            HeaderCollectionView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: HeaderCollectionView.identifier
+        )
         collectionView.backgroundColor = .clear
         mainCollection = collectionView
     }
     
-    func generateLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(view.frame.size.width - 60),
-            heightDimension: .absolute(100)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0)
-        
-        let groupeSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(view.frame.size.width - 60),
-            heightDimension: .absolute(Metrics.containerHeight)
-        )
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupeSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
-        let headeSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(view.frame.size.width - 60),
-            heightDimension: .absolute(70)
-        )
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headeSize,
-            elementKind: CollectionViewCell.identifier,
-            alignment: .top
-        )
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [sectionHeader]
-        section.orthogonalScrollingBehavior = .continuous
-        return section
+    func getLayout(flag: Bool) -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        if flag {
+            layout.scrollDirection = .vertical
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 15, right: 30)
+            layout.itemSize = CGSize(
+                width: (view.frame.size.width / 2) - 40,
+                height: 200
+            )
+            layout.minimumLineSpacing = 15
+            layout.headerReferenceSize = CGSize(
+                width: view.frame.size.width,
+                height: 90
+            )
+        } else {
+            layout.scrollDirection = .vertical
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 15, right: 30)
+            layout.itemSize = CGSize(
+                width: view.frame.size.width - 60,
+                height: 95
+            )
+            layout.minimumLineSpacing = 15
+            layout.headerReferenceSize = CGSize(
+                width: view.frame.size.width,
+                height: 90
+            )
+        }
+        return layout
+    }
+}
+
+// MARK: - Extensions
+
+extension MainPage: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = mainCollection.dequeueReusableCell(
+            withReuseIdentifier: CollectionViewCell.identifier,
+            for: indexPath
+        ) as? CollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.configure()
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            return mainCollection.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: HeaderCollectionView.identifier,
+                for: indexPath
+            )
+        } else {
+            assert(false)
+        }
     }
 }
 
@@ -177,23 +228,7 @@ extension MainPage {
         static let profileButtonRight: CGFloat = -30
         static let profileButtonTop: CGFloat = 77
         static let cellCount: CGFloat = 4
-        static let containerHeight: CGFloat = cellCount * 150
+        static let containerHeight: CGFloat = cellCount * 110
     }
 }
 
-extension MainPage: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = mainCollection.dequeueReusableCell(
-            withReuseIdentifier: CollectionViewCell.identifier,
-            for: indexPath
-        ) as? CollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        return cell
-    }
-}
