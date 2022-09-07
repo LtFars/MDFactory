@@ -40,7 +40,7 @@ class MainPage: UIViewController {
         return button
     }()
     
-    public func changeMode() {
+    func changeMode() {
         layout = getLayout(flag: Model.gridMode)
         mainCollection.setCollectionViewLayout(layout, animated: true)
     }
@@ -200,13 +200,25 @@ extension MainPage: UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            return mainCollection.dequeueReusableSupplementaryView(
+            guard let header = mainCollection.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: HeaderCollectionView.identifier,
                 for: indexPath
-            )
+            ) as? HeaderCollectionView else {
+                return UICollectionReusableView()
+            }
+            header.changeViewCollectionCompletion = { [unowned self] in
+                Model.gridMode.toggle()
+                layout = getLayout(flag: Model.gridMode)
+                mainCollection.setCollectionViewLayout(layout, animated: true)
+            }
+            return header
         } else {
             assert(false)
         }
@@ -231,4 +243,3 @@ extension MainPage {
         static let containerHeight: CGFloat = cellCount * 110
     }
 }
-
