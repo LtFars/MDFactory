@@ -634,6 +634,7 @@
 				BADD53C628C0A1EE0084419D /* MainPage.swift in Sources */,
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
 				BADD53EE28C6291E0084419D /* CollectionViewCell.swift in Sources */,
+				BA2F24B228C730C30043E253 /* HeaderCollectionView.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
 				BADD53EE28C6291E0084419D /* CollectionViewCell.swift in Sources */,
 				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
@@ -689,6 +690,7 @@
 				DD3C696D28F5A5CF001DA207 /* FirebaseService.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				BADD53EC28C620470084419D /* UIColor+Extension.swift in Sources */,
+				BA2F24B428C77F390043E253 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
