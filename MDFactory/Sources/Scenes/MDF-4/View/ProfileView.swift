@@ -25,6 +25,31 @@ class ProfileView: UIView {
         return imageView
     }()
     
+    private lazy var sheetImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 40
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+        var someView: ProgressView = {
+        var imageView = ProgressView()
+        imageView.contentMode = .center
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var stripImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.layer.cornerRadius = 2
+        imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private lazy var nameLabel: UILabel = {
         var name = UILabel()
         name.text = "Robert Jakson"
@@ -47,6 +72,9 @@ class ProfileView: UIView {
     private func setupHierarchy() {
         addSubview(avatarImageView)
         addSubview(nameLabel)
+        addSubview(sheetImageView)
+        addSubview(stripImageView)
+        addSubview(someView)
     }
     
     private func setupLayout() {
@@ -62,7 +90,32 @@ class ProfileView: UIView {
             nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 15),
             nameLabel.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 21)
-           
+        ])
+        
+        NSLayoutConstraint.activate([
+            sheetImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            sheetImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            sheetImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            sheetImageView.heightAnchor.constraint(equalToConstant: 240)
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+            stripImageView.topAnchor.constraint(equalTo: sheetImageView.topAnchor, constant: 14),
+            stripImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+    
+            stripImageView.heightAnchor.constraint(equalToConstant: 3),
+            stripImageView.widthAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            someView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 120),
+            someView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -30),
+//            someView.leadingAnchor.constraint(equalTo:  safeAreaLayoutGuide.leadingAnchor, constant: 150),
+            someView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -50),
+//            someView.bottomAnchor.constraint(equalTo: sheetImageView.topAnchor, constant: -60),
+            someView.heightAnchor.constraint(equalToConstant: 70),
+            someView.widthAnchor.constraint(equalToConstant: 70)
         ])
         
     }

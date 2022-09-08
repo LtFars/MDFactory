@@ -16,7 +16,7 @@ class ProfileTabBarController: UITabBarController {
     }
     
     private func setupView() {
-        view.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.2784313725, blue: 0.3568627451, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8470588235)
     }
     
     private func setupProfileView() {
@@ -48,7 +48,7 @@ class ProfileTabBarController: UITabBarController {
         present(viewControllerToPresent, animated: true, completion: nil)
    
     }
-      
+    
 private func tabButton() {
 
         showMyViewControllerInACustomizedSheet()

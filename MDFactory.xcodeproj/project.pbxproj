@@ -17,6 +17,7 @@
 		A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B349828C1097800C4B05E /* ProfileTabBarController.swift */; };
 		A0BDD44728C37FBF00786300 /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDD44628C37FBF00786300 /* ProfileCollectionViewController.swift */; };
 		A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDD45028C3AA1B00786300 /* ProfileView.swift */; };
+		A0BF832828C67C32001E6469 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF832728C67C32001E6469 /* ProgressView.swift */; };
 		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
 		DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		A07B349828C1097800C4B05E /* ProfileTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabBarController.swift; sourceTree = "<group>"; };
 		A0BDD44628C37FBF00786300 /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
 		A0BDD45028C3AA1B00786300 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A0BF832728C67C32001E6469 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A0BDD45028C3AA1B00786300 /* ProfileView.swift */,
+				A0BF832728C67C32001E6469 /* ProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
 				A0BDD44728C37FBF00786300 /* ProfileCollectionViewController.swift in Sources */,
 				A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */,
+				A0BF832828C67C32001E6469 /* ProgressView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				A078FD0128C2545F0051E23B /* BottomSheetController.swift in Sources */,
 			);
