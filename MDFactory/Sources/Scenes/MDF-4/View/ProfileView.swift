@@ -12,7 +12,7 @@ class ProfileView: UIView {
     
     private lazy var avatarImageView: UIImageView = {
         var imageView = UIImageView()
-        let image = UIImage(named: "horse")
+        let image = UIImage(named: "emoji")
         let imageHeightWidth: CGFloat = 170
         imageView.image = image
         imageView.layer.borderWidth = 10
@@ -37,7 +37,6 @@ class ProfileView: UIView {
     
         var someView: ProgressView = {
         var imageView = ProgressView()
-        imageView.contentMode = .center
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -53,10 +52,59 @@ class ProfileView: UIView {
     private lazy var nameLabel: UILabel = {
         var name = UILabel()
         name.text = "Robert Jakson"
-        name.font = UIFont(name: "RedHatDisplay", size: 20.0)
+        name.font = .systemFont(ofSize: 21, weight: .heavy)
+        name.font = .preferredFont(forTextStyle: .headline)
+        
         name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }()
+    
+    private lazy var centerLabel: UILabel = {
+        var name = UILabel()
+        name.text = "FR"
+        name.font = .systemFont(ofSize: 21, weight: .heavy)
+        name.translatesAutoresizingMaskIntoConstraints = false
+        return name
+    }()
+    
+    private lazy var centerImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.down")
+        imageView.tintColor = .black
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    private func setupPercentLabel(percent: String) -> UILabel {
+        let name = UILabel()
+        name.text = percent
+        name.textColor = .white
+        name.font = .systemFont(ofSize: 9, weight: .heavy)
+        name.translatesAutoresizingMaskIntoConstraints = false
+        return name
+    }
+    
+    private func setupNamePercentLabel(percent: String, color: UIColor) -> UILabel {
+        let name = UILabel()
+        name.text = percent
+        name.textColor = color
+        name.font = .systemFont(ofSize: 12, weight: .regular)
+        name.translatesAutoresizingMaskIntoConstraints = false
+        return name
+    }
+    
+    private lazy var percentSpeaking = setupPercentLabel(percent: "14%")
+    private lazy var percentListening = setupPercentLabel(percent: "46%")
+    private lazy var percentReading = setupPercentLabel(percent: "65%")
+    
+    private lazy var nameSpeaking = setupNamePercentLabel(percent: "Speaking",
+                                                          color: Color.red.color)
+    private lazy var nameListening = setupNamePercentLabel(percent: "Listening",
+                                                           color: Color.blue.color)
+    private lazy var nameReading = setupNamePercentLabel(percent: "Reading",
+                                                         color: Color.green.color)
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,6 +123,15 @@ class ProfileView: UIView {
         addSubview(sheetImageView)
         addSubview(stripImageView)
         addSubview(someView)
+        addSubview(percentSpeaking)
+        addSubview(percentListening)
+        addSubview(percentReading)
+        addSubview(nameSpeaking)
+        addSubview(nameListening)
+        addSubview(nameReading)
+        addSubview(centerLabel)
+        addSubview(centerImageView)
+        
     }
     
     private func setupLayout() {
@@ -109,13 +166,45 @@ class ProfileView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            someView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 120),
-            someView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -30),
-//            someView.leadingAnchor.constraint(equalTo:  safeAreaLayoutGuide.leadingAnchor, constant: 150),
+            someView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 100),
+            someView.centerXAnchor.constraint(equalTo: centerXAnchor),
             someView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -50),
-//            someView.bottomAnchor.constraint(equalTo: sheetImageView.topAnchor, constant: -60),
-            someView.heightAnchor.constraint(equalToConstant: 70),
-            someView.widthAnchor.constraint(equalToConstant: 70)
+            someView.heightAnchor.constraint(equalToConstant: 130),
+            someView.widthAnchor.constraint(equalToConstant: 130)
+        ])
+        
+        NSLayoutConstraint.activate([
+            percentSpeaking.centerXAnchor.constraint(equalTo: someView.centerXAnchor, constant: 65),
+            percentSpeaking.centerYAnchor.constraint(equalTo: someView.centerYAnchor, constant: 0),
+            
+            percentListening.centerXAnchor.constraint(equalTo: percentSpeaking.centerXAnchor, constant: -30),
+            percentListening.centerYAnchor.constraint(equalTo: percentSpeaking.centerYAnchor, constant: 55),
+            
+            percentReading.centerXAnchor.constraint(equalTo: someView.centerXAnchor, constant: -55),
+            percentReading.centerYAnchor.constraint(equalTo: someView.centerYAnchor, constant: 33)
+            
+        ])
+        
+        
+        NSLayoutConstraint.activate([
+            nameSpeaking.topAnchor.constraint(equalTo: someView.topAnchor, constant: -5),
+            nameSpeaking.trailingAnchor.constraint(equalTo: someView.leadingAnchor, constant: 25),
+            
+            nameListening.topAnchor.constraint(equalTo: someView.centerYAnchor, constant: 30),
+            nameListening.leadingAnchor.constraint(equalTo: someView.trailingAnchor, constant: 35),
+            
+            nameReading.trailingAnchor.constraint(equalTo: someView.leadingAnchor, constant: -25),
+            nameReading.topAnchor.constraint(equalTo: someView.centerYAnchor, constant: 15)
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+            centerLabel.centerXAnchor.constraint(equalTo: someView.centerXAnchor, constant: -10),
+            centerLabel.centerYAnchor.constraint(equalTo: someView.centerYAnchor, constant: 0),
+            
+            centerImageView.leadingAnchor.constraint(equalTo: centerLabel.trailingAnchor, constant: 5),
+            centerImageView.centerYAnchor.constraint(equalTo: someView.centerYAnchor, constant: 0)
+            
         ])
         
     }

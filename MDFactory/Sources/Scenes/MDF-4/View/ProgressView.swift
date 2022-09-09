@@ -13,14 +13,14 @@ import UIKit
        
        override func draw(_ rect: CGRect) {
            
-           let rectCircular = CGRect(x: 0, y: 0, width: rect.width, height: rect.height / 2 )
+           let rectCircular = CGRect(x: 0, y: 0, width: rect.width / 2, height: rect.height / 2)
            
-           let rectLines = CGRect(x: 0, y: rect.height / 2, width: rect.width, height: rect.height / 2)
+           let dotAngle = CGRect(x: 0, y: 0, width: rect.width / 2, height: rect.height / 2)
+           
            
            drawCircular(rectCircular)
+           drawDot(dotAngle)
            
-           drawLines(rectLines)
-
            }
 
        func drawCircular(_ rect: CGRect) {
@@ -51,31 +51,31 @@ import UIKit
                                             startAngle: 0,
                                             endAngle: 2 * CGFloat.pi,
                                             clockwise: true)
-           
+        
            let circulareRed = CAShapeLayer()
            circulareRed.lineWidth = 30
-           circulareRed.strokeColor = UIColor.red.cgColor
+           circulareRed.strokeColor = Color.red.color.cgColor
            circulareRed.fillColor = UIColor.clear.cgColor
            circulareRed.lineCap = .round
            circulareRed.path = pathRed.cgPath
            
            let circulareBlue = CAShapeLayer()
            circulareBlue.lineWidth = 30
-           circulareBlue.strokeColor = UIColor.blue.cgColor
+           circulareBlue.strokeColor = Color.blue.color.cgColor
            circulareBlue.fillColor = UIColor.clear.cgColor
            circulareBlue.lineCap = .round
            circulareBlue.path = pathBlue.cgPath
            
            let circulareGreen = CAShapeLayer()
            circulareGreen.lineWidth = 30
-           circulareGreen.strokeColor = UIColor.green.cgColor
+           circulareGreen.strokeColor = Color.green.color.cgColor
            circulareGreen.fillColor = UIColor.clear.cgColor
            circulareGreen.lineCap = .round
            circulareGreen.path = pathGreen.cgPath
            
            let circulareGray = CAShapeLayer()
            circulareGray.lineWidth = 14
-           circulareGray.strokeColor = UIColor.lightGray.cgColor
+           circulareGray.strokeColor = Color.gray.color.cgColor
            circulareGray.fillColor = UIColor.clear.cgColor
            circulareGray.lineCap = .round
            circulareGray.path = pathGray.cgPath
@@ -87,7 +87,28 @@ import UIKit
            
        }
        
-       func drawLines(_ rect: CGRect) {
+       func drawDot(_ rect: CGRect) {
+           
+           let center = CGPoint(x: rect.width, y: 0)
+           let radius = rect.width / 10
+           
+           let dot = UIBezierPath(arcCenter: center,
+                                  radius: CGFloat(radius),
+                                      startAngle: 0,
+                                      endAngle: 2 * CGFloat.pi,
+                                      clockwise: true)
+           
+           
+           let dotRed = CAShapeLayer()
+           dotRed.lineWidth = 4
+           dotRed.strokeColor = Color.redDark.color.cgColor
+           dotRed.fillColor = Color.redDark.color.cgColor
+      
+           dotRed.path = dot.cgPath
+           
+           layer.addSublayer(dotRed)
+           
+           
            
        }
        
