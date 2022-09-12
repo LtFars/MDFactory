@@ -34,18 +34,15 @@ class ProfileView: UIView {
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = imageHeightWidth / 2
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private lazy var sheetImageView: UIImageView = {
+    var sheetImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
-
-        imageView.clipsToBounds = true
-        imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 40
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -53,7 +50,7 @@ class ProfileView: UIView {
         var imageView = UIImageView()
         imageView.layer.cornerRadius = 2
         imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+
         return imageView
     }()
     
@@ -61,7 +58,6 @@ class ProfileView: UIView {
         var imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")
         imageView.tintColor = .black
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -70,7 +66,6 @@ class ProfileView: UIView {
         name.text = "Robert Jakson"
         name.font = .systemFont(ofSize: 21, weight: .heavy)
         name.font = .preferredFont(forTextStyle: .headline)
-        name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }()
     
@@ -78,7 +73,6 @@ class ProfileView: UIView {
         var name = UILabel()
         name.text = "FR"
         name.font = .systemFont(ofSize: 21, weight: .heavy)
-        name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }()
     
@@ -87,7 +81,6 @@ class ProfileView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 20
         stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -96,7 +89,6 @@ class ProfileView: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -123,7 +115,6 @@ class ProfileView: UIView {
         name.text = percent
         name.textColor = .white
         name.font = .systemFont(ofSize: 9, weight: .heavy)
-        name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }
     
@@ -132,7 +123,6 @@ class ProfileView: UIView {
         name.text = percent
         name.textColor = color
         name.font = .systemFont(ofSize: 12, weight: .regular)
-        name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }
     
@@ -170,9 +160,6 @@ class ProfileView: UIView {
         
         sheetImageView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(0)
-            make.top.equalTo(snp.bottom).offset(-150)
-
-        
         }
         
         stripImageView.snp.makeConstraints { make in
@@ -224,4 +211,10 @@ class ProfileView: UIView {
             make.centerY.equalTo(someView.snp.centerY)
         }
     }
+    
+//    enum MetricVerticalStack {
+//        static var height: CGFloat = 90
+//        static var wight: CGFloat = 90
+////        static var wight: CGFloat = 90
+//    }
 }

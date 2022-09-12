@@ -115,6 +115,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         }
         
         presentedView.layer.cornerRadius = sheetCornerRadius
+        presentedView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         guard let containerView = containerView else {
             return
