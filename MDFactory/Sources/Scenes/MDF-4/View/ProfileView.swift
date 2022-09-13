@@ -10,9 +10,12 @@ import SnapKit
 
 class ProfileView: UIView {
     
+   var sheetView = GestureRecognizerSheetView()
+    
     // Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        sheetView.recognizerView()
         setupHierarchy()
         addStackView()
         setupLayout()
@@ -37,22 +40,22 @@ class ProfileView: UIView {
         return imageView
     }()
     
-    var sheetImageView: UIImageView = {
-        var imageView = UIImageView()
-        imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
-        imageView.layer.cornerRadius = 40
-        imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    private lazy var stripImageView: UIImageView = {
-        var imageView = UIImageView()
-        imageView.layer.cornerRadius = 2
-        imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
-
-        return imageView
-    }()
+//    var sheetImageView: UIImageView = {
+//        var imageView = UIImageView()
+//        imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
+//        imageView.layer.cornerRadius = 40
+//        imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+//        imageView.clipsToBounds = true
+//        return imageView
+//    }()
+//
+//    private lazy var stripImageView: UIImageView = {
+//        var imageView = UIImageView()
+//        imageView.layer.cornerRadius = 2
+//        imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
+//
+//        return imageView
+//    }()
     
     private lazy var centerImageView: UIImageView = {
         var imageView = UIImageView()
@@ -127,10 +130,8 @@ class ProfileView: UIView {
     }
     
     private func addStackView() {
-        
         userInfoStackView.addArrangedSubview(avatarImageView)
         userInfoStackView.addArrangedSubview(nameLabel)
-        
         centerLabelStackView.addArrangedSubview(centerLabel)
         centerLabelStackView.addArrangedSubview(centerImageView)
     }
@@ -138,8 +139,8 @@ class ProfileView: UIView {
     private func setupHierarchy() {
         addSubview(userInfoStackView)
         addSubview(centerLabelStackView)
-        addSubview(sheetImageView)
-        addSubview(stripImageView)
+        addSubview(sheetView.sheetImageView)
+        addSubview(sheetView.stripImageView)
         addSubview(someView)
         addSubview(percentSpeaking)
         addSubview(percentListening)
@@ -152,18 +153,18 @@ class ProfileView: UIView {
     private func setupLayout() {
         
         userInfoStackView.snp.makeConstraints { make in
-            make.width.equalTo(170)
-            make.height.equalTo(210)
-            make.top.equalTo(-60)
+            make.width.equalTo(Metric.userInfoStackViewWidth)
+            make.height.equalTo(Metric.userInfoStackViewHeight)
+            make.top.equalTo(-Metric.userInfoStackViewTopAncor)
             make.centerX.equalToSuperview()
         }
         
-        sheetImageView.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(0)
+        sheetView.sheetImageView.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
         }
-        
-        stripImageView.snp.makeConstraints { make in
-            make.top.equalTo(sheetImageView.snp.top).offset(14)
+
+        sheetView.stripImageView.snp.makeConstraints { make in
+            make.top.equalTo(sheetView.sheetImageView.snp.top).offset(14)
             make.centerX.equalToSuperview()
             make.height.equalTo(3)
             make.width.equalTo(50)
@@ -172,7 +173,7 @@ class ProfileView: UIView {
         someView.snp.makeConstraints { make in
             make.top.equalTo(userInfoStackView.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(sheetImageView.snp.top).offset(-50)
+            make.bottom.equalTo(sheetView.sheetImageView.snp.top).offset(-50)
             make.height.width.equalTo(130)
         }
 
@@ -182,8 +183,8 @@ class ProfileView: UIView {
         }
         
         percentListening.snp.makeConstraints { make in
-            make.centerX.equalTo(percentSpeaking.snp.centerX).offset(-30)
-            make.centerY.equalTo(percentSpeaking.snp.centerY).offset(55)
+            make.centerX.equalTo(someView.snp.centerX).offset(33)
+            make.centerY.equalTo(someView.snp.centerY).offset(55)
         }
 
         percentReading.snp.makeConstraints { make in
@@ -212,9 +213,10 @@ class ProfileView: UIView {
         }
     }
     
-//    enum MetricVerticalStack {
-//        static var height: CGFloat = 90
-//        static var wight: CGFloat = 90
-////        static var wight: CGFloat = 90
-//    }
+    enum Metric {
+        static var userInfoStackViewWidth : CGFloat = 170
+        static var userInfoStackViewHeight : CGFloat = 210
+        static var userInfoStackViewTopAncor : CGFloat = 60
+
+    }
 }
