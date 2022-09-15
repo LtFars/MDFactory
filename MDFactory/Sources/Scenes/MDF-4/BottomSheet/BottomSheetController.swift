@@ -13,7 +13,7 @@ class BottomSheetController: UITabBarController {
         case fit = 0 // Fit, based on the view's constraints
         case small = 0.25
         case medium = 0.50
-        case large = 0.75
+        case large = 0.80
         case fill = 1
     }
 

@@ -16,7 +16,7 @@ class ProfileTabBarController: UITabBarController {
     }
     
     private func setupView() {
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8470588235)
+        view.backgroundColor = #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
     }
     
     private func setupProfileView() {
@@ -43,6 +43,7 @@ class ProfileTabBarController: UITabBarController {
         let viewControllerToPresent = ProfileViewController()
         
         viewControllerToPresent.preferredSheetCornerRadius = 40
+      
         viewControllerToPresent.preferredSheetSizing = .large
         
         present(viewControllerToPresent, animated: true, completion: nil)
