@@ -72,7 +72,7 @@ class ProgressView: UIView {
         let name = UILabel()
         name.text = percent
         name.textColor = color
-        name.font = .systemFont(ofSize: 12, weight: .regular)
+        name.font = .systemFont(ofSize: 12, weight: .heavy)
         return name
     }
     

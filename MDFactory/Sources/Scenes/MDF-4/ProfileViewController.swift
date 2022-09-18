@@ -10,20 +10,20 @@ import SnapKit
 
 class ProfileViewController: BottomSheetController {
     
-    var profileView = ProfileView()
-    var progressView = ProgressView()
+    private let profileView = ProfileView()
+    private let progressView = ProgressView()
     
-    let defaultHeight: CGFloat = 170
-    let dismissibleHeight: CGFloat = 100
-    let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
+    private let defaultHeight: CGFloat = 200
+    private let dismissibleHeight: CGFloat = 100
+    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
  
-    var currentContainerHeight: CGFloat = 100
+    private var currentContainerHeight: CGFloat = 100
 
-    var containerViewHeightConstraint: NSLayoutConstraint?
-    var containerViewBottomConstraint: NSLayoutConstraint?
+    private var containerViewHeightConstraint: NSLayoutConstraint?
+    private var containerViewBottomConstraint: NSLayoutConstraint?
   
-    var sheetImageView: UIImageView = {
-        var imageView = UIImageView()
+    private lazy var sheetImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         imageView.layer.cornerRadius = 40
         imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -31,12 +31,18 @@ class ProfileViewController: BottomSheetController {
         return imageView
     }()
     
-    lazy var stripImageView: UIImageView = {
-        var imageView = UIImageView()
+   private lazy var stripImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.layer.cornerRadius = 2
         imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
-        
         return imageView
+    }()
+    
+    private lazy var centerLabel: UILabel = {
+        var name = UILabel()
+        name.text = "FRTRTRTRTRT"
+        name.font = .systemFont(ofSize: 21, weight: .heavy)
+        return name
     }()
     
     override func viewDidLoad() {
@@ -56,9 +62,10 @@ class ProfileViewController: BottomSheetController {
         view.addSubview(profileView)
         view.addSubview(sheetImageView)
         view.addSubview(stripImageView)
+        sheetImageView.addSubview(centerLabel)
     }
     
-    func setupLoyaut() {
+    private func setupLoyaut() {
         
         profileView.snp.makeConstraints { make in
             make.width.equalTo(Metric.userInfoStackViewWidth)
@@ -75,7 +82,8 @@ class ProfileViewController: BottomSheetController {
         
         sheetImageView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(0)
-            
+//            make.height.equalTo(800)
+//            make.bottom.equalTo(view.snp.bottom).offset(600)
         }
         
         stripImageView.snp.makeConstraints { make in
@@ -83,6 +91,11 @@ class ProfileViewController: BottomSheetController {
             make.centerX.equalToSuperview()
             make.height.equalTo(3)
             make.width.equalTo(50)
+            
+            centerLabel.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview()
+            }
             
             containerViewHeightConstraint = sheetImageView.heightAnchor.constraint(equalToConstant: defaultHeight)
                         
@@ -92,7 +105,7 @@ class ProfileViewController: BottomSheetController {
         }
     }
         
-        func setupPanGesture() {
+    private func setupPanGesture() {
    
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
             panGesture.minimumNumberOfTouches = 1
@@ -101,17 +114,23 @@ class ProfileViewController: BottomSheetController {
             view.addGestureRecognizer(panGesture)
         }
         
-        func animateContainerHeight(_ height: CGFloat) {
+    private func animateContainerHeight(_ height: CGFloat) {
             UIView.animate(withDuration: 0.4) {
                 self.containerViewHeightConstraint?.constant = height
                 self.view.layoutIfNeeded()
             }
-            // Save current height
+          
             currentContainerHeight = height
         }
         
         @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
             let translation = gesture.translation(in: view)
+            
+//            sheetImageView.snp.makeConstraints { make in
+//                make.leading.trailing.equalTo(0)
+//    //            make.height.equalTo(800)
+//                make.bottom.equalTo(view.snp.bottom).offset(0)
+//            }
           
             let isDraggingDown = translation.y > 0
            

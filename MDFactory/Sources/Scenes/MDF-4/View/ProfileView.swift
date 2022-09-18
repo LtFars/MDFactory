@@ -45,7 +45,7 @@ class ProfileView: UIView {
         return name
     }()
     
-    lazy var userInfoStackView: UIStackView = {
+    private lazy var userInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 20
