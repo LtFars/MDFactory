@@ -8,28 +8,34 @@
 import UIKit
 import SnapKit
 
-class ProfileViewController: BottomSheetController {
+class ProfileViewController: UIViewController {
     
-    private let profileView = ProfileView()
-    private let progressView = ProgressView()
+    private let sheetProfileView = SheetProfileView()
     
-    private let defaultHeight: CGFloat = 200
+    
+    private let defaultHeight: CGFloat = 800
     private let dismissibleHeight: CGFloat = 100
-    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
- 
+    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 140
     private var currentContainerHeight: CGFloat = 100
-
     private var containerViewHeightConstraint: NSLayoutConstraint?
     private var containerViewBottomConstraint: NSLayoutConstraint?
   
     private lazy var sheetImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
         imageView.layer.cornerRadius = 40
         imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         imageView.clipsToBounds = true
         return imageView
     }()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .close)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(tabActiohButton), for: .touchUpInside)
+        return button
+    }()
+    
     
    private lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,20 +43,22 @@ class ProfileViewController: BottomSheetController {
         imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
         return imageView
     }()
-    
-    private lazy var centerLabel: UILabel = {
-        var name = UILabel()
-        name.text = "FRTRTRTRTRT"
-        name.font = .systemFont(ofSize: 21, weight: .heavy)
-        return name
-    }()
+//
+//    private lazy var centerLabel: UILabel = {
+//        var name = UILabel()
+//        name.text = "FRTRTRTRTRT"
+//        name.font = .systemFont(ofSize: 21, weight: .heavy)
+//        return name
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         setupHierarchy()
         setupLoyaut()
         setupPanGesture()
+        
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,32 +66,30 @@ class ProfileViewController: BottomSheetController {
     }
     
     private func setupHierarchy() {
-        view.addSubview(progressView)
-        view.addSubview(profileView)
+        view.addSubview(sheetProfileView)
         view.addSubview(sheetImageView)
         view.addSubview(stripImageView)
-        sheetImageView.addSubview(centerLabel)
+        view.addSubview(backButton)
+//        sheetImageView.addSubview(centerLabel)
     }
     
     private func setupLoyaut() {
         
-        profileView.snp.makeConstraints { make in
-            make.width.equalTo(Metric.userInfoStackViewWidth)
-            make.height.equalTo(Metric.userInfoStackViewHeight)
-            make.top.equalTo(-Metric.userInfoStackViewTopAncor)
-            make.centerX.equalToSuperview()
+        sheetProfileView.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalTo(0)
+            make.top.equalTo(view.snp.top).offset(-500)
         }
         
-        progressView.snp.makeConstraints { make in
-            make.centerX.equalTo(profileView.snp.centerX)
-            make.top.equalTo(profileView.snp.bottom).offset(70)
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(10)
+            make.leading.equalTo(20)
             
         }
         
         sheetImageView.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(0)
-//            make.height.equalTo(800)
-//            make.bottom.equalTo(view.snp.bottom).offset(600)
+            make.leading.trailing.equalTo(0)
+            make.bottom.equalTo(600)
+//            make.top.equalTo(view.snp.top).offset(-200)
         }
         
         stripImageView.snp.makeConstraints { make in
@@ -92,10 +98,10 @@ class ProfileViewController: BottomSheetController {
             make.height.equalTo(3)
             make.width.equalTo(50)
             
-            centerLabel.snp.makeConstraints { make in
-                make.centerX.equalToSuperview()
-                make.centerY.equalToSuperview()
-            }
+//            centerLabel.snp.makeConstraints { make in
+//                make.centerX.equalToSuperview()
+//                make.centerY.equalToSuperview()
+//            }
             
             containerViewHeightConstraint = sheetImageView.heightAnchor.constraint(equalToConstant: defaultHeight)
                         
@@ -125,15 +131,14 @@ class ProfileViewController: BottomSheetController {
         
         @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
             let translation = gesture.translation(in: view)
-            
-//            sheetImageView.snp.makeConstraints { make in
-//                make.leading.trailing.equalTo(0)
-//    //            make.height.equalTo(800)
-//                make.bottom.equalTo(view.snp.bottom).offset(0)
-//            }
-          
+           
             let isDraggingDown = translation.y > 0
            
+//            if isDraggingDown {
+//                sheetImageView.snp.makeConstraints { make in
+////                    make.bottom.equalTo(translation.y)
+//                }
+//            }
             let newHeight = currentContainerHeight - translation.y
             
             switch gesture.state {
@@ -164,11 +169,15 @@ class ProfileViewController: BottomSheetController {
             
         }
         
-    enum Metric {
-        static var userInfoStackViewWidth : CGFloat = 170
-        static var userInfoStackViewHeight : CGFloat = 210
-        static var userInfoStackViewTopAncor : CGFloat = 60
-        
+    
+   @objc func tabActiohButton() {
+        dismiss(animated: true)
     }
+//    enum Metric {
+//        static var userInfoStackViewWidth : CGFloat = 170
+//        static var userInfoStackViewHeight : CGFloat = 210
+//        static var userInfoStackViewTopAncor : CGFloat = 60
+//        
+//    }
     
 }

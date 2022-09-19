@@ -97,44 +97,42 @@ class ProgressView: UIView {
         someView.snp.makeConstraints { make in
             make.width.height.equalTo(130)
             make.centerX.equalTo(snp.centerX)
-           
-            
-            
-            percentSpeaking.snp.makeConstraints { make in
-                make.centerX.equalTo(someView.snp.centerX).offset(65)
-                make.centerY.equalTo(someView.snp.centerY).offset(0)
-            }
-            
-            percentListening.snp.makeConstraints { make in
-                make.centerX.equalTo(someView.snp.centerX).offset(33)
-                make.centerY.equalTo(someView.snp.centerY).offset(55)
-            }
-            
-            percentReading.snp.makeConstraints { make in
-                make.centerX.equalTo(someView.snp.centerX).offset(-55)
-                make.centerY.equalTo(someView.snp.centerY).offset(33)
-            }
-            
-            nameSpeaking.snp.makeConstraints { make in
-                make.top.equalTo(someView.snp.top).offset(-5)
-                make.trailing.equalTo(someView.snp.leading).offset(25)
-            }
-            
-            nameListening.snp.makeConstraints { make in
-                make.top.equalTo(someView.snp.centerY).offset(30)
-                make.leading.equalTo(someView.snp.trailing).offset(35)
-            }
-            
-            nameReading.snp.makeConstraints { make in
-                make.top.equalTo(someView.snp.centerY).offset(15)
-                make.trailing.equalTo(someView.snp.leading).offset(-25)
-            }
-            
-            centerLabelStackView.snp.makeConstraints { make in
-                make.centerX.equalTo(someView.snp.centerX)
-                make.centerY.equalTo(someView.snp.centerY)
-            }
-            
         }
+        percentSpeaking.snp.makeConstraints { make in
+            make.centerX.equalTo(someView.snp.centerX).offset(65)
+            make.centerY.equalTo(someView.snp.centerY).offset(0)
+        }
+        
+        percentListening.snp.makeConstraints { make in
+            make.centerX.equalTo(someView.snp.centerX).offset(33)
+            make.centerY.equalTo(someView.snp.centerY).offset(55)
+        }
+        
+        percentReading.snp.makeConstraints { make in
+            make.centerX.equalTo(someView.snp.centerX).offset(-55)
+            make.centerY.equalTo(someView.snp.centerY).offset(33)
+        }
+        
+        nameSpeaking.snp.makeConstraints { make in
+            make.top.equalTo(someView.snp.top).offset(-5)
+            make.trailing.equalTo(someView.snp.leading).offset(25)
+        }
+        
+        nameListening.snp.makeConstraints { make in
+            make.top.equalTo(someView.snp.centerY).offset(30)
+            make.leading.equalTo(someView.snp.trailing).offset(35)
+        }
+        
+        nameReading.snp.makeConstraints { make in
+            make.top.equalTo(someView.snp.centerY).offset(15)
+            make.trailing.equalTo(someView.snp.leading).offset(-25)
+        }
+        
+        centerLabelStackView.snp.makeConstraints { make in
+            make.centerX.equalTo(someView.snp.centerX)
+            make.centerY.equalTo(someView.snp.centerY)
+        }
+        
     }
 }
+

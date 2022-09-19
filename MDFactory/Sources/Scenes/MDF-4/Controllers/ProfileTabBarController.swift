@@ -34,6 +34,7 @@ class ProfileTabBarController: UITabBarController {
         tabBarViewController.tabBarItem.title = title
         tabBarViewController.tabBarItem.image = image
         tabBarViewController.navigationBar.isHidden = true
+       
 
         return tabBarViewController
     }
@@ -42,9 +43,12 @@ class ProfileTabBarController: UITabBarController {
         
         let viewControllerToPresent = ProfileViewController()
         
-        viewControllerToPresent.preferredSheetCornerRadius = 40
-      
-        viewControllerToPresent.preferredSheetSizing = .large
+//        viewControllerToPresent.preferredSheetCornerRadius = 40
+//      
+//        viewControllerToPresent.preferredSheetSizing = .large
+//       
+     
+        
         
         present(viewControllerToPresent, animated: true, completion: nil)
    
@@ -53,6 +57,9 @@ class ProfileTabBarController: UITabBarController {
 private func tabButton() {
 
         showMyViewControllerInACustomizedSheet()
+    navigationItem.backBarButtonItem = UIBarButtonItem(title:"kjhghj", style:.plain, target:nil, action:nil)
+    navigationItem.titleView?.tintColor = .black
     }
+    
 }
 
