@@ -19,6 +19,18 @@ class FirstPageViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var welcomeLabel: WelcomeLabel = {
+        let label = WelcomeLabel()
+        
+        label.getToWelcomeLabelText(firstPartOfText: Strings.firstPartOfWelcomeText,
+                                    secondPartOfText: Strings.secondPartOfWelcomeText,
+                                    fontSize: Metrics.welcomeTextSize)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        
+        return label
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +43,7 @@ class FirstPageViewController: UIViewController {
     // MARK: - Settings
     private func setupHierarchy() {
         view.addSubview(logoImageView)
+        view.addSubview(welcomeLabel)
     }
     
     private func setupLayout() {
@@ -40,6 +53,11 @@ class FirstPageViewController: UIViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalTo(view.snp.width).multipliedBy(Metrics.logoHeightRatio)
+        }
+        
+        welcomeLabel.snp.makeConstraints { make in
+            make.top.equalTo(logoImageView.snp.bottom).inset(Metrics.welcomeTextInsetToTop)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -52,5 +70,15 @@ class FirstPageViewController: UIViewController {
 extension FirstPageViewController {
     enum Metrics {
         static let logoHeightRatio: CGFloat = 542 / 375
+        
+        static let welcomeTextSize: CGFloat = 28
+        static let welcomeTextInsetToTop: CGFloat = 140
+        
+    }
+    
+    enum Strings {
+        static let firstPartOfWelcomeText: String = "MobDevFactory"
+        static let secondPartOfWelcomeText: String = "App"
+        
     }
 }
