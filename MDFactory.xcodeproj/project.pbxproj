@@ -11,6 +11,7 @@
 		03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C2024628BA6DC100E5FFF3 /* SceneDelegate.swift */; };
 		03C2024E28BA6DC400E5FFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024D28BA6DC400E5FFF3 /* Assets.xcassets */; };
 		03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024F28BA6DC400E5FFF3 /* LaunchScreen.storyboard */; };
+		84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7128D9BC410036A4AB /* FirstPageViewController.swift */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
 		A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E312228CB8C5500EC6FA5 /* ColorView.swift */; };
 		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
@@ -33,6 +34,7 @@
 		0C5B0CFE6594C3F5393CB201 /* Pods-MDFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.debug.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		1347F47AC005B057B07830F4 /* Pods-MDFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.release.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.release.xcconfig"; sourceTree = "<group>"; };
 		26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84709F7128D9BC410036A4AB /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		A00E312228CB8C5500EC6FA5 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProfileView.swift; sourceTree = "<group>"; };
 		A04C037728E05CF2004E4D80 /* AchievementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AchievementsModel.swift; path = ../../../../../../../../Desktop/AchievementsModel.swift; sourceTree = "<group>"; };
@@ -122,6 +124,30 @@
 				A0BDD45028C3AA1B00786300 /* ProfileView.swift */,
 				A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */,
 				A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */,
+		);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84709F6E28D9B0870036A4AB /* MDF-2 */ = {
+			isa = PBXGroup;
+			children = (
+				84709F6F28D9BB510036A4AB /* FirstPage */,
+			);
+			path = "MDF-2";
+			sourceTree = "<group>";
+		};
+		84709F6F28D9BB510036A4AB /* FirstPage */ = {
+			isa = PBXGroup;
+			children = (
+				84709F7028D9BB640036A4AB /* View */,
+			);
+			path = FirstPage;
+			sourceTree = "<group>";
+		};
+		84709F7028D9BB640036A4AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84709F7128D9BC410036A4AB /* FirstPageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +220,7 @@
 		DDB01FCD28BFBC7E00E67A34 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				84709F6E28D9B0870036A4AB /* MDF-2 */,
 				A0C90E8828C0F79F00630E61 /* MDF-4 */,
 				DDB01FCE28BFBC8B00E67A34 /* Main */,
 			);
@@ -337,6 +364,7 @@
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
 				A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
+				84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */,
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
