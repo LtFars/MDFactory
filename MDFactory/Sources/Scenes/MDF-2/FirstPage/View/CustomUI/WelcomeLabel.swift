@@ -8,7 +8,13 @@
 import UIKit
 
 final class WelcomeLabel: UILabel {
-   func getToWelcomeLabelText(firstPartOfText: String,
+    
+    /// The method is designed to display the main text in the form of a bold first part and a regular second
+    /// - Parameters:
+    ///   - firstPartOfText: first part of text
+    ///   - secondPartOfText: second part of text
+    ///   - fontSize: size of text
+    func getToWelcomeLabelText(firstPartOfText: String,
                                secondPartOfText: String,
                                fontSize: CGFloat) {
         let attributedText = NSMutableAttributedString()
