@@ -8,7 +8,20 @@
 import UIKit
 
 class MainCustomButton: UIButton {
+    // MARK: - Properties
+    private var cornerRadius: CGFloat
     
+    // MARK: - Initialize
+    init(cornerRadius: CGFloat) {
+        self.cornerRadius = cornerRadius
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Override method
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
             return
@@ -30,7 +43,7 @@ class MainCustomButton: UIButton {
         let outerMargin: CGFloat = 7
         let outerRect = rect.insetBy(dx: outerMargin, dy: outerMargin)
         
-        let outerPath = createRoundedRectPath(for: outerRect, radius: 24)
+        let outerPath = createRoundedRectPath(for: outerRect, radius: 16)
         
         if state != .highlighted {
             context.saveGState()
