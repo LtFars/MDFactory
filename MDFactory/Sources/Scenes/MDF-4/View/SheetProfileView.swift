@@ -12,7 +12,7 @@ class SheetProfileView: UIView {
     private let profileView = ProfileView()
     private let progressView = ProgressView()
     
-    private lazy var sheetImageView: UIImageView = {
+    private lazy var sheetProfileView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 40
@@ -32,14 +32,14 @@ class SheetProfileView: UIView {
     
     
     private func setupHierarchy() {
-        addSubview(sheetImageView)
-        sheetImageView.addSubview(progressView)
-        sheetImageView.addSubview(profileView)
+        addSubview(sheetProfileView)
+        sheetProfileView.addSubview(progressView)
+        sheetProfileView.addSubview(profileView)
     }
     
     private func setupLoyaut() {
         
-        sheetImageView.snp.makeConstraints { make in
+        sheetProfileView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(0)
             make.top.lessThanOrEqualTo(650)
         }
@@ -47,7 +47,7 @@ class SheetProfileView: UIView {
         profileView.snp.makeConstraints { make in
             make.width.equalTo(Metric.userInfoStackViewWidth)
             make.height.equalTo(Metric.userInfoStackViewHeight)
-            make.top.equalTo(sheetImageView.snp.top).offset(-Metric.userInfoStackViewTopAncor)
+            make.top.equalTo(sheetProfileView.snp.top).offset(-Metric.userInfoStackViewTopAncor)
             make.centerX.equalToSuperview()
         }
         
