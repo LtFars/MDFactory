@@ -57,6 +57,7 @@ class FirstPageViewController: UIViewController {
         
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: Metrics.buttonsFontSize)
+        button.addTarget(self, action: #selector(getLoginPage), for: .touchUpInside)
 
         return button
     }()
@@ -125,18 +126,15 @@ class FirstPageViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
     }
+    
+    // MARK: - Methods
+    @objc func getLoginPage() {
+        navigationController?.pushViewController(LoginPageViewController(), animated: true)
+    }
 }
 
 // MARK: - Metrics
-extension FirstPageViewController {
-    private var widthRatio: CGFloat {
-        UIScreen.main.bounds.width / 375
-    }
-    
-    private var heightRatio: CGFloat {
-        UIScreen.main.bounds.width / 812
-    }
-    
+extension FirstPageViewController {    
     enum Metrics {
         static let logoHeightRatio: CGFloat = 542 / 375
         
