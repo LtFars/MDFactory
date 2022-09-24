@@ -53,10 +53,21 @@ class FirstPageViewController: UIViewController {
     }()
     
     private lazy var loginButton: MainCustomButton = {
-        let button = MainCustomButton()
+        let button = MainCustomButton(cornerRadius: Metrics.loginButtonsCornerRadius)
         
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: Metrics.buttonsFontSize)
+
+        return button
+    }()
+    
+    private lazy var webVersionReferenceButton: UIButton = {
+        let button = UIButton(type: .system)
         
+        button.setTitle(Strings.webVersionReferenceButtonTitle, for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: Metrics.buttonsFontSize)
+    
         return button
     }()
     
@@ -75,6 +86,7 @@ class FirstPageViewController: UIViewController {
         view.addSubview(welcomeLabel)
         view.addSubview(subheadlineWelcomeLabel)
         view.addSubview(loginButton)
+        view.addSubview(webVersionReferenceButton)
     }
     
     private func setupLayout() {
@@ -103,16 +115,28 @@ class FirstPageViewController: UIViewController {
             make.width.equalTo(Metrics.loginButtonsWidth)
             make.height.equalTo(Metrics.loginButtonsHeight)
         }
+        
+        webVersionReferenceButton.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(Metrics.webVersionReferenceButtonTopOffset)
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func setupView() {
         view.backgroundColor = .white
-        //self.loginButton.getMainCustomLayer()
     }
 }
 
 // MARK: - Metrics
 extension FirstPageViewController {
+    private var widthRatio: CGFloat {
+        UIScreen.main.bounds.width / 375
+    }
+    
+    private var heightRatio: CGFloat {
+        UIScreen.main.bounds.width / 812
+    }
+    
     enum Metrics {
         static let logoHeightRatio: CGFloat = 542 / 375
         
@@ -124,10 +148,13 @@ extension FirstPageViewController {
         static let subheadlineWelcomeTextTopOffset: CGFloat = 12 * UIScreen.main.bounds.height / 812
         static let subheadlineWelcomeTextWidthRatio: CGFloat = 1.3 * 375 / UIScreen.main.bounds.width
         
+        static let loginButtonsCornerRadius: CGFloat = 16 * UIScreen.main.bounds.height / 812
         static let loginButtonsTopOffset: CGFloat = 40 * UIScreen.main.bounds.height / 812
         static let loginButtonsWidth: CGFloat = 315 * UIScreen.main.bounds.width / 375
         static let loginButtonsHeight: CGFloat = 58 * UIScreen.main.bounds.height / 812
-
+        
+        static let webVersionReferenceButtonTopOffset: CGFloat = 35 * UIScreen.main.bounds.height / 812
+        static let buttonsFontSize: CGFloat = 14 * UIScreen.main.bounds.height / 812
     }
     
     enum Strings {
@@ -137,6 +164,8 @@ extension FirstPageViewController {
         static let subheadlineWelcomeFontSize: String = "RedHatDisplay-Medium"
         static let subheadlineWelcomeText: String = "Добро пожаловать! Освой профессию iOS разработчика на Swift с нуля до Junior за 6 месяцев вместе с нами."
         
-        static let loginButtonLabelText: String = "Login"
+        static let loginButtonLabelText: String = "Войти"
+        
+        static let webVersionReferenceButtonTitle: String = "Веб-версия MobDevFactory"
     }
 }
