@@ -13,6 +13,8 @@
 		03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024F28BA6DC400E5FFF3 /* LaunchScreen.storyboard */; };
 		841121DE28DA2D3400983ACA /* MainCusomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841121DD28DA2D3400983ACA /* MainCusomButton.swift */; };
 		841121E028DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841121DF28DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift */; };
+		844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B109928DF07610043FEB8 /* LoginPageViewController.swift */; };
+		844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */; };
 		84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7128D9BC410036A4AB /* FirstPageViewController.swift */; };
 		84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7328D9E1560036A4AB /* WelcomeLabel.swift */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
@@ -39,6 +41,8 @@
 		26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841121DD28DA2D3400983ACA /* MainCusomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCusomButton.swift; sourceTree = "<group>"; };
 		841121DF28DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionWithCoreGraphics.swift; sourceTree = "<group>"; };
+		844B109928DF07610043FEB8 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
+		844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginTextField.swift; sourceTree = "<group>"; };
 		84709F7128D9BC410036A4AB /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		84709F7328D9E1560036A4AB /* WelcomeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLabel.swift; sourceTree = "<group>"; };
 		A00E312228CB8C5500EC6FA5 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		844B109728DF06F60043FEB8 /* LoginPage */ = {
+			isa = PBXGroup;
+			children = (
+				844B109828DF07310043FEB8 /* View */,
+			);
+			path = LoginPage;
+			sourceTree = "<group>";
+		};
+		844B109828DF07310043FEB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				844B109B28DF1D8A0043FEB8 /* CustomTextField */,
+				844B109928DF07610043FEB8 /* LoginPageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		844B109B28DF1D8A0043FEB8 /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */,
+			);
+			path = CustomTextField;
+			sourceTree = "<group>";
+		};
 		A04C036E28D8EE3E004E4D80 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +166,7 @@
 		84709F6E28D9B0870036A4AB /* MDF-2 */ = {
 			isa = PBXGroup;
 			children = (
+				844B109728DF06F60043FEB8 /* LoginPage */,
 				84709F6F28D9BB510036A4AB /* FirstPage */,
 			);
 			path = "MDF-2";
@@ -384,8 +414,10 @@
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
 				84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */,
 				841121E028DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift in Sources */,
+				844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				841121DE28DA2D3400983ACA /* MainCusomButton.swift in Sources */,
+				844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */,
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
