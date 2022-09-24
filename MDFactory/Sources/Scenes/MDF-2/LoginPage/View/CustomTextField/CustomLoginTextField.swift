@@ -9,14 +9,20 @@ import UIKit
 
 final class CustomLoginTextField: UITextField {
     // MARK: - Properties
-    let insets: UIEdgeInsets
+    private let insets: UIEdgeInsets
+    private let cornerRadius: CGFloat
     
     // MARK: - Initialize
-    init(insets: UIEdgeInsets, cornerRadius: CGFloat) {
+    init(insets: UIEdgeInsets = UIEdgeInsets(top: 0,
+                                             left: 0,
+                                             bottom: 0,
+                                             right: 0),
+         cornerRadius: CGFloat = 16) {
         self.insets = insets
+        self.cornerRadius = cornerRadius
         super.init(frame: .zero)
         
-        layer.cornerRadius = cornerRadius
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -33,5 +39,10 @@ final class CustomLoginTextField: UITextField {
     }
     
     // MARK: - Methods
-    
+    private func setupView() {
+        // border setup
+        layer.cornerRadius = self.cornerRadius
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 1.2
+    }
 }

@@ -39,16 +39,13 @@ class MainCustomButton: UIButton {
         let outerColor = UIColor(hue: 252/360, saturation: 0.6, brightness: brightnessFirst, alpha: 1)
         let secondOuterColor =  UIColor(hue: 252/360, saturation: 0.79, brightness: brightnessSecond, alpha: 1)
         let shadowColor = UIColor(red: 0.186, green: 0.082, blue: 0.821, alpha: 0.1)
-        
-        let outerMargin: CGFloat = 7
-        let outerRect = rect.insetBy(dx: outerMargin, dy: outerMargin)
-        
-        let outerPath = createRoundedRectPath(for: outerRect, radius: 16)
+                
+        let outerPath = createRoundedRectPath(for: rect, radius: 16)
         
         if state != .highlighted {
             context.saveGState()
             context.setFillColor(outerColor.cgColor)
-            context.setShadow(offset: CGSize(width: 0, height: 2),
+            context.setShadow(offset: CGSize(width: 0, height: 3),
               blur: 3, color: shadowColor.cgColor)
             context.addPath(outerPath)
             context.fillPath()
@@ -59,7 +56,7 @@ class MainCustomButton: UIButton {
         context.addPath(outerPath)
         context.clip()
         drawLinearGradient(context: context,
-                           rect: outerRect,
+                           rect: rect,
                            startColor: outerColor.cgColor,
                            endColor: secondOuterColor.cgColor)
         context.restoreGState()
