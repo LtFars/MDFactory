@@ -9,20 +9,24 @@ import UIKit
 
 class LoginPageViewController: UIViewController {
     // MARK: - Properties
+    private lazy var loginTextField: CustomLoginTextField = {
+        let textField = CustomLoginTextField()
+        
+        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
     private lazy var loginButton: MainCustomButton = {
         let button = MainCustomButton(cornerRadius: Metrics.uiCorners)
         
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
-    
-    private lazy var loginTextField: CustomLoginTextField = {
-        let textField = CustomLoginTextField(insets: UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12), cornerRadius: 16)
-        
-        return textField
-    }()
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +44,7 @@ class LoginPageViewController: UIViewController {
     
     private func setupLayout() {
         loginTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40)
+            make.top.equalToSuperview().offset(132)
             make.centerX.equalToSuperview()
             make.width.equalTo(Metrics.uiWidth)
             make.height.equalTo(Metrics.uiHeight)
