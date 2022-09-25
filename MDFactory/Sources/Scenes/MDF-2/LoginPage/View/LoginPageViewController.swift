@@ -10,11 +10,11 @@ import UIKit
 class LoginPageViewController: UIViewController {
     // MARK: - Properties
     private lazy var loginTextField: CustomLoginTextField = {
-        let textField = CustomLoginTextField()
+        let textField = CustomLoginTextField(labelText: "E-mail", secureTextMode: true)
         
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
+    
         return textField
     }()
     

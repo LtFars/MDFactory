@@ -17,6 +17,7 @@
 		844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */; };
 		84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7128D9BC410036A4AB /* FirstPageViewController.swift */; };
 		84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7328D9E1560036A4AB /* WelcomeLabel.swift */; };
+		84D2A02928E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
 		A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E312228CB8C5500EC6FA5 /* ColorView.swift */; };
 		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
@@ -45,6 +46,7 @@
 		844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginTextField.swift; sourceTree = "<group>"; };
 		84709F7128D9BC410036A4AB /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		84709F7328D9E1560036A4AB /* WelcomeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLabel.swift; sourceTree = "<group>"; };
+		84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEntryModeSwitcherButton.swift; sourceTree = "<group>"; };
 		A00E312228CB8C5500EC6FA5 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProfileView.swift; sourceTree = "<group>"; };
 		A04C037728E05CF2004E4D80 /* AchievementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AchievementsModel.swift; path = ../../../../../../../../Desktop/AchievementsModel.swift; sourceTree = "<group>"; };
@@ -114,18 +116,19 @@
 		844B109828DF07310043FEB8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				844B109B28DF1D8A0043FEB8 /* CustomTextField */,
+				844B109B28DF1D8A0043FEB8 /* CustomUI */,
 				844B109928DF07610043FEB8 /* LoginPageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		844B109B28DF1D8A0043FEB8 /* CustomTextField */ = {
+		844B109B28DF1D8A0043FEB8 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
 				844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */,
+				84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */,
 			);
-			path = CustomTextField;
+			path = CustomUI;
 			sourceTree = "<group>";
 		};
 		A04C036E28D8EE3E004E4D80 /* Controllers */ = {
@@ -410,6 +413,7 @@
 				A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */,
 				A04C037828E05CF2004E4D80 /* AchievementsModel.swift in Sources */,
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
+				84D2A02928E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift in Sources */,
 				A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
 				84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */,
