@@ -10,9 +10,16 @@ import UIKit
 class LoginPageViewController: UIViewController {
     // MARK: - Properties
     private lazy var loginTextField: CustomLoginTextField = {
-        let textField = CustomLoginTextField(labelText: "E-mail", secureTextMode: true)
+        let textField = CustomLoginTextField(labelText: "E-mail")
         
-        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+    
+        return textField
+    }()
+    
+    private lazy var passwordTextField: CustomLoginTextField = {
+        let textField = CustomLoginTextField(labelText: "Пароль", secureTextMode: true)
+        
         textField.translatesAutoresizingMaskIntoConstraints = false
     
         return textField
@@ -39,19 +46,27 @@ class LoginPageViewController: UIViewController {
     // MARK: - Settings
     private func setupHierarchy() {
         view.addSubview(loginButton)
+        view.addSubview(passwordTextField)
         view.addSubview(loginTextField)
     }
     
     private func setupLayout() {
         loginTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(132)
+            make.top.equalToSuperview().offset(183)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(Metrics.uiWidth)
+            make.height.equalTo(Metrics.uiHeight)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(loginTextField.snp.bottom).offset(23)
             make.centerX.equalToSuperview()
             make.width.equalTo(Metrics.uiWidth)
             make.height.equalTo(Metrics.uiHeight)
         }
         
         loginButton.snp.makeConstraints { make in
-            make.top.equalTo(loginTextField.snp.bottom).offset(40)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.width.equalTo(Metrics.uiWidth)
             make.height.equalTo(Metrics.uiHeight)
@@ -60,6 +75,9 @@ class LoginPageViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+        
+        title = Strings.titleText
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
@@ -73,5 +91,6 @@ extension LoginPageViewController {
     
     enum Strings {
         static let loginButtonLabelText: String = "Войти"
+        static let titleText: String = "Авторизация"
     }
 }

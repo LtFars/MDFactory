@@ -20,7 +20,7 @@ final class CustomLoginTextField: UITextField {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: Metrics.labelTextSize)
         
         return label
     }()
@@ -33,7 +33,7 @@ final class CustomLoginTextField: UITextField {
         
         button.setImage(image?.withTintColor(.lightGray), for: .normal)
         button.setImage(image?.withTintColor(.gray), for: .selected)
-        button.addTarget(CustomLoginTextField.self,
+        button.addTarget(self,
                          action: #selector(secureEntryModeSwitcher),
                          for: .touchUpInside)
         
@@ -41,10 +41,7 @@ final class CustomLoginTextField: UITextField {
     }()
     
     // MARK: - Initialize
-    init(insets: UIEdgeInsets = UIEdgeInsets(top: 16,
-                                             left: 25,
-                                             bottom: 0,
-                                             right: 20),
+    init(insets: UIEdgeInsets = Metrics.textFieldsEdgeInsets,
          cornerRadius: CGFloat = 16,
          labelText: String,
          secureTextMode: Bool = false) {
@@ -75,7 +72,7 @@ final class CustomLoginTextField: UITextField {
         let topInset: CGFloat = 0
         let rightInset: CGFloat = insets.right
         let bottomInset: CGFloat = 0
-        let leftInset: CGFloat = bounds.width - insets.right - 26.33
+        let leftInset: CGFloat = bounds.width - insets.right - 26
         
         let buttonInsets = UIEdgeInsets(top: topInset,
                                         left: leftInset,
@@ -91,8 +88,8 @@ final class CustomLoginTextField: UITextField {
     
     private func setupLayout() {
         label.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(25)
-            make.top.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(Metrics.lableLeadingInset)
+            make.top.equalToSuperview().inset(Metrics.lableTopInset)
         }
     }
     
@@ -103,7 +100,7 @@ final class CustomLoginTextField: UITextField {
         layer.borderWidth = 1.2
         
         //font setup
-        font = UIFont.systemFont(ofSize: 15)
+        font = UIFont.systemFont(ofSize: Metrics.textFieldsTextSize)
         
         //security mode
         isSecureTextEntry = secureTextMode
@@ -115,11 +112,28 @@ final class CustomLoginTextField: UITextField {
     
     @objc func secureEntryModeSwitcher() {
         textEntryModeSwitchButton.isSelected.toggle()
-            if textEntryModeSwitchButton.state == .normal {
+        DispatchQueue.main.async {
+            if self.textEntryModeSwitchButton.state == .normal {
                 self.isSecureTextEntry = true
-            } else if textEntryModeSwitchButton.state == .selected {
+            } else if self.textEntryModeSwitchButton.state == .selected {
                 self.isSecureTextEntry = false
             }
-        print(#function)
+        
+        }
+    }
+}
+
+extension CustomLoginTextField {
+    enum Metrics {
+        static let labelTextSize: CGFloat = 12 * UIScreen.main.bounds.height / 812
+        
+        static let textFieldsTextSize: CGFloat = 15 * UIScreen.main.bounds.height / 812
+        
+        static let textFieldsEdgeInsets = UIEdgeInsets(top: 16 * UIScreen.main.bounds.height / 812,
+                                                       left: 25 * UIScreen.main.bounds.width / 375,
+                                                       bottom: 0,
+                                                       right: 20 * UIScreen.main.bounds.width / 375)
+        static let lableLeadingInset: CGFloat = 25 * UIScreen.main.bounds.height / 812
+        static let lableTopInset: CGFloat = 8 * UIScreen.main.bounds.height / 812
     }
 }
