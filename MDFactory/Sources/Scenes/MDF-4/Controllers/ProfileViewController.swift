@@ -10,12 +10,14 @@ import SnapKit
 
 class ProfileViewController: UIViewController {
     
+    let achievements = AchievementsModel.mocks
+    
     private let sheetProfileView = SheetProfileView()
     
     
-    private let defaultHeight: CGFloat = 800
+    private let defaultHeight: CGFloat = UIScreen.main.bounds.height / 3.5
     private let dismissibleHeight: CGFloat = 100
-    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 140
+    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height * 0.9
     private var currentContainerHeight: CGFloat = 100
     private var containerViewHeightConstraint: NSLayoutConstraint?
     private var containerViewBottomConstraint: NSLayoutConstraint?
@@ -44,67 +46,117 @@ class ProfileViewController: UIViewController {
         return imageView
     }()
     
-    //    private lazy var sheetStackView: UIStackView = {
-    //        let stackView = UIStackView()
-    //        stackView.axis = .vertical
-    //        stackView.spacing = 5
-    //        stackView.alignment = .center
-    //        return stackView
-    //    }()
-    
-    //
-    private lazy var centerLabel: UILabel = {
+    private lazy var achievementsLabel: UILabel = {
         var name = UILabel()
-        name.text = "FRTRTRTRTRT"
-        name.font = .systemFont(ofSize: 21, weight: .heavy)
+        name.text = "Achievements"
+        name.font = .systemFont(ofSize: 21, weight: .medium)
         return name
+    }()
+    
+    let maxDimmedAlpha: CGFloat = 0
+    private lazy var dimmedView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .brown
+        view.alpha = maxDimmedAlpha
+        return view
+    }()
+    
+    private lazy var achievementsCollectionView: UICollectionView = {
+    
+        let collection = UICollectionView(frame: UIScreen.main.bounds,
+                                          collectionViewLayout:  createLayout())
+
+        collection.backgroundColor = .clear
+        collection.delegate = self
+        collection.dataSource = self
+        collection.register(ProfileCollectionViewCell.self,
+                            forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
+        collection.isScrollEnabled = false
+        
+        return collection
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        //        addStackView()
         setupHierarchy()
         setupLoyaut()
         setupPanGesture()
-        
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
+        achievementsCollectionView.frame = view.bounds
     }
     
-    //    private func addStackView() {
-    //        sheetStackView.addArrangedSubview(sheetImageView)
-    //        sheetStackView.addArrangedSubview(stripImageView)
-    //    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animateShowDimmedView()
+    }
     
     private func setupHierarchy() {
         view.addSubview(sheetProfileView)
+        view.addSubview(dimmedView)
         view.addSubview(sheetImageView)
         view.addSubview(stripImageView)
         view.addSubview(backButton)
-        sheetImageView.addSubview(centerLabel)
+        sheetImageView.addSubview(achievementsLabel)
+        sheetImageView.addSubview(achievementsCollectionView)
+    }
+    
+    private func createLayout() -> UICollectionViewLayout {
+        let spacing: CGFloat = 16
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0 / 3.0),
+            heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .init(top: spacing,
+                                   leading: spacing,
+                                   bottom: spacing,
+                                   trailing: spacing)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(1.0 / 3.0))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitem: item, count: 3)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.contentInsets = .init(top: 95,
+                                      leading: spacing,
+                                      bottom: spacing,
+                                      trailing: spacing)
+        
+        section.interGroupSpacing = 30
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        
+        return layout
     }
     
     private func setupLoyaut() {
         
         sheetProfileView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(0)
-            make.top.equalTo(view.snp.top).offset(-500)
         }
         
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(10)
+            make.top.equalTo(8)
             make.leading.equalTo(20)
-            
+        }
+        
+        dimmedView.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+            make.width.equalToSuperview()
         }
         
         sheetImageView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(0)
-            make.bottom.equalTo(600)
-            //            make.top.equalTo(view.snp.top).offset(-200)
+            make.bottom.leading.trailing.equalTo(0)
         }
         
         stripImageView.snp.makeConstraints { make in
@@ -113,9 +165,10 @@ class ProfileViewController: UIViewController {
             make.height.equalTo(3)
             make.width.equalTo(50)
         }
-        centerLabel.snp.makeConstraints { make in
+        
+        achievementsLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.top.equalTo(39)
         }
         
         containerViewHeightConstraint = sheetImageView.heightAnchor.constraint(equalToConstant: defaultHeight)
@@ -125,6 +178,12 @@ class ProfileViewController: UIViewController {
         
     }
     
+    func animateShowDimmedView() {
+        dimmedView.alpha = 0.6
+        UIView.animate(withDuration: 0.4) {
+            self.dimmedView.alpha = self.maxDimmedAlpha
+        }
+    }
     
     private func setupPanGesture() {
         
@@ -143,99 +202,42 @@ class ProfileViewController: UIViewController {
         
         currentContainerHeight = height
     }
-    //
-    //        @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
-    //
-    //            let translation = gesture.translation(in: view)
-    //
-    //            let isDraggingDown = translation.y > 0
-    //
-    //            let newHeight = currentContainerHeight - translation.y
-    //
-    ////            if isDraggingDown {
-    //////                sheetImageView.snp.makeConstraints { make in
-    //////                    make.top.equalTo(translation.y)
-    //////                }
-    //////            }
-    //
-    //            switch gesture.state {
-    //            case .changed:
-    //
-    //                if newHeight < maximumContainerHeight {
-    //
-    //                    containerViewHeightConstraint?.constant = newHeight
-    //                    view.layoutIfNeeded()
-    //                }
-    //            case .ended:
-    //
-    //                if newHeight < defaultHeight {
-    //
-    //                    animateContainerHeight(defaultHeight)
-    //                }
-    //                else if newHeight < maximumContainerHeight && isDraggingDown {
-    //
-    //                    animateContainerHeight(defaultHeight)
-    //                }
-    //                else if newHeight > defaultHeight && !isDraggingDown {
-    //
-    //                    animateContainerHeight(maximumContainerHeight)
-    //                }
-    //            default:
-    //                break
-    //            }
-    //        }
     
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
-        
+
+//        animateShowDimmedView()
         let translation = gesture.translation(in: view)
+        
         let isDraggingDown = translation.y > 0
         
-        let newHeightX = sheetImageView.center.x
-        let newHeightStripX = stripImageView.center.x
-        
-        let newHeightStripY = stripImageView.center.y + translation.y
-        let newHeightY = sheetImageView.center.y + translation.y
         let newHeight = currentContainerHeight - translation.y
-        sheetImageView.center = CGPoint(x: newHeightX, y: newHeightY)
-        stripImageView.center = CGPoint(x: newHeightStripX, y: newHeightStripY)
-        gesture.setTranslation(.zero, in: view)
         
-        if gesture.state == .began {
-            print("Начать")
-        } else if gesture.state == .changed {
+        switch gesture.state {
+        case .changed:
             
-            //            sheetImageView.center = CGPoint(x: newHeightX, y: newHeightY)
-            //            stripImageView.center = CGPoint(x: newHeightStripX, y: newHeightStripY)
+            if newHeight < maximumContainerHeight {
+                
+                containerViewHeightConstraint?.constant = newHeight
+                view.layoutIfNeeded()
+            }
+        case .ended:
             
-            
-            
-//            if newHeightY < maximumContainerHeight {
-//                
-//                containerViewHeightConstraint?.constant = newHeightY
-//                view.layoutIfNeeded()
-//            }
-            
-        } else if gesture.state == .ended {
-            
-            
-            if newHeightY < defaultHeight {
+            if newHeight < defaultHeight {
                 
                 animateContainerHeight(defaultHeight)
             }
-            else if newHeightY < maximumContainerHeight && isDraggingDown {
+            else if newHeight < maximumContainerHeight && isDraggingDown {
                 
                 animateContainerHeight(defaultHeight)
             }
-            else if newHeightY > defaultHeight && !isDraggingDown {
+            else if newHeight > defaultHeight && !isDraggingDown {
                 
                 animateContainerHeight(maximumContainerHeight)
             }
-            
+        default:
+            break
         }
-        
-        
     }
-    
     
     @objc func tabActiohButton() {
         dismiss(animated: true)
@@ -248,3 +250,27 @@ class ProfileViewController: UIViewController {
     //    }
     
 }
+
+extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return achievements.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell()}
+        
+        cell.configure(with: achievements[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let cover = achievements[indexPath.row]
+        print("selected \(cover.name)")
+        
+    }
+}
+

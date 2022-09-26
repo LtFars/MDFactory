@@ -41,7 +41,7 @@ class SheetProfileView: UIView {
         
         sheetProfileView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(0)
-            make.top.lessThanOrEqualTo(650)
+            make.height.equalTo(Metric.profileViewHeight)
         }
         
         profileView.snp.makeConstraints { make in
@@ -53,16 +53,16 @@ class SheetProfileView: UIView {
         
         progressView.snp.makeConstraints { make in
             make.centerX.equalTo(profileView.snp.centerX)
-            make.top.equalTo(profileView.snp.bottom).offset(70)
+            make.top.equalTo(profileView.snp.bottom).offset(Metric.profileViewHeight / 13)
             
         }
-        
     }
     
     enum Metric {
-        static var userInfoStackViewWidth : CGFloat = 170
-        static var userInfoStackViewHeight : CGFloat = 210
-        static var userInfoStackViewTopAncor : CGFloat = 60
+        static var userInfoStackViewWidth: CGFloat = 170
+        static var userInfoStackViewHeight: CGFloat = 210
+        static var userInfoStackViewTopAncor: CGFloat = 60
+        static var profileViewHeight: CGFloat =  UIScreen.main.bounds.height * 0.8
         
     }
     
