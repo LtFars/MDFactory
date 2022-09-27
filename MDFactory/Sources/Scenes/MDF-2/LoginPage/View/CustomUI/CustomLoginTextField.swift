@@ -134,6 +134,6 @@ extension CustomLoginTextField {
                                                        bottom: 0,
                                                        right: 20 * UIScreen.main.bounds.width / 375)
         static let lableLeadingInset: CGFloat = 25 * UIScreen.main.bounds.height / 812
-        static let lableTopInset: CGFloat = 8 * UIScreen.main.bounds.height / 812
+        static let lableTopInset: CGFloat = 10 * UIScreen.main.bounds.height / 812
     }
 }

@@ -17,7 +17,6 @@
 		844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */; };
 		84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7128D9BC410036A4AB /* FirstPageViewController.swift */; };
 		84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7328D9E1560036A4AB /* WelcomeLabel.swift */; };
-		84D2A02928E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
 		A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E312228CB8C5500EC6FA5 /* ColorView.swift */; };
 		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
@@ -126,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */,
-				84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";

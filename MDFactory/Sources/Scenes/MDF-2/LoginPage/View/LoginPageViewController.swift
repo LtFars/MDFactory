@@ -9,6 +9,16 @@ import UIKit
 
 class LoginPageViewController: UIViewController {
     // MARK: - Properties
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.text = Strings.titleText
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     private lazy var loginTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "E-mail")
         
@@ -34,6 +44,17 @@ class LoginPageViewController: UIViewController {
         return button
     }()
     
+    private lazy var forgetPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(Strings.forgetPasswordLabelText, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: Metrics.forgetPasswordFontSize)
+        button.setTitleColor(UIColor.gray, for: .normal)
+        
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,52 +66,75 @@ class LoginPageViewController: UIViewController {
     
     // MARK: - Settings
     private func setupHierarchy() {
+        view.addSubview(titleLabel)
         view.addSubview(loginButton)
         view.addSubview(passwordTextField)
         view.addSubview(loginTextField)
+        view.addSubview(forgetPasswordButton)
     }
     
     private func setupLayout() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(Metrics.titleLabelTopOffset)
+            make.leading.equalTo(loginTextField.snp.leading)
+        }
+        
         loginTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(183)
+            make.top.equalTo(titleLabel.snp.bottom).offset(Metrics.loginTextFieldTopOffset)
             make.centerX.equalToSuperview()
             make.width.equalTo(Metrics.uiWidth)
             make.height.equalTo(Metrics.uiHeight)
         }
         
         passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(loginTextField.snp.bottom).offset(23)
+            make.top.equalTo(loginTextField.snp.bottom).offset(Metrics.passwordTextFieldTopOffset)
             make.centerX.equalToSuperview()
             make.width.equalTo(Metrics.uiWidth)
             make.height.equalTo(Metrics.uiHeight)
         }
         
         loginButton.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(40)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(Metrics.loginButtonFieldTopOffset)
             make.centerX.equalToSuperview()
             make.width.equalTo(Metrics.uiWidth)
             make.height.equalTo(Metrics.uiHeight)
+        }
+        
+        forgetPasswordButton.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(Metrics.forgetPasswordButtonFieldTopOffset)
+            make.centerX.equalToSuperview()
         }
     }
     
     private func setupView() {
         view.backgroundColor = .white
-        
-        title = Strings.titleText
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
 // MARK: - Metrics
 extension LoginPageViewController {
     enum Metrics {
+        static let titleLabelTopOffset: CGFloat = 126 * UIScreen.main.bounds.height / 812
+        
+        static let loginTextFieldTopOffset: CGFloat = 40 * UIScreen.main.bounds.height / 812
+        
+        static let passwordTextFieldTopOffset: CGFloat = 25 * UIScreen.main.bounds.height / 812
+        
+        static let loginButtonFieldTopOffset: CGFloat = 40 * UIScreen.main.bounds.height / 812
+        
         static let uiCorners: CGFloat = 16 * UIScreen.main.bounds.height / 812
         static let uiWidth: CGFloat = 315 * UIScreen.main.bounds.width / 375
         static let uiHeight: CGFloat = 58 * UIScreen.main.bounds.height / 812
+        
+        static let forgetPasswordButtonFieldTopOffset: CGFloat = 36 * UIScreen.main.bounds.height / 812
+        static let forgetPasswordFontSize = 14 * UIScreen.main.bounds.height / 812
     }
     
     enum Strings {
         static let loginButtonLabelText: String = "Войти"
+        
         static let titleText: String = "Авторизация"
+        
+        static let forgetPasswordLabelText: String = "Забыли пароль?"
     }
 }
