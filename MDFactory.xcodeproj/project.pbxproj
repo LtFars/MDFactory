@@ -17,7 +17,6 @@
 		844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */; };
 		84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7128D9BC410036A4AB /* FirstPageViewController.swift */; };
 		84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7328D9E1560036A4AB /* WelcomeLabel.swift */; };
-		84D2A02928E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
 		DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,6 @@
 		844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginTextField.swift; sourceTree = "<group>"; };
 		84709F7128D9BC410036A4AB /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		84709F7328D9E1560036A4AB /* WelcomeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLabel.swift; sourceTree = "<group>"; };
-		84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEntryModeSwitcherButton.swift; sourceTree = "<group>"; };
 		DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */,
-				84D2A02828E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -337,7 +334,6 @@
 			files = (
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
-				84D2A02928E000E600715BA3 /* CustomTextEntryModeSwitcherButton.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
 				84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */,
 				841121E028DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift in Sources */,
@@ -513,6 +509,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MDFactory/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
