@@ -23,22 +23,18 @@ class ProfileCollectionViewCell: UICollectionViewCell {
 
     private lazy var nameAchievementsLabel: UILabel = {
         let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
         title.textColor = #colorLiteral(red: 0.5509841442, green: 0.5953412652, blue: 0.6925969124, alpha: 1)
         return title
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(imageAchievementsView)
-        addSubview(nameAchievementsLabel)
+        setupHierarchy()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         setupLayout()
-        
     }
 
     required init?(coder: NSCoder) {
@@ -49,14 +45,23 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         imageAchievementsView.image = UIImage(named: model.icon)
         nameAchievementsLabel.text = model.name
     }
+    
+    private func setupHierarchy() {
+        addSubview(imageAchievementsView)
+        addSubview(nameAchievementsLabel)
+    }
 
     private func setupLayout() {
-        
         imageAchievementsView.frame = contentView.bounds
         
         nameAchievementsLabel.snp.makeConstraints { make in
             make.centerX.equalTo(imageAchievementsView.snp.centerX)
-            make.top.equalTo(imageAchievementsView.snp.bottom).offset(12)
+            make.top.equalTo(imageAchievementsView.snp.bottom).offset(Metric.nameAchievementsLabelTop)
         }
     }
+    
+    enum Metric {
+        static var nameAchievementsLabelTop: CGFloat = 12
+    }
+    
 }

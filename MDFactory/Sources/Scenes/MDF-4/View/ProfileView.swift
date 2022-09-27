@@ -10,13 +10,11 @@ import SnapKit
 
 class ProfileView: UIView {
     
-    // Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         addStackView()
         setupHierarchy()
         setupLayout()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -63,7 +61,6 @@ class ProfileView: UIView {
     }
     
     private func setupLayout() {
-        
         userInfoStackView.snp.makeConstraints { make in
             make.width.equalTo(Metric.userInfoStackViewWidth)
             make.height.equalTo(Metric.userInfoStackViewHeight)

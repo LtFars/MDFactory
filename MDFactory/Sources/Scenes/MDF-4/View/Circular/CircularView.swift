@@ -12,7 +12,6 @@ class CircularView: UIView {
     override func draw(_ rect: CGRect) {
         
         let rectCircular = CGRect(x: 0, y: 0, width: rect.width / 2, height: rect.height / 2)
-        
         let dotAngle = CGRect(x: 0, y: 0, width: rect.width / 2, height: rect.height / 2)
         
         drawCircular(rectCircular)
@@ -88,7 +87,6 @@ class CircularView: UIView {
         
         let center = CGPoint(x: rect.width, y: 0)
         let radius = rect.width / 10
-        
         let dot = UIBezierPath(arcCenter: center,
                                radius: radius,
                                startAngle: 0,
@@ -100,9 +98,7 @@ class CircularView: UIView {
         dotRed.lineWidth = 4
         dotRed.strokeColor = Color.redDark.color.cgColor
         dotRed.fillColor = Color.redDark.color.cgColor
-        
         dotRed.path = dot.cgPath
-        
         layer.addSublayer(dotRed)
     }
 }

@@ -110,13 +110,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A09B690C28CE32CC00EB1A82 /* Extention */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extention;
-			sourceTree = "<group>";
-		};
 		A0B6209C28CFDDFD00BB5192 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,7 +134,6 @@
 			children = (
 				A04C037628E05CB7004E4D80 /* Models */,
 				A04C036E28D8EE3E004E4D80 /* Controllers */,
-				A09B690C28CE32CC00EB1A82 /* Extention */,
 				A0B6209C28CFDDFD00BB5192 /* Enums */,
 				A0BDD44D28C3904800786300 /* View */,
 			);

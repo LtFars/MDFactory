@@ -29,22 +29,18 @@ class ProfileTabBarController: UITabBarController {
     }
     
     private func generateBarController(title: String, image: UIImage?) -> UIViewController {
+       
         let tabBarViewController = UINavigationController()
-    
         tabBarViewController.tabBarItem.title = title
         tabBarViewController.tabBarItem.image = image
         tabBarViewController.navigationBar.isHidden = true
-       
-
         return tabBarViewController
     }
     
     func showMyViewControllerInACustomizedSheet() {
         
         let viewControllerToPresent = ProfileViewController()
-    
         present(viewControllerToPresent, animated: true, completion: nil)
-   
     }
     
 private func tabButton() {
@@ -53,6 +49,5 @@ private func tabButton() {
     navigationItem.backBarButtonItem = UIBarButtonItem(title:"kjhghj", style:.plain, target:nil, action:nil)
     navigationItem.titleView?.tintColor = .black
     }
-    
 }
 

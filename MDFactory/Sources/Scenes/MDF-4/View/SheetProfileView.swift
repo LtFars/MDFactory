@@ -30,7 +30,6 @@ class SheetProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func setupHierarchy() {
         addSubview(sheetProfileView)
         sheetProfileView.addSubview(progressView)
@@ -38,9 +37,8 @@ class SheetProfileView: UIView {
     }
     
     private func setupLoyaut() {
-        
         sheetProfileView.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(0)
+            make.bottom.leading.trailing.equalTo(Metric.sheetConstraintsLeadingBottomTrailing)
             make.height.equalTo(Metric.profileViewHeight)
         }
         
@@ -54,7 +52,6 @@ class SheetProfileView: UIView {
         progressView.snp.makeConstraints { make in
             make.centerX.equalTo(profileView.snp.centerX)
             make.top.equalTo(profileView.snp.bottom).offset(Metric.profileViewHeight / 13)
-            
         }
     }
     
@@ -63,6 +60,7 @@ class SheetProfileView: UIView {
         static var userInfoStackViewHeight: CGFloat = 210
         static var userInfoStackViewTopAncor: CGFloat = 60
         static var profileViewHeight: CGFloat =  UIScreen.main.bounds.height * 0.8
+        static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
         
     }
     

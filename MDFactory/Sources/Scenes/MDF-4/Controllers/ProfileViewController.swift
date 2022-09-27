@@ -10,10 +10,8 @@ import SnapKit
 
 class ProfileViewController: UIViewController {
     
-    let achievements = AchievementsModel.mocks
-    
+    private let achievements = AchievementsModel.mocks
     private let sheetProfileView = SheetProfileView()
-    
     
     private let defaultHeight: CGFloat = UIScreen.main.bounds.height / 3.5
     private let dismissibleHeight: CGFloat = 100
@@ -24,6 +22,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var sheetImageView: UIImageView = {
         let imageView = UIImageView()
+//        imageView.isUserInteractionEnabled = true
         imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
         imageView.layer.cornerRadius = 40
         imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -37,8 +36,7 @@ class ProfileViewController: UIViewController {
         button.addTarget(self, action: #selector(tabActiohButton), for: .touchUpInside)
         return button
     }()
-    
-    
+ 
     private lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 2
@@ -46,33 +44,23 @@ class ProfileViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var achievementsLabel: UILabel = {
+    private lazy var achievementsNameLabel: UILabel = {
         var name = UILabel()
         name.text = "Achievements"
         name.font = .systemFont(ofSize: 21, weight: .medium)
         return name
     }()
     
-    let maxDimmedAlpha: CGFloat = 0
-    private lazy var dimmedView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .brown
-        view.alpha = maxDimmedAlpha
-        return view
-    }()
-    
     private lazy var achievementsCollectionView: UICollectionView = {
-    
-        let collection = UICollectionView(frame: UIScreen.main.bounds,
+        let collection = UICollectionView(frame: .zero,
                                           collectionViewLayout:  createLayout())
-
         collection.backgroundColor = .clear
         collection.delegate = self
         collection.dataSource = self
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.automaticallyAdjustsScrollIndicatorInsets = true
         collection.register(ProfileCollectionViewCell.self,
                             forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
-        collection.isScrollEnabled = false
-        
         return collection
     }()
     
@@ -86,31 +74,26 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         achievementsCollectionView.frame = view.bounds
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        animateShowDimmedView()
     }
     
     private func setupHierarchy() {
         view.addSubview(sheetProfileView)
-        view.addSubview(dimmedView)
         view.addSubview(sheetImageView)
         view.addSubview(stripImageView)
         view.addSubview(backButton)
-        sheetImageView.addSubview(achievementsLabel)
         sheetImageView.addSubview(achievementsCollectionView)
+        sheetImageView.addSubview(achievementsNameLabel)
     }
     
     private func createLayout() -> UICollectionViewLayout {
+        
         let spacing: CGFloat = 16
         
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0 / 3.0),
             heightDimension: .fractionalHeight(1.0))
+        
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: spacing,
                                    leading: spacing,
@@ -125,7 +108,6 @@ class ProfileViewController: UIViewController {
                                                        subitem: item, count: 3)
         
         let section = NSCollectionLayoutSection(group: group)
-        
         section.contentInsets = .init(top: 95,
                                       leading: spacing,
                                       bottom: spacing,
@@ -134,41 +116,35 @@ class ProfileViewController: UIViewController {
         section.interGroupSpacing = 30
         
         let layout = UICollectionViewCompositionalLayout(section: section)
-        
-        
+    
         return layout
     }
     
     private func setupLoyaut() {
-        
+
         sheetProfileView.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(0)
+            make.bottom.leading.trailing.equalTo(MetricConstraints.sheetConstraintsLeadingBottomTrailing)
         }
         
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(8)
-            make.leading.equalTo(20)
-        }
-        
-        dimmedView.snp.makeConstraints { make in
-            make.height.equalToSuperview()
-            make.width.equalToSuperview()
+            make.top.equalTo(MetricConstraints.topBackButton)
+            make.leading.equalTo(MetricConstraints.leadingBackButton)
         }
         
         sheetImageView.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(0)
+            make.bottom.leading.trailing.equalTo(MetricConstraints.sheetConstraintsLeadingBottomTrailing)
         }
         
         stripImageView.snp.makeConstraints { make in
-            make.top.equalTo(sheetImageView.snp.top).offset(14)
+            make.top.equalTo(sheetImageView.snp.top).offset(MetricConstraints.stripTop)
             make.centerX.equalToSuperview()
-            make.height.equalTo(3)
-            make.width.equalTo(50)
+            make.height.equalTo(MetricConstraints.stripHeight)
+            make.width.equalTo(MetricConstraints.stripWidth)
         }
         
-        achievementsLabel.snp.makeConstraints { make in
+        achievementsNameLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(39)
+            make.top.equalTo(MetricConstraints.achievementsNameTop)
         }
         
         containerViewHeightConstraint = sheetImageView.heightAnchor.constraint(equalToConstant: defaultHeight)
@@ -178,15 +154,7 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func animateShowDimmedView() {
-        dimmedView.alpha = 0.6
-        UIView.animate(withDuration: 0.4) {
-            self.dimmedView.alpha = self.maxDimmedAlpha
-        }
-    }
-    
     private func setupPanGesture() {
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
         panGesture.minimumNumberOfTouches = 1
         panGesture.delaysTouchesBegan = false
@@ -199,27 +167,21 @@ class ProfileViewController: UIViewController {
             self.containerViewHeightConstraint?.constant = height
             self.view.layoutIfNeeded()
         }
-        
         currentContainerHeight = height
     }
     
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
-
-//        animateShowDimmedView()
+        
         let translation = gesture.translation(in: view)
-        
         let isDraggingDown = translation.y > 0
-        
         let newHeight = currentContainerHeight - translation.y
-        
         switch gesture.state {
         case .changed:
             
             if newHeight < maximumContainerHeight {
-                
                 containerViewHeightConstraint?.constant = newHeight
-                view.layoutIfNeeded()
             }
+            
         case .ended:
             
             if newHeight < defaultHeight {
@@ -231,9 +193,10 @@ class ProfileViewController: UIViewController {
                 animateContainerHeight(defaultHeight)
             }
             else if newHeight > defaultHeight && !isDraggingDown {
-                
                 animateContainerHeight(maximumContainerHeight)
+                    sheetImageView.isUserInteractionEnabled = true
             }
+            
         default:
             break
         }
@@ -242,27 +205,24 @@ class ProfileViewController: UIViewController {
     @objc func tabActiohButton() {
         dismiss(animated: true)
     }
-    //    enum Metric {
-    //        static var userInfoStackViewWidth : CGFloat = 170
-    //        static var userInfoStackViewHeight : CGFloat = 210
-    //        static var userInfoStackViewTopAncor : CGFloat = 60
-    //
-    //    }
     
+    enum MetricConstraints {
+        static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
+        static var topBackButton: CGFloat = 8
+        static var leadingBackButton: CGFloat = 20
+        static var stripHeight: CGFloat = 3
+        static var stripWidth: CGFloat = UIScreen.main.bounds.width / 9
+        static var stripTop: CGFloat = 14
+        static var achievementsNameTop: CGFloat = 39
+    }
+
 }
 
-extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProfileViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return achievements.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell()}
-        
-        cell.configure(with: achievements[indexPath.row])
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -273,4 +233,15 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         
     }
 }
+
+extension ProfileViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell()}
+        
+        cell.configure(with: achievements[indexPath.row])
+        return cell
+    }
+}
+
 
