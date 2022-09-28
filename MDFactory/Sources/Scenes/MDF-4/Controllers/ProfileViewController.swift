@@ -15,14 +15,13 @@ class ProfileViewController: UIViewController {
     
     private let defaultHeight: CGFloat = UIScreen.main.bounds.height / 3.5
     private let dismissibleHeight: CGFloat = 100
-    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height * 0.9
+    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height * 0.5
     private var currentContainerHeight: CGFloat = 100
     private var containerViewHeightConstraint: NSLayoutConstraint?
     private var containerViewBottomConstraint: NSLayoutConstraint?
     
     private lazy var sheetImageView: UIImageView = {
         let imageView = UIImageView()
-//        imageView.isUserInteractionEnabled = true
         imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
         imageView.layer.cornerRadius = 40
         imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -57,10 +56,9 @@ class ProfileViewController: UIViewController {
         collection.backgroundColor = .clear
         collection.delegate = self
         collection.dataSource = self
-        collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.automaticallyAdjustsScrollIndicatorInsets = true
         collection.register(ProfileCollectionViewCell.self,
                             forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
+        collection.isScrollEnabled = true
         return collection
     }()
     
@@ -71,7 +69,7 @@ class ProfileViewController: UIViewController {
         setupLoyaut()
         setupPanGesture()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         achievementsCollectionView.frame = view.bounds
@@ -108,7 +106,7 @@ class ProfileViewController: UIViewController {
                                                        subitem: item, count: 3)
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 95,
+        section.contentInsets = .init(top: 15,
                                       leading: spacing,
                                       bottom: spacing,
                                       trailing: spacing)
@@ -116,6 +114,7 @@ class ProfileViewController: UIViewController {
         section.interGroupSpacing = 30
         
         let layout = UICollectionViewCompositionalLayout(section: section)
+        layout.configuration.scrollDirection = .vertical
     
         return layout
     }
@@ -129,6 +128,11 @@ class ProfileViewController: UIViewController {
         backButton.snp.makeConstraints { make in
             make.top.equalTo(MetricConstraints.topBackButton)
             make.leading.equalTo(MetricConstraints.leadingBackButton)
+        }
+        
+        achievementsCollectionView.snp.makeConstraints { make in
+            make.top.trailing.leading.bottom.equalTo(0)
+    
         }
         
         sheetImageView.snp.makeConstraints { make in
@@ -172,7 +176,8 @@ class ProfileViewController: UIViewController {
     
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
         
-        let translation = gesture.translation(in: view)
+        let translation = gesture.translation(in: sheetImageView)
+        print(translation)
         let isDraggingDown = translation.y > 0
         let newHeight = currentContainerHeight - translation.y
         switch gesture.state {
@@ -185,12 +190,13 @@ class ProfileViewController: UIViewController {
         case .ended:
             
             if newHeight < defaultHeight {
-                
                 animateContainerHeight(defaultHeight)
             }
+            
             else if newHeight < maximumContainerHeight && isDraggingDown {
                 
                 animateContainerHeight(defaultHeight)
+                sheetImageView.isUserInteractionEnabled = false
             }
             else if newHeight > defaultHeight && !isDraggingDown {
                 animateContainerHeight(maximumContainerHeight)
@@ -215,7 +221,6 @@ class ProfileViewController: UIViewController {
         static var stripTop: CGFloat = 14
         static var achievementsNameTop: CGFloat = 39
     }
-
 }
 
 extension ProfileViewController: UICollectionViewDelegate {
