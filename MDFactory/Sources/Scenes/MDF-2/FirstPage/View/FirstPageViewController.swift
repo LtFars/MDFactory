@@ -118,7 +118,7 @@ class FirstPageViewController: UIViewController {
         }
         
         webVersionReferenceButton.snp.makeConstraints { make in
-            make.top.equalTo(loginButton.snp.bottom).offset(Metrics.webVersionReferenceButtonTopOffset)
+            make.bottom.equalToSuperview().inset(Metrics.webVersionReferenceButtonBottomOffset)
             make.centerX.equalToSuperview()
         }
         
@@ -154,11 +154,11 @@ extension FirstPageViewController {
         static let subheadlineWelcomeTextWidthRatio: CGFloat = 1.3 * 375 / UIScreen.main.bounds.width
         
         static let loginButtonsCornerRadius: CGFloat = 16 * UIScreen.main.bounds.height / 812
-        static let loginButtonsTopOffset: CGFloat = 40 * UIScreen.main.bounds.height / 812
+        static let loginButtonsTopOffset: CGFloat = 65 * UIScreen.main.bounds.height / 812
         static let loginButtonsWidth: CGFloat = 315 * UIScreen.main.bounds.width / 375
         static let loginButtonsHeight: CGFloat = 58 * UIScreen.main.bounds.height / 812
         
-        static let webVersionReferenceButtonTopOffset: CGFloat = 35 * UIScreen.main.bounds.height / 812
+        static let webVersionReferenceButtonBottomOffset: CGFloat = 50 * UIScreen.main.bounds.height / 812
         static let buttonsFontSize: CGFloat = 14 * UIScreen.main.bounds.height / 812
     }
     

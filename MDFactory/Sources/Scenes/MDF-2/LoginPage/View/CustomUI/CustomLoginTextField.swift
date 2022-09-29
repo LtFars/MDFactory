@@ -27,12 +27,13 @@ final class CustomLoginTextField: UITextField {
     
     private let textEntryModeSwitchButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(systemName: "eye.slash")?.withRenderingMode(.alwaysOriginal)
+        let imageNormal = UIImage(systemName: "eye.slash")?.withRenderingMode(.alwaysOriginal).withTintColor(.gray)
+        let imageSelect = UIImage(systemName: "eye")?.withRenderingMode(.alwaysOriginal).withTintColor(.gray)
         
         button.contentMode = .center
         
-        button.setImage(image?.withTintColor(.lightGray), for: .normal)
-        button.setImage(image?.withTintColor(.gray), for: .selected)
+        button.setImage(imageNormal, for: .normal)
+        button.setImage(imageSelect, for: .selected)
         button.addTarget(self,
                          action: #selector(secureEntryModeSwitcher),
                          for: .touchUpInside)
