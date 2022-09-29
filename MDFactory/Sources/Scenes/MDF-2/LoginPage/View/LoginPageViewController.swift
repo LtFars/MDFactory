@@ -34,6 +34,8 @@ class LoginPageViewController: UIViewController {
         let textField = CustomLoginTextField(labelText: "E-mail")
         
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.returnKeyType = UIReturnKeyType.next
+        textField.tag = 0
     
         return textField
     }()
@@ -42,6 +44,8 @@ class LoginPageViewController: UIViewController {
         let textField = CustomLoginTextField(labelText: "Пароль", secureTextMode: true)
         
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.returnKeyType = UIReturnKeyType.go
+        textField.tag = 1
     
         return textField
     }()
@@ -90,6 +94,8 @@ class LoginPageViewController: UIViewController {
         backButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(Metrics.backButtonTopOffset)
             make.leading.equalTo(loginTextField.snp.leading)
+            make.width.equalTo(Metrics.backButtonSideDimension)
+            make.height.equalTo(Metrics.backButtonSideDimension)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -126,11 +132,17 @@ class LoginPageViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+        loginTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     // MARK: - Methods
     @objc func backAction() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func loginAction() {
+        
     }
 }
 
@@ -138,6 +150,7 @@ class LoginPageViewController: UIViewController {
 extension LoginPageViewController {
     enum Metrics {
         static let backButtonTopOffset: CGFloat = 50 * UIScreen.main.bounds.height / 812
+        static let backButtonSideDimension: CGFloat = 44 * UIScreen.main.bounds.height / 812
         
         static let titleLabelTopOffset: CGFloat = 34 * UIScreen.main.bounds.height / 812
         static let titleLabelFontSize: CGFloat = 28 * UIScreen.main.bounds.height / 812
@@ -165,3 +178,27 @@ extension LoginPageViewController {
         static let forgetPasswordLabelText: String = "Забыли пароль?"
     }
 }
+
+// MARK: - Extension
+extension LoginPageViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderColor = UIColor.darkGray.cgColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            self.loginAction()
+            return true
+        }
+        return false
+    }
+}
+
+
