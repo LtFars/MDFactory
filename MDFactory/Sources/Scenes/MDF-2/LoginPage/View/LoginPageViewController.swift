@@ -8,11 +8,22 @@
 import UIKit
 
 class LoginPageViewController: UIViewController {
-    // MARK: - Properties
+    // MARK: - Views
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        
+        let image = UIImage(named: "back")
+        
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        
+        return button
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.font = UIFont.boldSystemFont(ofSize: Metrics.titleLabelFontSize)
         label.text = Strings.titleText
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,6 +50,7 @@ class LoginPageViewController: UIViewController {
         let button = MainCustomButton(cornerRadius: Metrics.uiCorners)
         
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.loginButtonFontSize)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -66,6 +78,7 @@ class LoginPageViewController: UIViewController {
     
     // MARK: - Settings
     private func setupHierarchy() {
+        view.addSubview(backButton)
         view.addSubview(titleLabel)
         view.addSubview(loginButton)
         view.addSubview(passwordTextField)
@@ -74,8 +87,13 @@ class LoginPageViewController: UIViewController {
     }
     
     private func setupLayout() {
+        backButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(Metrics.backButtonTopOffset)
+            make.leading.equalTo(loginTextField.snp.leading)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(Metrics.titleLabelTopOffset)
+            make.top.equalTo(backButton.snp.bottom).offset(Metrics.titleLabelTopOffset)
             make.leading.equalTo(loginTextField.snp.leading)
         }
         
@@ -109,18 +127,27 @@ class LoginPageViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
     }
+    
+    // MARK: - Methods
+    @objc func backAction() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - Metrics
 extension LoginPageViewController {
     enum Metrics {
-        static let titleLabelTopOffset: CGFloat = 126 * UIScreen.main.bounds.height / 812
+        static let backButtonTopOffset: CGFloat = 50 * UIScreen.main.bounds.height / 812
+        
+        static let titleLabelTopOffset: CGFloat = 34 * UIScreen.main.bounds.height / 812
+        static let titleLabelFontSize: CGFloat = 28 * UIScreen.main.bounds.height / 812
         
         static let loginTextFieldTopOffset: CGFloat = 40 * UIScreen.main.bounds.height / 812
         
-        static let passwordTextFieldTopOffset: CGFloat = 25 * UIScreen.main.bounds.height / 812
+        static let passwordTextFieldTopOffset: CGFloat = 15 * UIScreen.main.bounds.height / 812
         
-        static let loginButtonFieldTopOffset: CGFloat = 40 * UIScreen.main.bounds.height / 812
+        static let loginButtonFieldTopOffset: CGFloat = 25 * UIScreen.main.bounds.height / 812
+        static let loginButtonFontSize: CGFloat = 14 * UIScreen.main.bounds.height / 812
         
         static let uiCorners: CGFloat = 16 * UIScreen.main.bounds.height / 812
         static let uiWidth: CGFloat = 315 * UIScreen.main.bounds.width / 375
@@ -133,7 +160,7 @@ extension LoginPageViewController {
     enum Strings {
         static let loginButtonLabelText: String = "Войти"
         
-        static let titleText: String = "Авторизация"
+        static let titleText: String = "Вход"
         
         static let forgetPasswordLabelText: String = "Забыли пароль?"
     }

@@ -56,7 +56,7 @@ class FirstPageViewController: UIViewController {
         let button = MainCustomButton(cornerRadius: Metrics.loginButtonsCornerRadius)
         
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: Metrics.buttonsFontSize)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.buttonsFontSize)
         button.addTarget(self, action: #selector(getLoginPage), for: .touchUpInside)
 
         return button
@@ -121,15 +121,22 @@ class FirstPageViewController: UIViewController {
             make.top.equalTo(loginButton.snp.bottom).offset(Metrics.webVersionReferenceButtonTopOffset)
             make.centerX.equalToSuperview()
         }
+        
+        
     }
     
     private func setupView() {
         view.backgroundColor = .white
+        setNavigationBackButton()
     }
     
     // MARK: - Methods
     @objc func getLoginPage() {
         navigationController?.pushViewController(LoginPageViewController(), animated: true)
+    }
+    
+    private func setNavigationBackButton() {
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
