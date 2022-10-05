@@ -63,6 +63,4 @@ class SheetProfileView: UIView {
         static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
         
     }
-    
-    
 }

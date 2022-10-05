@@ -63,5 +63,4 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     enum Metric {
         static var nameAchievementsLabelTop: CGFloat = 12
     }
-    
 }

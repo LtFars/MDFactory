@@ -22,7 +22,7 @@ class ProfileView: UIView {
     }
     
     private lazy var avatarImageView: UIImageView = {
-        var imageView = UIImageView()
+        let imageView = UIImageView()
         let image = UIImage(named: "emoji")
         let imageHeightWidth: CGFloat = 170
         imageView.image = image

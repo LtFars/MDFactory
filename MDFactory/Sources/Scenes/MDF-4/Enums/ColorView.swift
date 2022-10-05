@@ -29,5 +29,4 @@ enum Color {
             return #colorLiteral(red: 0.8705882353, green: 0.231372549, blue: 0.1960784314, alpha: 1)
         }
     }
-    
 }

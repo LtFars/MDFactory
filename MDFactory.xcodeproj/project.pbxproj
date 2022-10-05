@@ -16,7 +16,6 @@
 		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
 		A04C037828E05CF2004E4D80 /* AchievementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C037728E05CF2004E4D80 /* AchievementsModel.swift */; };
 		A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */; };
-		A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B349828C1097800C4B05E /* ProfileTabBarController.swift */; };
 		A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDD45028C3AA1B00786300 /* ProfileView.swift */; };
 		A0BF832828C67C32001E6469 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF832728C67C32001E6469 /* CircularView.swift */; };
 		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
@@ -38,7 +37,6 @@
 		A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProfileView.swift; sourceTree = "<group>"; };
 		A04C037728E05CF2004E4D80 /* AchievementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AchievementsModel.swift; path = ../../../../../../../../Desktop/AchievementsModel.swift; sourceTree = "<group>"; };
 		A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
-		A07B349828C1097800C4B05E /* ProfileTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabBarController.swift; sourceTree = "<group>"; };
 		A0BDD45028C3AA1B00786300 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A0BF832728C67C32001E6469 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 		A04C036E28D8EE3E004E4D80 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A07B349828C1097800C4B05E /* ProfileTabBarController.swift */,
 				A0C90E8928C0F86900630E61 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
@@ -341,7 +338,6 @@
 				A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
-				A07B349928C1097900C4B05E /* ProfileTabBarController.swift in Sources */,
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */,
@@ -545,7 +541,7 @@
 				03C2025428BA6DC400E5FFF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		03C2025528BA6DC400E5FFF3 /* Build configuration list for PBXNativeTarget "MDFactory" */ = {
 			isa = XCConfigurationList;
@@ -554,7 +550,7 @@
 				03C2025728BA6DC400E5FFF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

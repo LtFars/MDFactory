@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
     private lazy var sheetImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
-        imageView.layer.cornerRadius = 40
+        imageView.layer.cornerRadius = MetricConstraints.cornerRadiusSheetImage
         imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         imageView.clipsToBounds = true
         return imageView
@@ -32,13 +32,15 @@ class ProfileViewController: UIViewController {
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .close)
         button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(tabActiohButton), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(tabActiohButton),
+                         for: .touchUpInside)
         return button
     }()
- 
+    
     private lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 2
+        imageView.layer.cornerRadius = MetricConstraints.cornerRadiusStripImage
         imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
         return imageView
     }()
@@ -69,7 +71,7 @@ class ProfileViewController: UIViewController {
         setupLoyaut()
         setupPanGesture()
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         achievementsCollectionView.frame = view.bounds
@@ -86,7 +88,7 @@ class ProfileViewController: UIViewController {
     
     private func createLayout() -> UICollectionViewLayout {
         
-        let spacing: CGFloat = 16
+        let spacing: CGFloat = MetricCollectionView.spacing
         
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0 / 3.0),
@@ -111,16 +113,16 @@ class ProfileViewController: UIViewController {
                                       bottom: spacing,
                                       trailing: spacing)
         
-        section.interGroupSpacing = 30
+        section.interGroupSpacing = MetricCollectionView.spacingGroup
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         layout.configuration.scrollDirection = .vertical
-    
+        
         return layout
     }
     
     private func setupLoyaut() {
-
+        
         sheetProfileView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(MetricConstraints.sheetConstraintsLeadingBottomTrailing)
         }
@@ -132,7 +134,7 @@ class ProfileViewController: UIViewController {
         
         achievementsCollectionView.snp.makeConstraints { make in
             make.top.trailing.leading.bottom.equalTo(0)
-    
+            
         }
         
         sheetImageView.snp.makeConstraints { make in
@@ -155,7 +157,6 @@ class ProfileViewController: UIViewController {
         
         containerViewHeightConstraint?.isActive = true
         containerViewBottomConstraint?.isActive = true
-        
     }
     
     private func setupPanGesture() {
@@ -177,34 +178,31 @@ class ProfileViewController: UIViewController {
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
         
         let translation = gesture.translation(in: sheetImageView)
-        print(translation)
         let isDraggingDown = translation.y > 0
         let newHeight = currentContainerHeight - translation.y
         switch gesture.state {
-        case .changed:
             
+        case .changed:
             if newHeight < maximumContainerHeight {
                 containerViewHeightConstraint?.constant = newHeight
             }
             
         case .ended:
-            
             if newHeight < defaultHeight {
                 animateContainerHeight(defaultHeight)
             }
             
             else if newHeight < maximumContainerHeight && isDraggingDown {
-                
                 animateContainerHeight(defaultHeight)
                 sheetImageView.isUserInteractionEnabled = false
             }
+            
             else if newHeight > defaultHeight && !isDraggingDown {
                 animateContainerHeight(maximumContainerHeight)
-                    sheetImageView.isUserInteractionEnabled = true
+                sheetImageView.isUserInteractionEnabled = true
             }
             
-        default:
-            break
+        default: break
         }
     }
     
@@ -220,6 +218,13 @@ class ProfileViewController: UIViewController {
         static var stripWidth: CGFloat = UIScreen.main.bounds.width / 9
         static var stripTop: CGFloat = 14
         static var achievementsNameTop: CGFloat = 39
+        static var cornerRadiusSheetImage: CGFloat = 40
+        static var cornerRadiusStripImage: CGFloat = 2
+    }
+    
+    enum MetricCollectionView {
+        static var spacing: CGFloat = 16
+        static var spacingGroup: CGFloat = 30
     }
 }
 
@@ -230,23 +235,31 @@ extension ProfileViewController: UICollectionViewDelegate {
         return achievements.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let cover = achievements[indexPath.row]
         print("selected \(cover.name)")
-        
     }
 }
 
 extension ProfileViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell()}
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         
-        cell.configure(with: achievements[indexPath.row])
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ProfileCollectionViewCell.identifier,
+            for: indexPath
+        ) as? ProfileCollectionViewCell else {
+            return UICollectionViewCell()
+            
+        }
+        
+        let model = achievements[indexPath.row]
+        cell.configure(with: model)
         return cell
     }
 }
-
-
