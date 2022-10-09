@@ -3,8 +3,10 @@ import SnapKit
 
 class MainPage: UIViewController {
     static let identifier = "MainPage"
-    let userName = "Henry"
+    let userName = "User"
     lazy var layout = getLayout(flag: Model.gridMode)
+    
+    var model: [ItemForMain] = Model().itemForCollection()
     
     // MARK: - Top bar
     
@@ -33,23 +35,23 @@ class MainPage: UIViewController {
     
     private lazy var profileButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "person"), for: .normal)
+        //button.setImage(UIImage(named: "user"), for: .normal)
         button.backgroundColor = UIColor(hex: Metrics.profileButtonColorHex)
         button.layer.cornerRadius = 14
         button.addTarget(self, action: #selector(openProfile), for: .touchUpInside)
         return button
     }()
     
-    func changeMode() {
-        layout = getLayout(flag: Model.gridMode)
-        mainCollection.reloadData()
-        mainCollection.setCollectionViewLayout(layout, animated: true)
-        
-    }
+    private let profileImage: UIImageView = {
+       let image = UIImageView()
+        image.image = UIImage(named: "user")
+        return image
+    }()
     
     @objc func openProfile() {
-        Model.gridMode.toggle()
-        changeMode()
+        
+        let tit = UILabel()
+        tit.textColor = .black
     }
     
     // MARK: - Bottom bar
@@ -87,12 +89,12 @@ class MainPage: UIViewController {
     func setupHierachy() {
         view.addSubview(topBar)
         topBar.addSubview(profileButton)
+        profileButton.addSubview(profileImage)
         topBar.addSubview(greetingsLabel)
         topBar.addSubview(continueLabel)
         view.addSubview(bottomBar)
         view.addSubview(conteinerView)
         conteinerView.addSubview(mainCollection)
-        
     }
     
     func setupLayout() {
@@ -106,6 +108,8 @@ class MainPage: UIViewController {
             make.right.equalToSuperview().offset(Metrics.profileButtonRight)
             make.width.height.equalTo(Metrics.profileButtonSize)
         }
+        profileImage.translatesAutoresizingMaskIntoConstraints = false
+        profileImage.frame = profileButton.bounds
         greetingsLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(Metrics.greetingsLabelTop)
             make.left.equalToSuperview().offset(Metrics.greetingsLabelLeft)
@@ -185,10 +189,11 @@ class MainPage: UIViewController {
 
 // MARK: - Extensions
 
-extension MainPage: UICollectionViewDataSource {
+extension MainPage: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -198,7 +203,7 @@ extension MainPage: UICollectionViewDataSource {
         ) as? CollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure()
+        cell.configure(item: model[indexPath.row])
         return cell
     }
     
@@ -217,7 +222,6 @@ extension MainPage: UICollectionViewDataSource {
             }
             header.configure()
             header.changeViewCollectionCompletion = { [unowned self] in
-                Model.gridMode.toggle()
                 layout = getLayout(flag: Model.gridMode)
                 mainCollection.setCollectionViewLayout(layout, animated: true)
             }
@@ -225,6 +229,10 @@ extension MainPage: UICollectionViewDataSource {
         } else {
             assert(false)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //
     }
 }
 
