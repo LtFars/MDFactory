@@ -9,19 +9,20 @@ import UIKit
 import SnapKit
 
 final class CustomLoginTextField: UITextField {
+    
     // MARK: - Properties
+    
     private let insets: UIEdgeInsets
     private let cornerRadius: CGFloat
     private let secureTextMode: Bool
     
     // MARK: - Views
+    
     private let label: UILabel = {
         let label = UILabel()
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: Metrics.labelTextSize)
-        
         return label
     }()
     
@@ -29,19 +30,17 @@ final class CustomLoginTextField: UITextField {
         let button = UIButton()
         let imageNormal = UIImage(systemName: "eye.slash")?.withRenderingMode(.alwaysOriginal).withTintColor(.gray)
         let imageSelect = UIImage(systemName: "eye")?.withRenderingMode(.alwaysOriginal).withTintColor(.gray)
-        
         button.contentMode = .center
-        
         button.setImage(imageNormal, for: .normal)
         button.setImage(imageSelect, for: .selected)
         button.addTarget(self,
                          action: #selector(secureEntryModeSwitcher),
                          for: .touchUpInside)
-        
         return button
     }()
     
     // MARK: - Initialize
+    
     init(insets: UIEdgeInsets = Metrics.textFieldsEdgeInsets,
          cornerRadius: CGFloat = 16,
          labelText: String,
@@ -51,7 +50,6 @@ final class CustomLoginTextField: UITextField {
         self.label.text = labelText
         self.secureTextMode = secureTextMode
         super.init(frame: .zero)
-                
         setupHierarchy()
         setupLayout()
         setupView()
@@ -62,6 +60,7 @@ final class CustomLoginTextField: UITextField {
     }
     
     // MARK: - Overriding methods
+    
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: insets)
     }
@@ -69,12 +68,12 @@ final class CustomLoginTextField: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: insets)
     }
+    
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         let topInset: CGFloat = 0
         let rightInset: CGFloat = insets.right
         let bottomInset: CGFloat = 0
         let leftInset: CGFloat = bounds.width - insets.right - 26
-        
         let buttonInsets = UIEdgeInsets(top: topInset,
                                         left: leftInset,
                                         bottom: bottomInset,
@@ -83,6 +82,7 @@ final class CustomLoginTextField: UITextField {
     }
     
     // MARK: - Methods
+    
     private func setupHierarchy() {
         addSubview(label)
     }
