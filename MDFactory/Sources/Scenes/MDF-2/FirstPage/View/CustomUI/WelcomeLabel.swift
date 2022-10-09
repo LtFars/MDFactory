@@ -8,7 +8,9 @@
 import UIKit
 
 final class WelcomeLabel: UILabel {
+    
     // MARK: - Initialize
+    
     init(firstPartOfText: String,
          secondPartOfText: String,
          fontSize: CGFloat) {
@@ -23,6 +25,7 @@ final class WelcomeLabel: UILabel {
     }
     
     // MARK: - Methods
+    
     /// The method is designed to display the main text in the form of a bold first part and a regular second
     /// - Parameters:
     ///   - firstPartOfText: first part of text
@@ -41,7 +44,6 @@ final class WelcomeLabel: UILabel {
         
         attributedText.append(firstPart)
         attributedText.append(secondPart)
-        
         self.attributedText = attributedText
     }
 }

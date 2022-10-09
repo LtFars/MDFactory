@@ -9,13 +9,13 @@ import UIKit
 import SnapKit
 
 class FirstPageViewController: UIViewController {
+    
     // MARK: - Views
+    
     private lazy var logoImageView: UIImageView = {
         let image = UIImage(named: "firstPageLogo")
         let imageView = UIImageView(image: image)
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
         return imageView
     }()
     
@@ -23,65 +23,56 @@ class FirstPageViewController: UIViewController {
         let label = WelcomeLabel(firstPartOfText: Strings.firstPartOfWelcomeText,
                                  secondPartOfText: Strings.secondPartOfWelcomeText,
                                  fontSize: Metrics.welcomeTextSize)
-        
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
     private lazy var subheadlineWelcomeLabel: UILabel = {
         let label = UILabel()
-        
         var paragraphStyle = NSMutableParagraphStyle()
         var labelFontSize = Metrics.subheadlineWelcomeTextSize
         var attributes = [NSAttributedString.Key.paragraphStyle: paragraphStyle,
                           NSAttributedString.Key.font: UIFont(name: Strings.subheadlineWelcomeFontSize,
                                                               size: labelFontSize) ?? UIFont.systemFont(ofSize: labelFontSize)]
-        
         paragraphStyle.lineHeightMultiple = Metrics.subheadlineWelcomeTextLineHeight
         label.attributedText = NSMutableAttributedString(string: Strings.subheadlineWelcomeText,
                                                          attributes: attributes)
-        
         label.textColor = .gray
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
-        
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
     private lazy var loginButton: MainCustomButton = {
         let button = MainCustomButton(cornerRadius: Metrics.loginButtonsCornerRadius)
-        
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.buttonsFontSize)
         button.addTarget(self, action: #selector(getLoginPage), for: .touchUpInside)
-
         return button
     }()
     
     private lazy var webVersionReferenceButton: UIButton = {
         let button = UIButton(type: .system)
-        
         button.setTitle(Strings.webVersionReferenceButtonTitle, for: .normal)
         button.setTitleColor(.gray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: Metrics.buttonsFontSize)
-    
         return button
     }()
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupHierarchy()
         setupLayout()
         setupView()
     }
     
     // MARK: - Settings
+    
     private func setupHierarchy() {
         view.addSubview(logoImageView)
         view.addSubview(welcomeLabel)
@@ -121,8 +112,6 @@ class FirstPageViewController: UIViewController {
             make.bottom.equalToSuperview().inset(Metrics.webVersionReferenceButtonBottomOffset)
             make.centerX.equalToSuperview()
         }
-        
-        
     }
     
     private func setupView() {
@@ -131,6 +120,7 @@ class FirstPageViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
     @objc func getLoginPage() {
         navigationController?.pushViewController(LoginPageViewController(), animated: true)
     }
@@ -141,6 +131,7 @@ class FirstPageViewController: UIViewController {
 }
 
 // MARK: - Metrics
+
 extension FirstPageViewController {    
     enum Metrics {
         static let logoHeightRatio: CGFloat = 542 / 375

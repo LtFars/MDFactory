@@ -8,70 +8,60 @@
 import UIKit
 
 class LoginPageViewController: UIViewController {
+    
     // MARK: - Views
+    
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        
         let image = UIImage(named: "back")
-        
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        
         return button
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        
         label.font = UIFont.boldSystemFont(ofSize: Metrics.titleLabelFontSize)
         label.text = Strings.titleText
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
     private lazy var loginTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "E-mail")
-        
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.returnKeyType = UIReturnKeyType.next
         textField.tag = 0
-    
         return textField
     }()
     
     private lazy var passwordTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "Пароль", secureTextMode: true)
-        
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.returnKeyType = UIReturnKeyType.go
         textField.tag = 1
-    
         return textField
     }()
     
     private lazy var loginButton: MainCustomButton = {
         let button = MainCustomButton(cornerRadius: Metrics.uiCorners)
-        
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.loginButtonFontSize)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
     
     private lazy var forgetPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(Strings.forgetPasswordLabelText, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: Metrics.forgetPasswordFontSize)
         button.setTitleColor(UIColor.gray, for: .normal)
-        
         return button
     }()
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,6 +71,7 @@ class LoginPageViewController: UIViewController {
     }
     
     // MARK: - Settings
+    
     private func setupHierarchy() {
         view.addSubview(backButton)
         view.addSubview(titleLabel)
@@ -136,17 +127,19 @@ class LoginPageViewController: UIViewController {
         passwordTextField.delegate = self
     }
     
-    // MARK: - Methods
+    // MARK: - Actions
+    
     @objc func backAction() {
         navigationController?.popViewController(animated: true)
     }
     
     @objc func loginAction() {
-        
+        #warning("Necessary to do some action!")
     }
 }
 
 // MARK: - Metrics
+
 extension LoginPageViewController {
     enum Metrics {
         static let backButtonTopOffset: CGFloat = 50 * UIScreen.main.bounds.height / 812
