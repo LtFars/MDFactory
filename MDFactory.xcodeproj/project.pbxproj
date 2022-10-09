@@ -12,6 +12,14 @@
 		03C2024E28BA6DC400E5FFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024D28BA6DC400E5FFF3 /* Assets.xcassets */; };
 		03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024F28BA6DC400E5FFF3 /* LaunchScreen.storyboard */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
+		A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E312228CB8C5500EC6FA5 /* ColorView.swift */; };
+		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
+		A04C037828E05CF2004E4D80 /* AchievementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C037728E05CF2004E4D80 /* AchievementsModel.swift */; };
+		A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */; };
+		A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDD45028C3AA1B00786300 /* ProfileView.swift */; };
+		A0BF832828C67C32001E6469 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF832728C67C32001E6469 /* CircularView.swift */; };
+		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
+		A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D9872728D3AF380040C9E5 /* ProgressView.swift */; };
 		DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +33,14 @@
 		0C5B0CFE6594C3F5393CB201 /* Pods-MDFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.debug.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		1347F47AC005B057B07830F4 /* Pods-MDFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.release.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.release.xcconfig"; sourceTree = "<group>"; };
 		26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00E312228CB8C5500EC6FA5 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProfileView.swift; sourceTree = "<group>"; };
+		A04C037728E05CF2004E4D80 /* AchievementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AchievementsModel.swift; path = ../../../../../../../../Desktop/AchievementsModel.swift; sourceTree = "<group>"; };
+		A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0BDD45028C3AA1B00786300 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A0BF832728C67C32001E6469 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
+		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A0D9872728D3AF380040C9E5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +91,61 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A04C036E28D8EE3E004E4D80 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0C90E8928C0F86900630E61 /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A04C037628E05CB7004E4D80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A04C037728E05CF2004E4D80 /* AchievementsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0B6209C28CFDDFD00BB5192 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A00E312228CB8C5500EC6FA5 /* ColorView.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		A0BDD44D28C3904800786300 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0D9872628D3AF0C0040C9E5 /* Circular */,
+				A0BDD45028C3AA1B00786300 /* ProfileView.swift */,
+				A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */,
+				A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0C90E8828C0F79F00630E61 /* MDF-4 */ = {
+			isa = PBXGroup;
+			children = (
+				A04C037628E05CB7004E4D80 /* Models */,
+				A04C036E28D8EE3E004E4D80 /* Controllers */,
+				A0B6209C28CFDDFD00BB5192 /* Enums */,
+				A0BDD44D28C3904800786300 /* View */,
+			);
+			path = "MDF-4";
+			sourceTree = "<group>";
+		};
+		A0D9872628D3AF0C0040C9E5 /* Circular */ = {
+			isa = PBXGroup;
+			children = (
+				A0BF832728C67C32001E6469 /* CircularView.swift */,
+				A0D9872728D3AF380040C9E5 /* ProgressView.swift */,
+			);
+			path = Circular;
+			sourceTree = "<group>";
+		};
 		B3F02D1E21566D468A29EC8A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +194,7 @@
 		DDB01FCD28BFBC7E00E67A34 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A0C90E8828C0F79F00630E61 /* MDF-4 */,
 				DDB01FCE28BFBC8B00E67A34 /* Main */,
 			);
 			path = Scenes;
@@ -258,9 +330,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */,
+				A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */,
+				A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */,
+				A04C037828E05CF2004E4D80 /* AchievementsModel.swift in Sources */,
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
+				A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
+				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
+				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
+				A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,13 +409,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"SWIFT_PRECOMPILE_BRIDGING_HEADER[arch=*]" = YES;
 			};
 			name = Debug;
 		};
@@ -384,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -402,6 +483,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T99AX3SG2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MDFactory/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -429,6 +511,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T99AX3SG2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MDFactory/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -458,7 +541,7 @@
 				03C2025428BA6DC400E5FFF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		03C2025528BA6DC400E5FFF3 /* Build configuration list for PBXNativeTarget "MDFactory" */ = {
 			isa = XCConfigurationList;
@@ -467,7 +550,7 @@
 				03C2025728BA6DC400E5FFF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
