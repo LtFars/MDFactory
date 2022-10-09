@@ -42,7 +42,6 @@ class HeaderCollectionView: UICollectionReusableView {
         super.init(frame: frame)
         setupHierarchy()
         setupLayout()
-        //configure()
     }
     
     // MARK: - Settings
@@ -72,28 +71,31 @@ class HeaderCollectionView: UICollectionReusableView {
     
     func configure() {
         label.text = "Your Lessons"
-//        changeMode()
+        changeMode()
     }
     
-//    func changeMode() {
-//        if Model.gridMode {
-//            buttonRow.backgroundColor = UIColor(hex: "#00000000")
-//            buttonGrid.backgroundColor = UIColor(hex: "#E0E6F3FF")
-//            // тут бы сменить layout коллекции
-//        } else {
-//            buttonGrid.backgroundColor = UIColor(hex: "#00000000")
-//            buttonRow.backgroundColor = UIColor(hex: "#E0E6F3FF")
-//            // тут бы сменить layout коллекции
-//        }
-//    }
+    func changeMode() {
+        if Model.gridMode {
+            buttonRow.backgroundColor = UIColor(hex: "#00000000")
+            buttonGrid.backgroundColor = UIColor(hex: "#E0E6F3FF")
+            changeViewCollectionCompletion?()
+        } else {
+            buttonGrid.backgroundColor = UIColor(hex: "#00000000")
+            buttonRow.backgroundColor = UIColor(hex: "#E0E6F3FF")
+            changeViewCollectionCompletion?()
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
     
     @objc func changeMode(_ sender: UIButton) {
-//        if sender == buttonGrid {
-//            Model.gridMode = true
-//        } else {
-//            Model.gridMode = false
-//        }
-//        changeMode()
-        changeViewCollectionCompletion?()
+        if sender == buttonGrid {
+            Model.gridMode = true
+        } else {
+            Model.gridMode = false
+        }
+        changeMode()
     }
 }

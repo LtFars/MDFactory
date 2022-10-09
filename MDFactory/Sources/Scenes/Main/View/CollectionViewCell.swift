@@ -22,6 +22,21 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private let stack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 10
+        return stack
+    }()
+    
+    private let sublabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .secondaryLabel
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     required init?(coder: NSCoder) {
@@ -39,25 +54,46 @@ class CollectionViewCell: UICollectionViewCell {
     func setupHierarchy() {
         contentView.addSubview(cellView)
         cellView.addSubview(image)
-        cellView.addSubview(label)
+        cellView.addSubview(stack)
+        stack.addArrangedSubview(label)
+        stack.addArrangedSubview(sublabel)
     }
     
     func setupLayout() {
-        cellView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        image.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(30)
-            make.height.width.equalTo(40)
-            make.centerY.equalToSuperview()
-        }
-        label.snp.makeConstraints { make in
-            make.left.equalTo(image.snp.right).offset(30)
-            make.centerY.equalToSuperview()
+        if Model.gridMode {
+            cellView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            image.snp.makeConstraints { make in
+                make.left.equalToSuperview().offset(15)
+                make.height.width.equalTo(40)
+                make.top.equalToSuperview().offset(30)
+            }
+            stack.snp.makeConstraints { make in
+                make.left.equalToSuperview().offset(15)
+                make.top.equalTo(image.snp.bottom).offset(10)
+                make.width.equalToSuperview().offset(-10)
+            }
+        } else {
+            cellView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            image.snp.makeConstraints { make in
+                make.left.equalToSuperview().offset(30)
+                make.height.width.equalTo(40)
+                make.centerY.equalToSuperview()
+            }
+            stack.snp.makeConstraints { make in
+                make.left.equalTo(image.snp.right).offset(30)
+                make.centerY.equalToSuperview()
+            }
         }
     }
-    func configure() {
-        label.text = "Text"
-        image.image = UIImage(systemName: "person")
+    
+    func configure(item: ItemForMain) {
+        layoutIfNeeded()
+        label.text = item.title
+        image.image = item.image
+        sublabel.text = item.description
     }
 }
