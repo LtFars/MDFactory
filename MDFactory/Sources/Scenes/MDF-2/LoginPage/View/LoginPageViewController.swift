@@ -48,6 +48,7 @@ class LoginPageViewController: UIViewController {
         button.setTitle(Strings.loginButtonLabelText, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.loginButtonFontSize)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         return button
     }()
     
