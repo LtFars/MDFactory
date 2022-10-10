@@ -27,6 +27,7 @@
 		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
 		A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D9872728D3AF380040C9E5 /* ProgressView.swift */; };
 		DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */; };
+		DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F728F426F900931654 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A0D9872728D3AF380040C9E5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DDB01FD128BFBD2100E67A34 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DD73E7F228F4219D00931654 /* MDF-6 */ = {
+			isa = PBXGroup;
+			children = (
+				DD73E7F628F426E900931654 /* Extensions */,
+			);
+			path = "MDF-6";
+			sourceTree = "<group>";
+		};
+		DD73E7F628F426E900931654 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD73E7F728F426F900931654 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DDB01FC928BFBC4F00E67A34 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +287,7 @@
 			children = (
 				84709F6E28D9B0870036A4AB /* MDF-2 */,
 				A0C90E8828C0F79F00630E61 /* MDF-4 */,
+				DD73E7F228F4219D00931654 /* MDF-6 */,
 				DDB01FCE28BFBC8B00E67A34 /* Main */,
 			);
 			path = Scenes;
@@ -422,6 +441,7 @@
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */,
+				DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
