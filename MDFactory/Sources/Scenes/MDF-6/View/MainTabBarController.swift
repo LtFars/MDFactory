@@ -24,13 +24,34 @@ class MainTabBarController: UITabBarController {
     }
 
     // MARK: - Settings -
-
+    
     private func setupHierarchy() {
+        setupViewControllers()
+
+        let viewControllers = [
+            mainViewController,
+            profileViewController,
+            settingsViewController
+        ]
+
+        self.viewControllers = viewControllers.map {
+            UINavigationController(rootViewController: $0 ?? UIViewController())
+        }
+    }
+
+    private func setupView() {
+        setupTabBarAppearance()
+        tabBar.tintColor = Colors.customPurple
+    }
+
+    // MARK: - Private functions -
+
+    private func setupViewControllers() {
         mainViewController = UIViewController()
         mainViewController.setupTabBar(title: "Главная",
-                                        imageName: "circle.grid.cross",
-                                        selectedImageName: "circle.grid.cross.fill",
-                                        tag: 0)
+                                       imageName: "circle.grid.cross",
+                                       selectedImageName: "circle.grid.cross.fill",
+                                       tag: 0)
 
         profileViewController = ProfileViewController()
         profileViewController.setupTabBar(title: "Профиль",
@@ -43,28 +64,15 @@ class MainTabBarController: UITabBarController {
                                            imageName: "gearshape",
                                            selectedImageName: "gearshape.fill",
                                            tag: 2)
-
-        setViewControllers([
-            mainViewController,
-            profileViewController,
-            settingsViewController
-        ], animated: true)
     }
-
-    private func setupView() {
-        setupTabBarAppearance()
-        tabBar.tintColor = Colors.customPurple
-    }
-
-    // MARK: - Private functions -
 
     private func setupTabBarAppearance() {
         if #available(iOS 15, *) {
-              let tabBarAppearance = UITabBarAppearance()
-              tabBarAppearance.configureWithDefaultBackground()
-              UITabBar.appearance().standardAppearance = tabBarAppearance
-              UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-            }
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
     }
 }
 
