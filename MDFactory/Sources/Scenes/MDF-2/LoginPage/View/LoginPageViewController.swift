@@ -141,7 +141,7 @@ class LoginPageViewController: UIViewController {
 
         let userName = loginTextField.text ?? ""
         let userPassword = passwordTextField.text ?? ""
-        var validPassword = ""
+        var validPassword: String? = nil
 
         let workItem = DispatchWorkItem {
             do {
