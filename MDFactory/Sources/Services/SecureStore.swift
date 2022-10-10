@@ -9,9 +9,13 @@ import Foundation
 
 class SecureStore {
 
-    static func save(name: String, password: String) throws {
+    /// Save user's password to secure storage
+    /// - Parameters:
+    ///   - userName: user's name
+    ///   - password: password to save
+    static func save(userName: String, password: String) throws {
         let query: [String: AnyObject] = [
-            kSecAttrAccount as String: name as AnyObject,
+            kSecAttrAccount as String: userName as AnyObject,
             kSecClass as String: kSecClassGenericPassword,
             kSecValueData as String: Data(password.utf8) as AnyObject
         ]
@@ -27,6 +31,9 @@ class SecureStore {
         }
     }
 
+    /// Read user's password from secure storage
+    /// - Parameters:
+    ///   - userName: user's name
     static func readPassword(userName: String) throws -> String {
         let query: [String: AnyObject] = [
             kSecAttrAccount as String: userName as AnyObject,
@@ -55,6 +62,9 @@ class SecureStore {
         return password
     }
 
+    /// Delete user's password from secure storage
+    /// - Parameters:
+    ///   - userName: user's name
     static func deletePassword(userName: String) throws {
         let query: [String: AnyObject] = [
             kSecAttrAccount as String: userName as AnyObject,
