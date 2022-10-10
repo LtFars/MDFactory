@@ -29,6 +29,7 @@
 		DD73E7F528F421E600931654 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F428F421E600931654 /* MainTabBarController.swift */; };
 		DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F728F426F900931654 /* UIViewController+Ext.swift */; };
 		DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FA28F42F3000931654 /* SecureStore.swift */; };
+		DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		DD73E7F428F421E600931654 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		DD73E7FA28F42F3000931654 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				DD73E7F728F426F900931654 /* UIViewController+Ext.swift */,
+				DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
+				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,
 				A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */,
 				A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */,
 				A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */,
