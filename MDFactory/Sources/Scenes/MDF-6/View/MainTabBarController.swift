@@ -11,9 +11,9 @@ class MainTabBarController: UITabBarController {
 
     // MARK: - Properties
 
-    private var mainViewController: UIViewController!
-    private var profileViewController: UIViewController!
-    private var settingsViewController: UIViewController!
+    private var mainViewController: UIViewController?
+    private var profileViewController: UIViewController?
+    private var settingsViewController: UIViewController?
 
     // MARK: - Lifecycle
 
@@ -48,19 +48,19 @@ class MainTabBarController: UITabBarController {
 
     private func setupViewControllers() {
         mainViewController = UIViewController()
-        mainViewController.setupTabBar(title: "Главная",
+        mainViewController?.setupTabBar(title: "Главная",
                                        imageName: "circle.grid.cross",
                                        selectedImageName: "circle.grid.cross.fill",
                                        tag: 0)
 
         profileViewController = ProfileViewController()
-        profileViewController.setupTabBar(title: "Профиль",
+        profileViewController?.setupTabBar(title: "Профиль",
                                           imageName: "person",
                                           selectedImageName: "person.fill",
                                           tag: 1)
 
         settingsViewController = UIViewController()
-        settingsViewController.setupTabBar(title: "Настройки",
+        settingsViewController?.setupTabBar(title: "Настройки",
                                            imageName: "gearshape",
                                            selectedImageName: "gearshape.fill",
                                            tag: 2)
