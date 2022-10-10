@@ -28,6 +28,7 @@
 		A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D9872728D3AF380040C9E5 /* ProgressView.swift */; };
 		DD73E7F528F421E600931654 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F428F421E600931654 /* MainTabBarController.swift */; };
 		DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F728F426F900931654 /* UIViewController+Ext.swift */; };
+		DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FA28F42F3000931654 /* SecureStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		A0D9872728D3AF380040C9E5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DD73E7F428F421E600931654 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		DD73E7FA28F42F3000931654 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +257,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DD73E7F928F42EF400931654 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		DDB01FC928BFBC4F00E67A34 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +288,7 @@
 			children = (
 				DDB01FCC28BFBC7300E67A34 /* Application */,
 				DDB01FCD28BFBC7E00E67A34 /* Scenes */,
+				DD73E7F928F42EF400931654 /* Services */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -440,6 +451,7 @@
 				84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */,
 				841121E028DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift in Sources */,
 				0327CE7128F2E7680096084C /* AchievementsModel.swift in Sources */,
+				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,
 				844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				841121DE28DA2D3400983ACA /* MainCusomButton.swift in Sources */,
