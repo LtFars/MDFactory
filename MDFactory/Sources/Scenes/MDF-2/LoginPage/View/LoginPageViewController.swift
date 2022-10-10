@@ -135,7 +135,10 @@ class LoginPageViewController: UIViewController {
     }
     
     @objc func loginAction() {
-//        #warning("Necessary to do some action!")
+        // To access tabBar use
+        // userName: "Admin"
+        // password: "admin"
+
         let userName = loginTextField.text ?? ""
         let userPassword = passwordTextField.text ?? ""
 
@@ -146,6 +149,7 @@ class LoginPageViewController: UIViewController {
                 guard let window = self.view.window else { return }
                 window.switchRootViewController(to: MainTabBarController())
             } else {
+                // TODO: handle error
                 print("Invalid password")
             }
         } catch {
@@ -209,5 +213,3 @@ extension LoginPageViewController: UITextFieldDelegate {
         return false
     }
 }
-
-

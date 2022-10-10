@@ -17,15 +17,14 @@ class SecureStore {
         ]
 
         let status = SecItemAdd(query as CFDictionary, nil)
-        print("Operation finished with status: \(status)")
 
         if status == errSecDuplicateItem {
             throw KeychainError.duplicateItem
         }
 
         guard status == errSecSuccess else {
-             throw KeychainError.unexpectedStatus(status)
-         }
+            throw KeychainError.unexpectedStatus(status)
+        }
     }
 
     static func readPassword(userName: String) throws -> String {
@@ -38,7 +37,6 @@ class SecureStore {
 
         var itemCopy: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &itemCopy)
-        print("Operation finished with status: \(status)")
 
         guard status != errSecItemNotFound else {
             throw KeychainError.itemNotFound
@@ -64,7 +62,6 @@ class SecureStore {
         ]
 
         let status = SecItemDelete(query as CFDictionary)
-        print("Operation finished with status: \(status)")
 
         guard status == errSecSuccess else {
             throw KeychainError.unexpectedStatus(status)
@@ -84,7 +81,7 @@ enum KeychainError: Error {
 // MARK: - KeychainError Description
 
 extension KeychainError: LocalizedError {
-    public var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .itemNotFound:
             return NSLocalizedString("Item not found", comment: "")
