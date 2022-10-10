@@ -135,7 +135,22 @@ class LoginPageViewController: UIViewController {
     }
     
     @objc func loginAction() {
-        #warning("Necessary to do some action!")
+//        #warning("Necessary to do some action!")
+        let userName = loginTextField.text ?? ""
+        let userPassword = passwordTextField.text ?? ""
+
+        do {
+            let password = try SecureStore.readPassword(userName: userName)
+
+            if userPassword == password {
+                guard let window = self.view.window else { return }
+                window.switchRootViewController(to: MainTabBarController())
+            } else {
+                print("Invalid password")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 
