@@ -141,19 +141,28 @@ class LoginPageViewController: UIViewController {
 
         let userName = loginTextField.text ?? ""
         let userPassword = passwordTextField.text ?? ""
+        var validPassword = ""
 
-        do {
-            let password = try SecureStore.readPassword(userName: userName)
+        let workItem = DispatchWorkItem {
+            do {
+                validPassword = try SecureStore.readPassword(userName: userName)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
 
-            if userPassword == password {
+        DispatchQueue.global(qos: .background).async {
+            workItem.perform()
+        }
+
+        workItem.notify(queue: DispatchQueue.main) {
+            if userPassword == validPassword {
                 guard let window = self.view.window else { return }
                 window.switchRootViewController(to: MainTabBarController())
             } else {
                 // TODO: handle error
                 print("Invalid password")
             }
-        } catch {
-            print(error.localizedDescription)
         }
     }
 }
