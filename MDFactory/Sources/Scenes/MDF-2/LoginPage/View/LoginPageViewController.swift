@@ -136,32 +136,23 @@ class LoginPageViewController: UIViewController {
     
     @objc func loginAction() {
         // To access tabBar use
-        // userName: "Admin"
-        // password: "admin"
+        // userName: test@test.com
+        // password: password
 
-        let userName = loginTextField.text ?? ""
-        let userPassword = passwordTextField.text ?? ""
-        var validPassword: String? = nil
-
-        let workItem = DispatchWorkItem {
-            do {
-                validPassword = try SecureStore.readPassword(userName: userName)
-            } catch {
-                print(error.localizedDescription)
-            }
+        guard let email = loginTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty
+        else {
+            showAlert(withTitle: "Ошибка", message: "Заполнены не все поля.")
+            return
         }
 
-        DispatchQueue.global(qos: .background).async {
-            workItem.perform()
-        }
-
-        workItem.notify(queue: DispatchQueue.main) {
-            if userPassword == validPassword {
-                guard let window = self.view.window else { return }
+        FirebaseService.signIn(email: email, password: password) { [weak self] result in
+            switch result {
+            case .success:
+                guard let window = self?.view.window else { return }
                 window.switchRootViewController(to: MainTabBarController())
-            } else {
-                // TODO: handle error
-                print("Invalid password")
+            case .failure(let error):
+                self?.showAlert(withTitle: "Ошибка", message: "\(error.localizedDescription)")
             }
         }
     }
@@ -202,6 +193,7 @@ extension LoginPageViewController {
 }
 
 // MARK: - Extension
+
 extension LoginPageViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor = UIColor.darkGray.cgColor
