@@ -13,7 +13,7 @@
 		03C2024E28BA6DC400E5FFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024D28BA6DC400E5FFF3 /* Assets.xcassets */; };
 		03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024F28BA6DC400E5FFF3 /* LaunchScreen.storyboard */; };
 		841121DE28DA2D3400983ACA /* MainCusomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841121DD28DA2D3400983ACA /* MainCusomButton.swift */; };
-		841121E028DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841121DF28DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift */; };
+		841121E028DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841121DF28DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift */; };
 		844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B109928DF07610043FEB8 /* LoginPageViewController.swift */; };
 		844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */; };
 		84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84709F7128D9BC410036A4AB /* FirstPageViewController.swift */; };
@@ -44,7 +44,7 @@
 		1347F47AC005B057B07830F4 /* Pods-MDFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDFactory.release.xcconfig"; path = "Target Support Files/Pods-MDFactory/Pods-MDFactory.release.xcconfig"; sourceTree = "<group>"; };
 		26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841121DD28DA2D3400983ACA /* MainCusomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCusomButton.swift; sourceTree = "<group>"; };
-		841121DF28DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionWithCoreGraphics.swift; sourceTree = "<group>"; };
+		841121DF28DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ExtensionWithCoreGraphics.swift"; sourceTree = "<group>"; };
 		844B109928DF07610043FEB8 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 		844B109C28DF1DAC0043FEB8 /* CustomLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginTextField.swift; sourceTree = "<group>"; };
 		84709F7128D9BC410036A4AB /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +80,16 @@
 				0327CE7028F2E7680096084C /* AchievementsModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0327CE7228F586610096084C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				841121DF28DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift */,
+				DD73E7F728F426F900931654 /* UIViewController+Ext.swift */,
+				DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		03C2023828BA6DC000E5FFF3 = {
@@ -173,7 +183,6 @@
 			children = (
 				84709F7328D9E1560036A4AB /* WelcomeLabel.swift */,
 				841121DD28DA2D3400983ACA /* MainCusomButton.swift */,
-				841121DF28DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -237,7 +246,6 @@
 		DD73E7F228F4219D00931654 /* MDF-6 */ = {
 			isa = PBXGroup;
 			children = (
-				DD73E7F628F426E900931654 /* Extensions */,
 				DD73E7F328F421AD00931654 /* View */,
 			);
 			path = "MDF-6";
@@ -249,15 +257,6 @@
 				DD73E7F428F421E600931654 /* MainTabBarController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		DD73E7F628F426E900931654 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				DD73E7F728F426F900931654 /* UIViewController+Ext.swift */,
-				DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DD73E7F928F42EF400931654 /* Services */ = {
@@ -289,6 +288,7 @@
 		DDB01FCB28BFBC6F00E67A34 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0327CE7228F586610096084C /* Extensions */,
 				DDB01FCC28BFBC7300E67A34 /* Application */,
 				DDB01FCD28BFBC7E00E67A34 /* Scenes */,
 				DD73E7F928F42EF400931654 /* Services */,
@@ -311,24 +311,8 @@
 				84709F6E28D9B0870036A4AB /* MDF-2 */,
 				A0C90E8828C0F79F00630E61 /* MDF-4 */,
 				DD73E7F228F4219D00931654 /* MDF-6 */,
-				DDB01FCE28BFBC8B00E67A34 /* Main */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		DDB01FCE28BFBC8B00E67A34 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				DDB01FCF28BFBC9E00E67A34 /* View */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		DDB01FCF28BFBC9E00E67A34 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,7 +437,7 @@
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
 				A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */,
 				84709F7228D9BC410036A4AB /* FirstPageViewController.swift in Sources */,
-				841121E028DA4ADA00983ACA /* UIViewExtensionWithCoreGraphics.swift in Sources */,
+				841121E028DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
 				0327CE7128F2E7680096084C /* AchievementsModel.swift in Sources */,
 				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,
 				844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */,
