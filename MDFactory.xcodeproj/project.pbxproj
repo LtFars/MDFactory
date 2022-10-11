@@ -27,6 +27,7 @@
 		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
 		A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D9872728D3AF380040C9E5 /* ProgressView.swift */; };
 		DD3C696B28F5A04F001DA207 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD3C696A28F5A04F001DA207 /* GoogleService-Info.plist */; };
+		DD3C696D28F5A5CF001DA207 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */; };
 		DD73E7F528F421E600931654 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F428F421E600931654 /* MainTabBarController.swift */; };
 		DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F728F426F900931654 /* UIViewController+Ext.swift */; };
 		DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FA28F42F3000931654 /* SecureStore.swift */; };
@@ -58,6 +59,7 @@
 		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A0D9872728D3AF380040C9E5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DD3C696A28F5A04F001DA207 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		DD73E7F428F421E600931654 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		DD73E7FA28F42F3000931654 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		DD73E7F928F42EF400931654 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */,
 				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
 			);
 			path = Services;
@@ -451,6 +454,7 @@
 				844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */,
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
+				DD3C696D28F5A5CF001DA207 /* FirebaseService.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */,
 				DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */,
