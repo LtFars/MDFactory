@@ -135,7 +135,35 @@ class LoginPageViewController: UIViewController {
     }
     
     @objc func loginAction() {
-        #warning("Necessary to do some action!")
+        // To access tabBar use
+        // userName: "Admin"
+        // password: "admin"
+
+        let userName = loginTextField.text ?? ""
+        let userPassword = passwordTextField.text ?? ""
+        var validPassword: String? = nil
+
+        let workItem = DispatchWorkItem {
+            do {
+                validPassword = try SecureStore.readPassword(userName: userName)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+
+        DispatchQueue.global(qos: .background).async {
+            workItem.perform()
+        }
+
+        workItem.notify(queue: DispatchQueue.main) {
+            if userPassword == validPassword {
+                guard let window = self.view.window else { return }
+                window.switchRootViewController(to: MainTabBarController())
+            } else {
+                // TODO: handle error
+                print("Invalid password")
+            }
+        }
     }
 }
 
@@ -194,5 +222,3 @@ extension LoginPageViewController: UITextFieldDelegate {
         return false
     }
 }
-
-
