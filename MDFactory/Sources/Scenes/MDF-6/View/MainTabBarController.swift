@@ -49,7 +49,7 @@ class MainTabBarController: UITabBarController {
     // MARK: - Private functions -
 
     private func setupViewControllers() {
-        mainViewController = UIViewController()
+        mainViewController = MainPageViewController()
         mainViewController?.setupTabBar(title: "Главная",
                                         imageName: "circle.grid.cross",
                                         selectedImageName: "circle.grid.cross.fill",
