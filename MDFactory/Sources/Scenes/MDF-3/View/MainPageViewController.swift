@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class MainPage: UIViewController {
+class MainPageViewController: UIViewController {
     static let identifier = "MainPage"
     let userName = "User"
     lazy var layout = getLayout(flag: Model.gridMode)
@@ -189,7 +189,7 @@ class MainPage: UIViewController {
 
 // MARK: - Extensions
 
-extension MainPage: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -238,7 +238,7 @@ extension MainPage: UICollectionViewDataSource, UICollectionViewDelegate {
 
 // MARK: - Metrics
 
-extension MainPage {
+extension MainPageViewController {
     enum Metrics {
         static let topBarRadius: CGFloat = 40
         static let topBarHeight: CGFloat = 233 + 44
