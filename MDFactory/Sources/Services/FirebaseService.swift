@@ -23,6 +23,15 @@ class FirebaseService {
         }
     }
 
+    static func logOut(completion: @escaping (Result<Bool, Error>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(.success(true))
+        } catch let error {
+            completion(.failure(error))
+        }
+    }
+
 }
 
 // MARK: - AuthErrorCode.Code Description
