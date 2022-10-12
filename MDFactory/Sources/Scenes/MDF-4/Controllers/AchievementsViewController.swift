@@ -10,12 +10,18 @@ import UIKit
 class AchievementsViewController: UIViewController {
     
     private let achievements = AchievementsModel.mocks
-
-   lazy var stripImageView: UIImageView = {
+    
+    lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 2
-       imageView.backgroundColor = Color.gray.color
+        imageView.layer.cornerRadius = MetricConstraints.cornerRadiusStripImage
+        imageView.backgroundColor = Color.gray.color
         return imageView
+    }()
+    
+    private lazy var stripButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(putSheet), for: .touchUpInside)
+        return button
     }()
     
     lazy var achievementsNameLabel: UILabel = {
@@ -25,7 +31,7 @@ class AchievementsViewController: UIViewController {
         return name
     }()
     
-     lazy var achievementsCollectionView: UICollectionView = {
+    lazy var achievementsCollectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero,
                                           collectionViewLayout:  createLayout())
         collection.backgroundColor = .clear
@@ -37,9 +43,13 @@ class AchievementsViewController: UIViewController {
         return collection
     }()
     
+    @objc func putSheet() {
+        dismiss(animated: true)
+    }
+    
     private func createLayout() -> UICollectionViewLayout {
         
-        let spacing: CGFloat = 16
+        let spacing: CGFloat = MetricCollectionView.spacing
         
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0 / 3.0),
@@ -64,7 +74,7 @@ class AchievementsViewController: UIViewController {
                                       bottom: spacing,
                                       trailing: spacing)
         
-        section.interGroupSpacing = 30
+        section.interGroupSpacing = MetricCollectionView.spacingGroup
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         layout.configuration.scrollDirection = .vertical
@@ -81,7 +91,7 @@ class AchievementsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        achievementsCollectionView.frame = view.bounds.offsetBy(dx: 0, dy: 50)
+        achievementsCollectionView.frame = view.bounds.offsetBy(dx: 0, dy: MetricConstraints.achievementsCollectionTop)
     }
     
     private func setupView() {
@@ -93,6 +103,7 @@ class AchievementsViewController: UIViewController {
         view.addSubview(achievementsCollectionView)
         view.addSubview(stripImageView)
         view.addSubview(achievementsNameLabel)
+        view.addSubview(stripButton)
     }
     
     private func setupLoyaut() {
@@ -101,27 +112,39 @@ class AchievementsViewController: UIViewController {
             make.trailing.leading.bottom.equalTo(0)
         }
         
-                stripImageView.snp.makeConstraints { make in
-                    make.top.equalTo(view.snp.top).offset(MetricConstraints.stripTop)
-                    make.centerX.equalToSuperview()
-                    make.height.equalTo(MetricConstraints.stripHeight)
-                    make.width.equalTo(MetricConstraints.stripWidth)
-                }
-                
-                achievementsNameLabel.snp.makeConstraints { make in
-                    make.centerX.equalToSuperview()
-                    make.top.equalTo(MetricConstraints.achievementsNameTop)
-                }
+        stripImageView.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top).offset(MetricConstraints.stripTop)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(MetricConstraints.stripHeight)
+            make.width.equalTo(MetricConstraints.stripWidth)
+        }
+        
+        stripButton.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top).offset(MetricConstraints.stripTop)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(MetricConstraints.stripHeight)
+            make.width.equalTo(MetricConstraints.stripWidth)
+        }
+        
+        achievementsNameLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(MetricConstraints.achievementsNameTop)
+        }
     }
     
     enum MetricConstraints {
         static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
-        static var stripHeight: CGFloat = 4
+        static var stripHeight: CGFloat = 6
         static var stripWidth: CGFloat = UIScreen.main.bounds.width / 8
         static var stripTop: CGFloat = 14
         static var achievementsNameTop: CGFloat = 39
         static var cornerRadiusStripImage: CGFloat = 2
         static var achievementsCollectionTop: CGFloat = 50
+    }
+    
+    enum MetricCollectionView {
+        static var spacing: CGFloat = 16
+        static var spacingGroup: CGFloat = 30
     }
     
 }
