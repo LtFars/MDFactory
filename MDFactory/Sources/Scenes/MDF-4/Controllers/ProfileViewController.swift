@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UISheetPresentationControllerDelegate {
     
-//    private let achievements = AchievementsModel.mocks
+//    private let achievementsCollectionView = AchievementsViewController()
     private let sheetProfileView = SheetProfileView()
     
     private let defaultHeight: CGFloat = UIScreen.main.bounds.height / 3.5
@@ -20,36 +20,39 @@ class ProfileViewController: UIViewController {
     private var containerViewHeightConstraint: NSLayoutConstraint?
     private var containerViewBottomConstraint: NSLayoutConstraint?
     
-    private lazy var sheetImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
-        imageView.layer.cornerRadius = Metric.cornerRadiusView
-        imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+//    private lazy var sheetImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
+//        imageView.layer.cornerRadius = Metric.cornerRadiusView
+//        imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+//        imageView.clipsToBounds = true
+//        return imageView
+//    }()
     
-    private lazy var testButton: UIButton = {
-        var button = UIButton()
-        button.setTitle("Press", for: .normal)
-        button.backgroundColor = .green
-        button.addTarget(self, action: #selector(setSheet), for: .touchUpInside)
+    private lazy var achievementsButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.backgroundColor = Color.gray.color
+        button.setTitle("Achievements", for: .normal)
+        button.tintColor = .black
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(showAchievements), for: .touchUpInside)
         return button
     }()
     
-    private lazy var stripImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.cornerRadius = MetricConstraints.cornerRadiusStripImage
-        imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
-        return imageView
-    }()
-    
-    private lazy var achievementsNameLabel: UILabel = {
-        var name = UILabel()
-        name.text = "Achievements"
-        name.font = .systemFont(ofSize: 21, weight: .medium)
-        return name
-    }()
+//    private lazy var stripImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.layer.cornerRadius = MetricConstraints.cornerRadiusStripImage
+//        imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
+//        return imageView
+//    }()
+//
+//    private lazy var achievementsNameLabel: UILabel = {
+//        var name = UILabel()
+//        name.text = "Achievements"
+//        name.font = .systemFont(ofSize: 21, weight: .medium)
+//        return name
+//    }()
     
 //    private lazy var achievementsCollectionView: UICollectionView = {
 //        let collection = UICollectionView(frame: .zero,
@@ -73,62 +76,76 @@ class ProfileViewController: UIViewController {
     
 //    override func viewDidLayoutSubviews() {
 //        super.viewDidLayoutSubviews()
-////        achievementsCollectionView.frame = view.bounds
+//        achievementsCollectionView.achievementsCollectionView.frame = view.bounds
 //    }
     
     private func setupHierarchy() {
         view.addSubview(sheetProfileView)
-        view.addSubview(testButton)
-    
+        view.addSubview(achievementsButton)
 //        view.addSubview(sheetImageView)
-//        view.addSubview(stripImageView)
-//        sheetImageView.addSubview(achievementsCollectionView)
-//        sheetImageView.addSubview(achievementsNameLabel)
+//        sheetImageView.addSubview(achievementsCollectionView.achievementsNameLabel)
+//        sheetImageView.addSubview(achievementsCollectionView.achievementsCollectionView)
+//        sheetImageView.addSubview(achievementsCollectionView.stripImageView)
     }
     
-    @objc func setSheet() {
+    @objc func showAchievements() {
+        let bounds = achievementsButton.bounds
+        UIView.animate(withDuration: 1,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 11,
+                       options: .curveEaseInOut) {
+            self.achievementsButton.bounds = CGRect(x: bounds.origin.x - 30,
+                                                    y: bounds.origin.y,
+                                                    width: bounds.width + 60,
+                                                    height: bounds.height)
+            self.achievementsButton.titleLabel?.bounds = CGRect(x: bounds.origin.x - 30,
+                                                                y: bounds.origin.y,
+                                                                width: bounds.width + 60,
+                                                                height: bounds.height)
+        }
         
         let file = AchievementsViewController()
         if let sheet = file.sheetPresentationController {
             sheet.detents = [.large(), .medium()]
         }
-        present(file, animated: true)
+        navigationController?.present(file, animated: true)
     }
     
-    private func createLayout() -> UICollectionViewLayout {
-        
-        let spacing: CGFloat = MetricCollectionView.spacing
-        
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0 / 3.0),
-            heightDimension: .fractionalHeight(1.0))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = .init(top: spacing,
-                                   leading: spacing,
-                                   bottom: spacing,
-                                   trailing: spacing)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(1.0 / 3.0))
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                       subitem: item, count: 3)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 15,
-                                      leading: spacing,
-                                      bottom: spacing,
-                                      trailing: spacing)
-        
-        section.interGroupSpacing = MetricCollectionView.spacingGroup
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        layout.configuration.scrollDirection = .vertical
-        
-        return layout
-    }
+//    private func createLayout() -> UICollectionViewLayout {
+//
+//        let spacing: CGFloat = MetricCollectionView.spacing
+//
+//        let itemSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(1.0 / 3.0),
+//            heightDimension: .fractionalHeight(1.0))
+//
+//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//        item.contentInsets = .init(top: spacing,
+//                                   leading: spacing,
+//                                   bottom: spacing,
+//                                   trailing: spacing)
+//
+//        let groupSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(1.0),
+//            heightDimension: .fractionalWidth(1.0 / 3.0))
+//
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+//                                                       subitem: item, count: 3)
+//
+//        let section = NSCollectionLayoutSection(group: group)
+//        section.contentInsets = .init(top: 15,
+//                                      leading: spacing,
+//                                      bottom: spacing,
+//                                      trailing: spacing)
+//
+//        section.interGroupSpacing = MetricCollectionView.spacingGroup
+//
+//        let layout = UICollectionViewCompositionalLayout(section: section)
+//        layout.configuration.scrollDirection = .vertical
+//
+//        return layout
+//    }
     
     private func setupLoyaut() {
         
@@ -136,34 +153,38 @@ class ProfileViewController: UIViewController {
             make.bottom.leading.trailing.equalTo(MetricConstraints.sheetConstraintsLeadingBottomTrailing)
         }
         
-        testButton.snp.makeConstraints { make in
+        achievementsButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.top.equalTo(view.snp.top).offset(550)
+            make.height.equalTo(40)
+            make.width.equalTo(140)
+            
         }
         
-//        achievementsCollectionView.snp.makeConstraints { make in
+//        achievementsCollectionView.achievementsCollectionView.snp.makeConstraints { make in
 //            make.trailing.leading.bottom.equalTo(0)
 //            make.top.equalTo(MetricConstraints.achievementsCollectionTop)
-//
 //        }
+//
         
-//        sheetImageView.snp.makeConstraints { make in
+        
+//       sheetImageView.snp.makeConstraints { make in
 //            make.bottom.leading.trailing.equalTo(MetricConstraints.sheetConstraintsLeadingBottomTrailing)
 //        }
-//
-//        stripImageView.snp.makeConstraints { make in
+
+//        achievementsCollectionView.stripImageView.snp.makeConstraints { make in
 //            make.top.equalTo(sheetImageView.snp.top).offset(MetricConstraints.stripTop)
 //            make.centerX.equalToSuperview()
 //            make.height.equalTo(MetricConstraints.stripHeight)
 //            make.width.equalTo(MetricConstraints.stripWidth)
 //        }
         
-//        achievementsNameLabel.snp.makeConstraints { make in
+//        achievementsCollectionView.achievementsNameLabel.snp.makeConstraints { make in
 //            make.centerX.equalToSuperview()
 //            make.top.equalTo(MetricConstraints.achievementsNameTop)
 //        }
         
-        containerViewHeightConstraint = sheetImageView.heightAnchor.constraint(equalToConstant: defaultHeight)
+//        containerViewHeightConstraint = sheetImageView.heightAnchor.constraint(equalToConstant: defaultHeight)
         
         containerViewHeightConstraint?.isActive = true
         containerViewBottomConstraint?.isActive = true
