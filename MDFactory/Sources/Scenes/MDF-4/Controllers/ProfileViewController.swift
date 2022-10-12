@@ -29,15 +29,6 @@ class ProfileViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var backButton: UIButton = {
-        let button = UIButton(type: .close)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self,
-                         action: #selector(tabActiohButton),
-                         for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = MetricConstraints.cornerRadiusStripImage
@@ -81,7 +72,6 @@ class ProfileViewController: UIViewController {
         view.addSubview(sheetProfileView)
         view.addSubview(sheetImageView)
         view.addSubview(stripImageView)
-        view.addSubview(backButton)
         sheetImageView.addSubview(achievementsCollectionView)
         sheetImageView.addSubview(achievementsNameLabel)
     }
@@ -127,13 +117,9 @@ class ProfileViewController: UIViewController {
             make.bottom.leading.trailing.equalTo(MetricConstraints.sheetConstraintsLeadingBottomTrailing)
         }
         
-        backButton.snp.makeConstraints { make in
-            make.top.equalTo(MetricConstraints.topBackButton)
-            make.leading.equalTo(MetricConstraints.leadingBackButton)
-        }
-        
         achievementsCollectionView.snp.makeConstraints { make in
-            make.top.trailing.leading.bottom.equalTo(0)
+            make.trailing.leading.bottom.equalTo(0)
+            make.top.equalTo(MetricConstraints.achievementsCollectionTop)
             
         }
         
@@ -212,14 +198,13 @@ class ProfileViewController: UIViewController {
     
     enum MetricConstraints {
         static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
-        static var topBackButton: CGFloat = 8
-        static var leadingBackButton: CGFloat = 20
         static var stripHeight: CGFloat = 3
         static var stripWidth: CGFloat = UIScreen.main.bounds.width / 9
         static var stripTop: CGFloat = 14
         static var achievementsNameTop: CGFloat = 39
         static var cornerRadiusSheetImage: CGFloat = 40
         static var cornerRadiusStripImage: CGFloat = 2
+        static var achievementsCollectionTop: CGFloat = 50
     }
     
     enum MetricCollectionView {
