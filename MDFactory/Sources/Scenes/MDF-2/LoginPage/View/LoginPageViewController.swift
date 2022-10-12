@@ -30,6 +30,7 @@ class LoginPageViewController: UIViewController {
     private lazy var loginTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "E-mail")
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
         textField.returnKeyType = UIReturnKeyType.next
         textField.tag = 0
         return textField
@@ -146,7 +147,7 @@ class LoginPageViewController: UIViewController {
             return
         }
 
-        FirebaseService.signIn(email: email, password: password) { [weak self] result in
+        FirebaseService().signIn(email: email, password: password) { [weak self] result in
             switch result {
             case .success:
                 guard let window = self?.view.window else { return }

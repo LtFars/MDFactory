@@ -10,7 +10,11 @@ import FirebaseAuth
 
 class FirebaseService {
 
-    static func signIn(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    static let shared = FirebaseService()
+
+    private let user = Auth.auth().currentUser
+
+    func signIn(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             guard error == nil else {
                 if let errorCode = AuthErrorCode.Code(rawValue: error!._code) {
@@ -23,12 +27,57 @@ class FirebaseService {
         }
     }
 
-    static func logOut(completion: @escaping (Result<Bool, Error>) -> Void) {
+    func logOut(completion: @escaping (Result<Bool, Error>) -> Void) {
         do {
             try Auth.auth().signOut()
             completion(.success(true))
         } catch let error {
             completion(.failure(error))
+        }
+    }
+
+    func deleteUser(completion: @escaping (Result<Bool, Error>) -> Void) {
+        user?.delete { error in
+            guard error == nil else {
+                if let errorCode = AuthErrorCode.Code(rawValue: error!._code) {
+                    completion(.failure(errorCode))
+                }
+                return
+            }
+
+            completion(.success(true))
+        }
+    }
+
+    func updatePassword(to password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        user?.updatePassword(to: password) { error in
+            guard error == nil else {
+                if let errorCode = AuthErrorCode.Code(rawValue: error!._code) {
+                    completion(.failure(errorCode))
+                }
+                return
+            }
+
+            completion(.success(true))
+        }
+    }
+
+    func sendMessageToResetPassword(completion: @escaping (Result<Bool, Error>) -> Void) {
+        guard let email = user?.email else {
+            let error = NSError(domain: "Ошибка с адресом электронной почты", code: -1)
+            completion(.failure(error))
+            return
+        }
+
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            guard error == nil else {
+                if let errorCode = AuthErrorCode.Code(rawValue: error!._code) {
+                    completion(.failure(errorCode))
+                }
+                return
+            }
+
+            completion(.success(true))
         }
     }
 
@@ -53,6 +102,8 @@ extension AuthErrorCode.Code: LocalizedError {
             return NSLocalizedString("Пароль должен содержать не менее 6 символов.", comment: "")
         case .wrongPassword:
             return NSLocalizedString("Введён неверный неверный.", comment: "")
+        case .requiresRecentLogin:
+            return NSLocalizedString("Обновление пароля пользователя является важной операцией с точки зрения безопасности, для которой требуется недавний вход пользователя в систему. Требуется повторный вход в систему..", comment: "")
         default:
             return "Возникла непредвиденная ошибка"
         }
