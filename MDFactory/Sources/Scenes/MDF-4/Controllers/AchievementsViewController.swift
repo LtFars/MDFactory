@@ -11,21 +11,21 @@ class AchievementsViewController: UIViewController {
     
     private let achievements = AchievementsModel.mocks
 
-    private lazy var stripImageView: UIImageView = {
+   lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 2
-        imageView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.9019607843, blue: 0.9529411765, alpha: 1)
+       imageView.backgroundColor = Color.gray.color
         return imageView
     }()
     
-    private lazy var achievementsNameLabel: UILabel = {
+    lazy var achievementsNameLabel: UILabel = {
         var name = UILabel()
         name.text = "Achievements"
         name.font = .systemFont(ofSize: 21, weight: .medium)
         return name
     }()
     
-    private lazy var achievementsCollectionView: UICollectionView = {
+     lazy var achievementsCollectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero,
                                           collectionViewLayout:  createLayout())
         collection.backgroundColor = .clear
@@ -36,6 +36,7 @@ class AchievementsViewController: UIViewController {
         collection.isScrollEnabled = true
         return collection
     }()
+    
     private func createLayout() -> UICollectionViewLayout {
         
         let spacing: CGFloat = 16
