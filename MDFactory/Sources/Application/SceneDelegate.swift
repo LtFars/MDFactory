@@ -16,12 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController(rootViewController: FirstPageViewController())
         
-        do {
-            try SecureStore.save(userName: "", password: "")
-        } catch {
-            print(error.localizedDescription)
-        }
-        
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
