@@ -20,7 +20,7 @@ class AchievementsViewController: UIViewController {
     
     private lazy var stripButton: UIButton = {
         var button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(putSheet), for: .touchUpInside)
+        button.addTarget(self, action: #selector(putSheet), for: .allTouchEvents)
         return button
     }()
     
