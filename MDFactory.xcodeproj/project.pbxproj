@@ -221,6 +221,7 @@
 		8A07E5FF28FC6E66009A4E12 /* MDF-5 */ = {
 			isa = PBXGroup;
 			children = (
+				8A07E60228FC70F2009A4E12 /* View */,
 				8A07E619290EC45E009A4E12 /* Enums */,
 				8A07E60529040EF5009A4E12 /* Assembly */,
 				8A07E611290A72A6009A4E12 /* ChangePasswordPage */,
