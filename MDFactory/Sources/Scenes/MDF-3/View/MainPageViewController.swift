@@ -4,8 +4,8 @@ import SnapKit
 class MainPageViewController: UIViewController {
     static let identifier = "MainPage"
     let userName = "User"
-    lazy var layout = getLayout(flag: Model.gridMode)
-    var model: [ItemForMain] = Model().itemForCollection()
+    lazy var layout = getLayout(flag: MainPageModel.gridMode)
+    var model: [ItemForMain] = MainPageModel().itemForCollection()
     
     // MARK: - Top bar
     
@@ -214,7 +214,7 @@ extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollection.dequeueReusableCell(
-            withReuseIdentifier: Model.gridMode ? CollectionViewCellGrid.identifier : CollectionViewCellList.identifier,
+            withReuseIdentifier: MainPageModel.gridMode ? CollectionViewCellGrid.identifier : CollectionViewCellList.identifier,
             for: indexPath
         ) as? CollectionViewCell else {
             return UICollectionViewCell()
@@ -238,7 +238,7 @@ extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDe
             }
             header.configure()
             header.changeViewCollectionCompletion = { [unowned self] in
-                layout = getLayout(flag: Model.gridMode)
+                layout = getLayout(flag: MainPageModel.gridMode)
                 self.mainCollection.reloadItems(at: self.mainCollection.indexPathsForVisibleItems)
                 self.mainCollection.setCollectionViewLayout(layout, animated: true)
             }

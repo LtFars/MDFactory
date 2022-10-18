@@ -10,7 +10,7 @@
 		0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9728F5A21C0096084C /* UIColor+Extension.swift */; };
 		0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9B28F5A2510096084C /* CollectionViewCellList.swift */; };
 		0327CEA028F5A2510096084C /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9C28F5A2510096084C /* HeaderCollectionView.swift */; };
-		0327CEA128F5A2510096084C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9D28F5A2510096084C /* Model.swift */; };
+		0327CEA128F5A2510096084C /* MainPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9D28F5A2510096084C /* MainPageModel.swift */; };
 		0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9E28F5A2510096084C /* MainPageViewController.swift */; };
 		0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C2024428BA6DC100E5FFF3 /* AppDelegate.swift */; };
 		0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841121DF28DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift */; };
@@ -63,7 +63,7 @@
 		0327CE9728F5A21C0096084C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0327CE9B28F5A2510096084C /* CollectionViewCellList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCellList.swift; sourceTree = "<group>"; };
 		0327CE9C28F5A2510096084C /* HeaderCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
-		0327CE9D28F5A2510096084C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0327CE9D28F5A2510096084C /* MainPageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageModel.swift; sourceTree = "<group>"; };
 		0327CE9E28F5A2510096084C /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		03C2024128BA6DC100E5FFF3 /* MDFactory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDFactory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C2024428BA6DC100E5FFF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +147,10 @@
 		0327CE9928F5A2300096084C /* MDF-3 */ = {
 			isa = PBXGroup;
 			children = (
+				BA62B08528FEC2CF00A22370 /* Assembler */,
 				0327CE9A28F5A2380096084C /* View */,
+				BA62B08628FEC2EF00A22370 /* Presenter */,
+				0327CEB628F5A41D0096084C /* Model */,
 			);
 			path = "MDF-3";
 			sourceTree = "<group>";
@@ -157,7 +160,6 @@
 			children = (
 				0327CEB828F5A4300096084C /* Header */,
 				0327CEB728F5A4260096084C /* Cell */,
-				0327CEB628F5A41D0096084C /* Model */,
 				0327CE9E28F5A2510096084C /* MainPageViewController.swift */,
 			);
 			path = View;
@@ -166,7 +168,7 @@
 		0327CEB628F5A41D0096084C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0327CE9D28F5A2510096084C /* Model.swift */,
+				0327CE9D28F5A2510096084C /* MainPageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -340,6 +342,20 @@
 				1347F47AC005B057B07830F4 /* Pods-MDFactory.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BA62B08528FEC2CF00A22370 /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
+		BA62B08628FEC2EF00A22370 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		BADD53EA28C61FFB0084419D /* Extension */ = {
@@ -577,7 +593,7 @@
 				0327CEB428F5A34A0096084C /* MainTabBarController.swift in Sources */,
 				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
 				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
-				0327CEA128F5A2510096084C /* Model.swift in Sources */,
+				0327CEA128F5A2510096084C /* MainPageModel.swift in Sources */,
 				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
 				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
 				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
