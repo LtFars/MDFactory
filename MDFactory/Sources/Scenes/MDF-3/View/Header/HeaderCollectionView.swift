@@ -75,7 +75,7 @@ class HeaderCollectionView: UICollectionReusableView {
     }
     
     func changeMode() {
-        if Model.gridMode {
+        if MainPageModel.gridMode {
             buttonRow.backgroundColor = UIColor(hex: "#00000000")
             buttonGrid.backgroundColor = UIColor(hex: "#E0E6F3FF")
             changeViewCollectionCompletion?()
@@ -92,9 +92,9 @@ class HeaderCollectionView: UICollectionReusableView {
     
     @objc func changeMode(_ sender: UIButton) {
         if sender == buttonGrid {
-            Model.gridMode = true
+            MainPageModel.gridMode = true
         } else {
-            Model.gridMode = false
+            MainPageModel.gridMode = false
         }
         changeMode()
     }
