@@ -6,9 +6,9 @@ class CollectionViewCellGrid: UICollectionViewCell, CollectionViewCellProtocol {
     
     private lazy var cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
         view.layer.cornerRadius = 20
         return view
+        view.backgroundColor = .white
     }()
     
     private let image: UIImageView = {

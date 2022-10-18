@@ -166,6 +166,7 @@ class MainPageViewController: UIViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: HeaderCollectionView.identifier
         )
+        
         collectionView.backgroundColor = .clear
         collectionView.isUserInteractionEnabled = true
         mainCollection = collectionView
@@ -277,4 +278,8 @@ extension MainPageViewController {
         static let greetingsLabelFontSize: CGFloat = 20
         static let continueLabelFontSize: CGFloat = 28
     }
+}
+
+protocol CollectionViewCell: UICollectionViewCell {
+    func configure(item: ItemForMain)
 }

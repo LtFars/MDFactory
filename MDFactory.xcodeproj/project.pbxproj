@@ -607,6 +607,7 @@
 			files = (
 				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
 				0327CEA528F5A34A0096084C /* UIViewController+Extension.swift in Sources */,
+				BA62B08228F8CA0F00A22370 /* CollectionViewCellGrid.swift in Sources */,
 				0327CEA628F5A34A0096084C /* UIWindow+Extension.swift in Sources */,
 				0327CEA728F5A34A0096084C /* CustomLoginTextField.swift in Sources */,
 				0327CEA828F5A34A0096084C /* LoginPageViewController.swift in Sources */,
@@ -625,7 +626,7 @@
 				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
 				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
 				0327CEA128F5A2510096084C /* Model.swift in Sources */,
-				0327CE9F28F5A2510096084C /* CollectionViewCell.swift in Sources */,
+				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
 				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
 				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
 				0327CEA028F5A2510096084C /* HeaderCollectionView.swift in Sources */,
