@@ -5,7 +5,6 @@ class MainPageViewController: UIViewController {
     static let identifier = "MainPage"
     let userName = "User"
     lazy var layout = getLayout(flag: Model.gridMode)
-    
     var model: [ItemForMain] = Model().itemForCollection()
     
     // MARK: - Top bar
@@ -53,7 +52,7 @@ class MainPageViewController: UIViewController {
     }
     
     // MARK: - Bottom bar
-    
+
     private let bottomBar: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -72,10 +71,14 @@ class MainPageViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: Metrics.backgroungColorHex)
-        navigationController?.navigationBar.isHidden = true
         configureCollectionView()
         mainCollection.dataSource = self
         setupHierachy()
@@ -125,16 +128,16 @@ class MainPageViewController: UIViewController {
         
         continueLabel.text = "Continue to learn Swift"
         bottomBar.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(Metrics.topBarRadius / 2)
+            make.bottom.equalToSuperview()
             make.left.right.equalToSuperview()
-            make.height.equalTo((navigationController?.tabBarController?.tabBar.frame.height ?? 0) + Metrics.topBarRadius * 2)
+            make.height.equalTo(Metrics.tabBarHeight)
         }
         
         conteinerView.backgroundColor = view.backgroundColor
         conteinerView.snp.makeConstraints { make in
             make.top.equalTo(topBar.snp.bottom)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(bottomBar.snp.top).offset(Metrics.topBarRadius)
+            make.bottom.equalTo(bottomBar.snp.top)
         }
         
         mainCollection.snp.makeConstraints { make in
@@ -236,7 +239,8 @@ extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDe
             header.configure()
             header.changeViewCollectionCompletion = { [unowned self] in
                 layout = getLayout(flag: Model.gridMode)
-                mainCollection.setCollectionViewLayout(layout, animated: true)
+                self.mainCollection.reloadItems(at: self.mainCollection.indexPathsForVisibleItems)
+                self.mainCollection.setCollectionViewLayout(layout, animated: true)
             }
             return header
         } else {
@@ -253,6 +257,7 @@ extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension MainPageViewController {
     enum Metrics {
+        static var tabBarHeight: CGFloat = 98
         static let topBarRadius: CGFloat = 40
         static let topBarHeight: CGFloat = 233 + 44
         static let backgroungColorHex: String = "#F2F6FCFF"
