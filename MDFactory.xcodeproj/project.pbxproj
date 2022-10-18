@@ -187,7 +187,6 @@
 			children = (
 				0327CEB828F5A4300096084C /* Header */,
 				0327CEB728F5A4260096084C /* Cell */,
-				0327CEB628F5A41D0096084C /* Model */,
 				0327CE9E28F5A2510096084C /* MainPageViewController.swift */,
 			);
 			path = View;
@@ -621,7 +620,7 @@
 				0327CEB428F5A34A0096084C /* MainTabBarController.swift in Sources */,
 				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
 				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
-				0327CEA128F5A2510096084C /* Model.swift in Sources */,
+				0327CEA128F5A2510096084C /* MainPageModel.swift in Sources */,
 				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
 				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
 				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
