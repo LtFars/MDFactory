@@ -1,8 +1,8 @@
 import UIKit
 import SnapKit
 
-class CollectionViewCell: UICollectionViewCell {
-    static let identifier = "CollectionViewCell"
+class CollectionViewCellList: UICollectionViewCell, CollectionViewCell {
+    static let identifier = "CollectionViewCellList"
     
     private lazy var cellView: UIButton = {
         let button = UIButton(type: .custom)
@@ -60,40 +60,24 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func setupLayout() {
-        if Model.gridMode {
-            cellView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            image.snp.makeConstraints { make in
-                make.left.equalToSuperview().offset(15)
-                make.height.width.equalTo(40)
-                make.top.equalToSuperview().offset(30)
-            }
-            stack.snp.makeConstraints { make in
-                make.left.equalToSuperview().offset(15)
-                make.top.equalTo(image.snp.bottom).offset(10)
-                make.width.equalToSuperview().offset(-10)
-            }
-        } else {
-            cellView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            image.snp.makeConstraints { make in
-                make.left.equalToSuperview().offset(30)
-                make.height.width.equalTo(40)
-                make.centerY.equalToSuperview()
-            }
-            stack.snp.makeConstraints { make in
-                make.left.equalTo(image.snp.right).offset(30)
-                make.centerY.equalToSuperview()
-            }
+        cellView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        image.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(30)
+            make.height.width.equalTo(40)
+            make.centerY.equalToSuperview()
+        }
+        stack.snp.makeConstraints { make in
+            make.left.equalTo(image.snp.right).offset(30)
+            make.centerY.equalToSuperview()
         }
     }
     
     func configure(item: ItemForMain) {
-        layoutIfNeeded()
         label.text = item.title
         image.image = item.image
         sublabel.text = item.description
     }
 }
+

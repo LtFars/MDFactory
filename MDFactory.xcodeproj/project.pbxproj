@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9728F5A21C0096084C /* UIColor+Extension.swift */; };
-		0327CE9F28F5A2510096084C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9B28F5A2510096084C /* CollectionViewCell.swift */; };
+		0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9B28F5A2510096084C /* CollectionViewCellList.swift */; };
 		0327CEA028F5A2510096084C /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9C28F5A2510096084C /* HeaderCollectionView.swift */; };
 		0327CEA128F5A2510096084C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9D28F5A2510096084C /* Model.swift */; };
 		0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327CE9E28F5A2510096084C /* MainPageViewController.swift */; };
@@ -35,6 +35,7 @@
 		03C2024E28BA6DC400E5FFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024D28BA6DC400E5FFF3 /* Assets.xcassets */; };
 		03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024F28BA6DC400E5FFF3 /* LaunchScreen.storyboard */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
+		BA62B08228F8CA0F00A22370 /* CollectionViewCellGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62B08128F8CA0F00A22370 /* CollectionViewCellGrid.swift */; };
 		BA2F24B228C730C30043E253 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F24B128C730C30043E253 /* HeaderCollectionView.swift */; };
 		BA2F24B428C77F390043E253 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F24B328C77F390043E253 /* Model.swift */; };
 		BADD53C628C0A1EE0084419D /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD53C528C0A1EE0084419D /* MainPage.swift */; };
@@ -64,7 +65,7 @@
 /* Begin PBXFileReference section */
 		0327CE7028F2E7680096084C /* AchievementsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementsModel.swift; sourceTree = "<group>"; };
 		0327CE9728F5A21C0096084C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		0327CE9B28F5A2510096084C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		0327CE9B28F5A2510096084C /* CollectionViewCellList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCellList.swift; sourceTree = "<group>"; };
 		0327CE9C28F5A2510096084C /* HeaderCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
 		0327CE9D28F5A2510096084C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0327CE9E28F5A2510096084C /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		DD64000A28F6DD2900C68EAE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		BA2F24B128C730C30043E253 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
 		BA2F24B328C77F390043E253 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BA62B08128F8CA0F00A22370 /* CollectionViewCellGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellGrid.swift; sourceTree = "<group>"; };
 		BADD53C528C0A1EE0084419D /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		BADD53ED28C6291E0084419D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		DD73E7F428F421E600931654 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -179,7 +181,8 @@
 		0327CEB728F5A4260096084C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0327CE9B28F5A2510096084C /* CollectionViewCell.swift */,
+				0327CE9B28F5A2510096084C /* CollectionViewCellList.swift */,
+				BA62B08128F8CA0F00A22370 /* CollectionViewCellGrid.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 			files = (
 				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
 				0327CEA528F5A34A0096084C /* UIViewController+Extension.swift in Sources */,
+				BA62B08228F8CA0F00A22370 /* CollectionViewCellGrid.swift in Sources */,
 				0327CEA628F5A34A0096084C /* UIWindow+Extension.swift in Sources */,
 				0327CEA728F5A34A0096084C /* CustomLoginTextField.swift in Sources */,
 				0327CEA828F5A34A0096084C /* LoginPageViewController.swift in Sources */,
@@ -600,7 +604,7 @@
 				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
 				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
 				0327CEA128F5A2510096084C /* Model.swift in Sources */,
-				0327CE9F28F5A2510096084C /* CollectionViewCell.swift in Sources */,
+				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
 				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
 				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
 				0327CEA028F5A2510096084C /* HeaderCollectionView.swift in Sources */,

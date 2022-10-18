@@ -30,12 +30,12 @@ class MainPageViewController: UIViewController {
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.textColor = .black
         return label
     }()
     
     private lazy var profileButton: UIButton = {
         let button = UIButton(type: .system)
-        //button.setImage(UIImage(named: "user"), for: .normal)
         button.backgroundColor = UIColor(hex: Metrics.profileButtonColorHex)
         button.layer.cornerRadius = 14
         button.addTarget(self, action: #selector(openProfile), for: .touchUpInside)
@@ -43,15 +43,13 @@ class MainPageViewController: UIViewController {
     }()
     
     private let profileImage: UIImageView = {
-       let image = UIImageView()
+        let image = UIImageView()
         image.image = UIImage(named: "user")
         return image
     }()
     
     @objc func openProfile() {
-        
-        let tit = UILabel()
-        tit.textColor = .black
+        self.tabBarController?.selectedIndex = 1
     }
     
     // MARK: - Bottom bar
@@ -103,11 +101,13 @@ class MainPageViewController: UIViewController {
             make.top.equalToSuperview().offset(-(Metrics.topBarRadius / 2))
             make.height.equalTo(Metrics.topBarHeight)
         }
+        
         profileButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(Metrics.profileButtonTop)
             make.right.equalToSuperview().offset(Metrics.profileButtonRight)
             make.width.height.equalTo(Metrics.profileButtonSize)
         }
+        
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         profileImage.frame = profileButton.bounds
         greetingsLabel.snp.makeConstraints { make in
@@ -115,24 +115,28 @@ class MainPageViewController: UIViewController {
             make.left.equalToSuperview().offset(Metrics.greetingsLabelLeft)
             make.right.equalToSuperview().offset(-Metrics.greetingsLabelLeft)
         }
+        
         greetingsLabel.text = "Hello \(userName),"
         continueLabel.snp.makeConstraints { make in
             make.top.equalTo(greetingsLabel.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(Metrics.continueLabelLeft)
             make.right.equalToSuperview().offset(-Metrics.continueLabelLeft)
         }
+        
         continueLabel.text = "Continue to learn Swift"
         bottomBar.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(Metrics.topBarRadius / 2)
             make.left.right.equalToSuperview()
             make.height.equalTo((navigationController?.tabBarController?.tabBar.frame.height ?? 0) + Metrics.topBarRadius * 2)
         }
+        
         conteinerView.backgroundColor = view.backgroundColor
         conteinerView.snp.makeConstraints { make in
             make.top.equalTo(topBar.snp.bottom)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(bottomBar.snp.top).offset(Metrics.topBarRadius)
         }
+        
         mainCollection.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -143,15 +147,23 @@ class MainPageViewController: UIViewController {
             frame: .zero,
             collectionViewLayout: layout
         )
+        
         collectionView.register(
-            CollectionViewCell.self,
-            forCellWithReuseIdentifier: CollectionViewCell.identifier
+            CollectionViewCellList.self,
+            forCellWithReuseIdentifier: CollectionViewCellList.identifier
         )
+        
+        collectionView.register(
+            CollectionViewCellGrid.self,
+            forCellWithReuseIdentifier: CollectionViewCellGrid.identifier
+        )
+        
         collectionView.register(
             HeaderCollectionView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: HeaderCollectionView.identifier
         )
+        
         collectionView.backgroundColor = .clear
         mainCollection = collectionView
     }
@@ -165,6 +177,7 @@ class MainPageViewController: UIViewController {
                 width: (view.frame.size.width / 2) - 40,
                 height: 200
             )
+            
             layout.minimumLineSpacing = 15
             layout.headerReferenceSize = CGSize(
                 width: view.frame.size.width,
@@ -177,6 +190,7 @@ class MainPageViewController: UIViewController {
                 width: view.frame.size.width - 60,
                 height: 95
             )
+            
             layout.minimumLineSpacing = 15
             layout.headerReferenceSize = CGSize(
                 width: view.frame.size.width,
@@ -192,13 +206,12 @@ class MainPageViewController: UIViewController {
 extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollection.dequeueReusableCell(
-            withReuseIdentifier: CollectionViewCell.identifier,
+            withReuseIdentifier: Model.gridMode ? CollectionViewCellGrid.identifier : CollectionViewCellList.identifier,
             for: indexPath
         ) as? CollectionViewCell else {
             return UICollectionViewCell()
@@ -245,7 +258,7 @@ extension MainPageViewController {
         static let backgroungColorHex: String = "#F2F6FCFF"
         static let profileButtonColorHex: String = "#E0E6F3FF"
         static let greetingsLabelLeft: CGFloat = 35
-        static let greetingsLabelTop: CGFloat = 133 + 44
+        static let greetingsLabelTop: CGFloat =  133 + 44
         static let continueLabelLeft: CGFloat = 35
         static let profileButtonSize: CGFloat = 43
         static let profileButtonRight: CGFloat = -30
@@ -253,4 +266,8 @@ extension MainPageViewController {
         static let cellCount: CGFloat = 4
         static let containerHeight: CGFloat = cellCount * 110
     }
+}
+
+protocol CollectionViewCell: UICollectionViewCell {
+    func configure(item: ItemForMain)
 }
