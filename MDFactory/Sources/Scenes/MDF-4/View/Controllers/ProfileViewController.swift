@@ -12,6 +12,8 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
     
     private let sheetProfileView = SheetProfileView()
     
+    var presenter: ProfileViewControllerOutput?
+    
     private let defaultHeight: CGFloat = UIScreen.main.bounds.height / 3.5
     private let dismissibleHeight: CGFloat = 100
     private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height * 0.5
@@ -32,9 +34,14 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .clear
         setupHierarchy()
         setupLoyaut()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        view.backgroundColor = #colorLiteral(red: 0.3449338675, green: 0.3682180047, blue: 0.5184274912, alpha: 0.6555774007)
+        
     }
   
     private func setupHierarchy() {

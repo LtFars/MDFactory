@@ -22,6 +22,9 @@
 		A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E312228CB8C5500EC6FA5 /* ColorView.swift */; };
 		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
 		A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */; };
+		A09372DB28FF29B900C5C121 /* ProfileScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09372DA28FF29B900C5C121 /* ProfileScreenAssembly.swift */; };
+		A09372DD28FF2AAE00C5C121 /* ProfileScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09372DC28FF2AAE00C5C121 /* ProfileScreenPresenter.swift */; };
+		A09372E028FF2B4B00C5C121 /* ProfileViewControllerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09372DF28FF2B4B00C5C121 /* ProfileViewControllerProtocols.swift */; };
 		A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDD45028C3AA1B00786300 /* ProfileView.swift */; };
 		A0BF832828C67C32001E6469 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF832728C67C32001E6469 /* CircularView.swift */; };
 		A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C90E8928C0F86900630E61 /* ProfileViewController.swift */; };
@@ -58,6 +61,9 @@
 		A00E312228CB8C5500EC6FA5 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProfileView.swift; sourceTree = "<group>"; };
 		A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		A09372DA28FF29B900C5C121 /* ProfileScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenAssembly.swift; sourceTree = "<group>"; };
+		A09372DC28FF2AAE00C5C121 /* ProfileScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenPresenter.swift; sourceTree = "<group>"; };
+		A09372DF28FF2B4B00C5C121 /* ProfileViewControllerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerProtocols.swift; sourceTree = "<group>"; };
 		A0BDD45028C3AA1B00786300 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A0BF832728C67C32001E6469 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -203,10 +209,35 @@
 		A04C036E28D8EE3E004E4D80 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A09372DE28FF2B1A00C5C121 /* Protocols */,
 				A0C90E8928C0F86900630E61 /* ProfileViewController.swift */,
 				A0D96F9628F712E00071E255 /* AchievementsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A09372D828FF28EA00C5C121 /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				A09372DA28FF29B900C5C121 /* ProfileScreenAssembly.swift */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
+		A09372D928FF292F00C5C121 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A09372DC28FF2AAE00C5C121 /* ProfileScreenPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A09372DE28FF2B1A00C5C121 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A09372DF28FF2B4B00C5C121 /* ProfileViewControllerProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		A0B6209C28CFDDFD00BB5192 /* Enums */ = {
@@ -221,6 +252,8 @@
 		A0BDD44D28C3904800786300 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A0B6209C28CFDDFD00BB5192 /* Enums */,
+				A04C036E28D8EE3E004E4D80 /* Controllers */,
 				A0D9872628D3AF0C0040C9E5 /* Circular */,
 				A0BDD45028C3AA1B00786300 /* ProfileView.swift */,
 				A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */,
@@ -232,9 +265,9 @@
 		A0C90E8828C0F79F00630E61 /* MDF-4 */ = {
 			isa = PBXGroup;
 			children = (
+				A09372D928FF292F00C5C121 /* Presenter */,
+				A09372D828FF28EA00C5C121 /* Assembler */,
 				0327CE6F28F2E7500096084C /* Models */,
-				A04C036E28D8EE3E004E4D80 /* Controllers */,
-				A0B6209C28CFDDFD00BB5192 /* Enums */,
 				A0BDD44D28C3904800786300 /* View */,
 			);
 			path = "MDF-4";
@@ -464,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A09372DD28FF2AAE00C5C121 /* ProfileScreenPresenter.swift in Sources */,
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
 				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,
 				DD64000928F6DD1B00C68EAE /* TestViewController.swift in Sources */,
@@ -476,8 +510,10 @@
 				841121E028DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
 				0327CE7128F2E7680096084C /* AchievementsModel.swift in Sources */,
 				A0D96F9728F712E00071E255 /* AchievementsViewController.swift in Sources */,
+				A09372DB28FF29B900C5C121 /* ProfileScreenAssembly.swift in Sources */,
 				A0D96F9928F71BED0071E255 /* Metric.swift in Sources */,
 				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,
+				A09372E028FF2B4B00C5C121 /* ProfileViewControllerProtocols.swift in Sources */,
 				DD64000B28F6DD2900C68EAE /* TestView.swift in Sources */,
 				844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
