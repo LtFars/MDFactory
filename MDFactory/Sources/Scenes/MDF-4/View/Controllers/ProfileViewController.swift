@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        view.backgroundColor = #colorLiteral(red: 0.3449338675, green: 0.3682180047, blue: 0.5184274912, alpha: 0.6555774007)
+        view.backgroundColor = Color.purpl.color
         
     }
     
