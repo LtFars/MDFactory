@@ -209,7 +209,6 @@
 		A04C036E28D8EE3E004E4D80 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A09372DE28FF2B1A00C5C121 /* Protocols */,
 				A0C90E8928C0F86900630E61 /* ProfileViewController.swift */,
 				A0D96F9628F712E00071E255 /* AchievementsViewController.swift */,
 			);
@@ -252,6 +251,7 @@
 		A0BDD44D28C3904800786300 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A09372DE28FF2B1A00C5C121 /* Protocols */,
 				A0B6209C28CFDDFD00BB5192 /* Enums */,
 				A04C036E28D8EE3E004E4D80 /* Controllers */,
 				A0D9872628D3AF0C0040C9E5 /* Circular */,

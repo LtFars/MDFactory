@@ -57,7 +57,7 @@ class MainTabBarController: UITabBarController {
                                         selectedImageName: "circle.grid.cross.fill",
                                         tag: 0)
 
-        profileViewController = ProfileViewController()
+        profileViewController = ProfileScreenAssembly.assembly()
         profileViewController?.setupTabBar(title: "Профиль",
                                            imageName: "person",
                                            selectedImageName: "person.fill",

@@ -9,9 +9,18 @@ import Foundation
 
 final class ProfileScreenPresenter {
     
-    private weak var view: ProfileViewControllerInput?
+    private weak var view: ProfilePresenterOutput?
+    var achievements: [AchievementsModel]?
 
-    init(view: ProfileViewControllerInput) {
+    init(view: ProfilePresenterOutput) {
         self.view = view
+    }
+}
+
+extension ProfileScreenPresenter: ProfilePresenterInput {
+    
+    func getUserAchievements() {
+        achievements = AchievementsModel.mocks
+        view?.provaidUserAchievements(achievements)
     }
 }

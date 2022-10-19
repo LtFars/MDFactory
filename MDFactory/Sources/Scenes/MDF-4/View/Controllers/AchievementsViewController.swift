@@ -9,7 +9,7 @@ import UIKit
 
 class AchievementsViewController: UIViewController {
     
-    private let achievements = AchievementsModel.mocks
+    var achievements: [AchievementsModel]?
     
     lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
@@ -153,15 +153,15 @@ extension AchievementsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return achievements.count
+        return achievements?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let cover = achievements[indexPath.row]
-        print("selected \(cover.name)")
+        let cover = achievements?[indexPath.row]
+        print("selected \(String(describing: cover?.name))")
     }
 }
 
@@ -179,8 +179,8 @@ extension AchievementsViewController: UICollectionViewDataSource {
             
         }
         
-        let model = achievements[indexPath.row]
-        cell.configure(with: model)
+        let model = achievements?[indexPath.row]
+        cell.configure(with: model ?? AchievementsModel(name: "", icon: ""))
         return cell
     }
 }

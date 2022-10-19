@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
     
     private let sheetProfileView = SheetProfileView()
     
-    var presenter: ProfileViewControllerOutput?
+    var presenter: ProfilePresenterInput?
     
     private let defaultHeight: CGFloat = UIScreen.main.bounds.height / 3.5
     private let dismissibleHeight: CGFloat = 100
@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
         button.addTarget(self, action: #selector(showAchievements), for: .touchUpInside)
         return button
     }()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
@@ -43,36 +43,16 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
         view.backgroundColor = #colorLiteral(red: 0.3449338675, green: 0.3682180047, blue: 0.5184274912, alpha: 0.6555774007)
         
     }
-  
+    
     private func setupHierarchy() {
         view.addSubview(sheetProfileView)
         view.addSubview(achievementsButton)
     }
     
     @objc func showAchievements() {
-        let bounds = achievementsButton.bounds
-        UIView.animate(withDuration: 1,
-                       delay: 0,
-                       usingSpringWithDamping: 1,
-                       initialSpringVelocity: 11,
-                       options: .curveEaseInOut) {
-            self.achievementsButton.bounds = CGRect(x: bounds.origin.x - 30,
-                                                    y: bounds.origin.y,
-                                                    width: bounds.width + 60,
-                                                    height: bounds.height)
-            self.achievementsButton.titleLabel?.bounds = CGRect(x: bounds.origin.x - 30,
-                                                                y: bounds.origin.y,
-                                                                width: bounds.width + 60,
-                                                                height: bounds.height)
-        }
-        
-        let achievementsController = AchievementsViewController()
-        if let sheet = achievementsController.sheetPresentationController {
-            sheet.detents = [.large(), .medium()]
-        }
-        navigationController?.present(achievementsController, animated: true)
+        presenter?.getUserAchievements()
     }
-  
+    
     private func setupLoyaut() {
         
         sheetProfileView.snp.makeConstraints { make in
@@ -96,3 +76,36 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
         static var achievementsButtonCornerRadius: CGFloat = 20
     }
 }
+
+extension ProfileViewController: ProfilePresenterOutput {
+   
+    func provaidUserAchievements(_ achievements: [AchievementsModel]?) {
+        
+        let bounds = achievementsButton.bounds
+        UIView.animate(withDuration: 1,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 11,
+                       options: .curveEaseInOut) {
+            self.achievementsButton.bounds = CGRect(x: bounds.origin.x - 30,
+                                                    y: bounds.origin.y,
+                                                    width: bounds.width + 60,
+                                                    height: bounds.height)
+            self.achievementsButton.titleLabel?.bounds = CGRect(x: bounds.origin.x - 30,
+                                                                y: bounds.origin.y,
+                                                                width: bounds.width + 60,
+                                                                height: bounds.height)
+        }
+        
+        let achievementsController = AchievementsViewController()
+        achievementsController.achievements = achievements
+        if let sheet = achievementsController.sheetPresentationController {
+            sheet.detents = [.large(), .medium()]
+        }
+        
+        navigationController?.present(achievementsController, animated: true)
+    }
+    
+    
+}
+
