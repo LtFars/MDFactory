@@ -73,7 +73,7 @@ class MainTabBarController: UITabBarController {
         testViewController?.setupTabBar(title: "FB test",
                                             imageName: "gearshape",
                                             selectedImageName: "gearshape.fill",
-                                            tag: 2)
+                                            tag: 3)
     }
 
     private func setupTabBarAppearance() {
