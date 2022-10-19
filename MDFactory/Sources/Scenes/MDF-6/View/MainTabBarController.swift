@@ -61,7 +61,7 @@ class MainTabBarController: UITabBarController {
                                            selectedImageName: "person.fill",
                                            tag: 1)
 
-        settingsViewController = UIViewController()
+        settingsViewController = SettingPageViewController()
         settingsViewController?.setupTabBar(title: "Настройки",
                                             imageName: "gearshape",
                                             selectedImageName: "gearshape.fill",
@@ -71,7 +71,7 @@ class MainTabBarController: UITabBarController {
         testViewController?.setupTabBar(title: "FB test",
                                             imageName: "gearshape",
                                             selectedImageName: "gearshape.fill",
-                                            tag: 2)
+                                            tag: 3)
     }
 
     private func setupTabBarAppearance() {
