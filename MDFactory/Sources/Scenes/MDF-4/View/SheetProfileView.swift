@@ -9,6 +9,8 @@ import UIKit
 
 class SheetProfileView: UIView {
     
+    // MARK: - Elements
+    
     private let profileView = ProfileView()
     private let progressView = ProgressView()
     
@@ -20,6 +22,8 @@ class SheetProfileView: UIView {
         return imageView
     }()
     
+    // MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupHierarchy()
@@ -29,6 +33,8 @@ class SheetProfileView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Metods
     
     private func setupHierarchy() {
         addSubview(sheetProfileView)
@@ -55,12 +61,13 @@ class SheetProfileView: UIView {
         }
     }
     
+    // MARK: - Metrics
+    
     enum Metric {
         static var userInfoStackViewWidth: CGFloat = 170
         static var userInfoStackViewHeight: CGFloat = 210
         static var userInfoStackViewTopAncor: CGFloat = 60
         static var profileViewHeight: CGFloat =  UIScreen.main.bounds.height * 0.8
         static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
-        
     }
 }

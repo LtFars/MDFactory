@@ -10,16 +10,7 @@ import SnapKit
 
 class ProgressView: UIView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addStackView()
-        setupHierarchy()
-        setupLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - Elements
     
     private lazy var centerLabel: UILabel = {
         var name = UILabel()
@@ -57,6 +48,22 @@ class ProgressView: UIView {
                                                            color: Color.blue.color)
     private lazy var nameReading = setupNamePercentLabel(percent: "Reading",
                                                          color: Color.green.color)
+    
+    
+    // MARK: - Lifecycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addStackView()
+        setupHierarchy()
+        setupLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Metods
     
     private func setupPercentLabel(percent: String) -> UILabel {
         let name = UILabel()
@@ -133,6 +140,8 @@ class ProgressView: UIView {
         
     }
     
+    // MARK: - Metrics
+    
     enum MetricConstraints {
         static var someViewWidthHeight: CGFloat = 130
         static var percentSpeakingX: CGFloat = 65
@@ -147,7 +156,6 @@ class ProgressView: UIView {
         static var nameListeningLeading: CGFloat = 35
         static var nameReadingTop: CGFloat = 15
         static var nameReadingTrailing: CGFloat = 25
-
     }
 }
 

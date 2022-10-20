@@ -8,18 +8,19 @@
 import UIKit
 import SnapKit
 
-class ProfileViewController: UIViewController, UISheetPresentationControllerDelegate {
+protocol ProfilePresenterOutput: AnyObject {
+     
+    func provaidUserAchievements(_ achievements: [AchievementsModel]?)
     
-    private let sheetProfileView = SheetProfileView()
+}
+
+class ProfileViewController: UIViewController {
+    
+    // MARK: - Elements
     
     var presenter: ProfilePresenterInput?
     
-    private let defaultHeight: CGFloat = UIScreen.main.bounds.height / 3.5
-    private let dismissibleHeight: CGFloat = 100
-    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height * 0.5
-    private var currentContainerHeight: CGFloat = 100
-    private var containerViewHeightConstraint: NSLayoutConstraint?
-    private var containerViewBottomConstraint: NSLayoutConstraint?
+    private let sheetProfileView = SheetProfileView()
     
     private lazy var achievementsButton: UIButton = {
         var button = UIButton(type: .system)
@@ -28,9 +29,13 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
         button.tintColor = .black
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         button.layer.cornerRadius = MetricConstraints.achievementsButtonCornerRadius
-        button.addTarget(self, action: #selector(showAchievements), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(showAchievements),
+                         for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +46,12 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view.backgroundColor = Color.purpl.color
-        
+    }
+    
+    // MARK: - Metods
+    
+    @objc func showAchievements() {
+        presenter?.getUserAchievements()
     }
     
     private func setupHierarchy() {
@@ -49,12 +59,7 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
         view.addSubview(achievementsButton)
     }
     
-    @objc func showAchievements() {
-        presenter?.getUserAchievements()
-    }
-    
     private func setupLoyaut() {
-        
         sheetProfileView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(MetricConstraints.sheetConstraintsLeadingBottomTrailing)
         }
@@ -67,17 +72,22 @@ class ProfileViewController: UIViewController, UISheetPresentationControllerDele
         }
     }
     
+    // MARK: - Metrics
+    
     enum MetricConstraints {
         static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
         static var achievementsCollectionTop: CGFloat = 50
         static var achievementsButtonTop: CGFloat = 150
-        static var achievementsButtonHeight: CGFloat = 40
-        static var achievementsButtonWidth: CGFloat = 140
+        static var achievementsButtonHeight: CGFloat = UIScreen.main.bounds.width / 9
+        static var achievementsButtonWidth: CGFloat = UIScreen.main.bounds.width / 3
         static var achievementsButtonCornerRadius: CGFloat = 20
     }
 }
 
-extension ProfileViewController: ProfilePresenterOutput {
+    // MARK: - ProfilePresenterOutput
+    // MARK: - UISheetPresentationControllerDelegate
+
+extension ProfileViewController: ProfilePresenterOutput, UISheetPresentationControllerDelegate {
    
     func provaidUserAchievements(_ achievements: [AchievementsModel]?) {
         
@@ -102,10 +112,8 @@ extension ProfileViewController: ProfilePresenterOutput {
         if let sheet = achievementsController.sheetPresentationController {
             sheet.detents = [.large(), .medium()]
         }
-        
+
         navigationController?.present(achievementsController, animated: true)
     }
-    
-    
 }
 

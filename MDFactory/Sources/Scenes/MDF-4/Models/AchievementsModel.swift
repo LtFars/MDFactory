@@ -10,8 +10,8 @@ import Foundation
 
 struct AchievementsModel: Identifiable, Hashable  {
     var id = UUID()
-    let name: String
-    let icon: String
+    let name: String?
+    let icon: String?
     
     static var mocks: [AchievementsModel] = [AchievementsModel(name: "Плейлисты",
                                                icon: "horse"),

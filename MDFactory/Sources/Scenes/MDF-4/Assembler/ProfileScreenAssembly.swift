@@ -11,7 +11,7 @@ class ProfileScreenAssembly {
     static func assembly() -> UIViewController {
         
         let profileViewController = ProfileViewController()
-        let profileScreenPresenter = ProfileScreenPresenter(view: profileViewController)
+        let profileScreenPresenter = ProfileScreenPresenter(view: profileViewController, achievements: [AchievementsModel(name: "", icon: "")])
         profileViewController.presenter = profileScreenPresenter
         return profileViewController
     }

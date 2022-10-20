@@ -10,16 +10,7 @@ import SnapKit
 
 class ProfileView: UIView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addStackView()
-        setupHierarchy()
-        setupLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - Elements
     
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -51,6 +42,21 @@ class ProfileView: UIView {
         return stackView
     }()
     
+    // MARK: - Lifecycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addStackView()
+        setupHierarchy()
+        setupLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Metods
+    
     private func addStackView() {
         userInfoStackView.addArrangedSubview(avatarImageView)
         userInfoStackView.addArrangedSubview(nameLabel)
@@ -66,6 +72,8 @@ class ProfileView: UIView {
             make.height.equalTo(Metric.userInfoStackViewHeight)
         }
     }
+    
+    // MARK: - Metrics
     
     enum Metric {
         static var userInfoStackViewWidth : CGFloat = 170

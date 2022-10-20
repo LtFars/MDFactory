@@ -1,5 +1,5 @@
 //
-//  ColorView.swift
+//  Color.swift
 //  MDFactory
 //
 //  Created by Andrei Maskal on 09/09/2022.

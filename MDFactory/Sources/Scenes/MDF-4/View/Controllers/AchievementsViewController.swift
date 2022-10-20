@@ -9,9 +9,11 @@ import UIKit
 
 class AchievementsViewController: UIViewController {
     
+    // MARK: - Elements
+    
     var achievements: [AchievementsModel]?
     
-    lazy var stripImageView: UIImageView = {
+    private lazy var stripImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = MetricConstraints.cornerRadiusStripImage
         imageView.backgroundColor = Color.gray.color
@@ -24,14 +26,14 @@ class AchievementsViewController: UIViewController {
         return button
     }()
     
-    lazy var achievementsNameLabel: UILabel = {
+    private  lazy var achievementsNameLabel: UILabel = {
         var name = UILabel()
         name.text = "Achievements"
         name.font = .systemFont(ofSize: 21, weight: .medium)
         return name
     }()
     
-    lazy var achievementsCollectionView: UICollectionView = {
+    private lazy var achievementsCollectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero,
                                           collectionViewLayout:  createLayout())
         collection.backgroundColor = .clear
@@ -42,6 +44,22 @@ class AchievementsViewController: UIViewController {
         collection.isScrollEnabled = true
         return collection
     }()
+    
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+        setupHierarchy()
+        setupLoyaut()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        achievementsCollectionView.frame = view.bounds.offsetBy(dx: 0, dy: MetricConstraints.achievementsCollectionTop)
+    }
+    
+    // MARK: - Metods
     
     @objc func putSheet() {
         dismiss(animated: true)
@@ -82,18 +100,6 @@ class AchievementsViewController: UIViewController {
         return layout
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        setupHierarchy()
-        setupLoyaut()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        achievementsCollectionView.frame = view.bounds.offsetBy(dx: 0, dy: MetricConstraints.achievementsCollectionTop)
-    }
-    
     private func setupView() {
         view.backgroundColor = .white
         view.layer.cornerRadius = Metric.cornerRadiusView
@@ -107,7 +113,6 @@ class AchievementsViewController: UIViewController {
     }
     
     private func setupLoyaut() {
-        
         achievementsCollectionView.snp.makeConstraints { make in
             make.trailing.leading.bottom.equalTo(0)
         }
@@ -132,6 +137,8 @@ class AchievementsViewController: UIViewController {
         }
     }
     
+    // MARK: - Metrics
+    
     enum MetricConstraints {
         static var sheetConstraintsLeadingBottomTrailing: CGFloat = 0
         static var stripHeight: CGFloat = 6
@@ -146,8 +153,9 @@ class AchievementsViewController: UIViewController {
         static var spacing: CGFloat = 16
         static var spacingGroup: CGFloat = 30
     }
-    
 }
+
+    // MARK: - UICollectionViewDelegate
 
 extension AchievementsViewController: UICollectionViewDelegate {
     
@@ -161,9 +169,10 @@ extension AchievementsViewController: UICollectionViewDelegate {
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let cover = achievements?[indexPath.row]
-        print("selected \(String(describing: cover?.name))")
     }
 }
+
+    // MARK: - UICollectionViewDataSource
 
 extension AchievementsViewController: UICollectionViewDataSource {
     
@@ -176,11 +185,11 @@ extension AchievementsViewController: UICollectionViewDataSource {
             for: indexPath
         ) as? ProfileCollectionViewCell else {
             return UICollectionViewCell()
-            
         }
         
-        let model = achievements?[indexPath.row]
-        cell.configure(with: model ?? AchievementsModel(name: "", icon: ""))
+        if let model = achievements?[indexPath.row] {
+            cell.configure(with: model)
+        }
         return cell
     }
 }

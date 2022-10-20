@@ -7,15 +7,27 @@
 
 import Foundation
 
+protocol ProfilePresenterInput: AnyObject {
+
+    func getUserAchievements()
+}
+
 final class ProfileScreenPresenter {
     
+    // MARK: - Elements
+    
     private weak var view: ProfilePresenterOutput?
-    var achievements: [AchievementsModel]?
+    private var achievements: [AchievementsModel]?
 
-    init(view: ProfilePresenterOutput) {
+    // MARK: - Lifecycle
+    
+    init(view: ProfilePresenterOutput, achievements: [AchievementsModel] ) {
         self.view = view
+        self.achievements = achievements
     }
 }
+
+    // MARK: - ProfilePresenterInput
 
 extension ProfileScreenPresenter: ProfilePresenterInput {
     
