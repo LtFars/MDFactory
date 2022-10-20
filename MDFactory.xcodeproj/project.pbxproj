@@ -392,7 +392,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					03C2024028BA6DC100E5FFF3 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -499,7 +499,6 @@
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
 				DD3C696D28F5A5CF001DA207 /* FirebaseService.swift in Sources */,
-				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */,
 				DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */,
 			);
