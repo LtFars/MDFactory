@@ -21,6 +21,8 @@ class SettingPageViewController: UIViewController {
         return image
     }()
 
+    // MARK: - Create stacks
+
     private lazy var nameStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -32,8 +34,11 @@ class SettingPageViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
+        stack.spacing = 20
         return stack
     }()
+
+    // MARK: - Create Labels
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
@@ -53,46 +58,61 @@ class SettingPageViewController: UIViewController {
         return label
     }()
 
+    // MARK: - Create buttons
+
     private lazy var changePasswordButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.background.strokeColor = .systemFill
-        config.title = "изменить пароль"
-        button.configuration = config
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.setTitle("изменить пароль", for: .normal)
+        button.layer.cornerRadius = 16 * UIScreen.main.bounds.height / 812
+//        button.layer.borderWidth = 2
+//        button.layer.borderColor = UIColor.systemGray.cgColor
+        button.layer.backgroundColor = UIColor.systemGray5.cgColor
+        button.setTitleColor(UIColor.gray, for: .normal)
         return button
     }()
 
     private lazy var exitAccountButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.background.strokeColor = .systemFill
-        config.title = "выйти из аккаунта"
-        button.configuration = config
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.setTitle("выйти из аккаунта", for: .normal)
+        button.layer.cornerRadius = 16 * UIScreen.main.bounds.height / 812
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1).cgColor
+        button.setTitleColor(UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1), for: .normal)
+        //        var config = UIButton.Configuration.plain()
+//        config.background.strokeColor = .systemFill
+//        config.cornerStyle = .large
+//        config.title = "выйти из аккаунта"
+//        button.configuration = config
         return button
     }()
 
     private lazy var deleteAccountButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.background.strokeColor = .systemFill
-        config.title = "удалить аккаунт"
-        button.configuration = config
+        let button = MainCustomButton(cornerRadius: 16 * UIScreen.main.bounds.height / 812)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.setTitle("удалить аккаунт", for: .normal)
         return button
     }()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupHierarchy()
-        setupLayer()
+        setupLayers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-       view.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
+//       view.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
+        view.backgroundColor = .systemGray6
 
     }
+
+    // MARK: - Setup Hierarchy
 
     func setupHierarchy() {
         view.addSubview(userImage)
@@ -106,11 +126,9 @@ class SettingPageViewController: UIViewController {
         buttonStack.addArrangedSubview(deleteAccountButton)
     }
 
-// MARK: - Setup Layer
+// MARK: - Setup Layers
 
-    func setupLayer() {
-
-
+    func setupLayers() {
 
         userImage.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -128,6 +146,11 @@ class SettingPageViewController: UIViewController {
         buttonStack.snp.makeConstraints { make in
             make.top.equalTo(nameStack.snp.bottom).offset(100)
             make.leading.trailing.equalTo(view).inset(20)
+        }
+
+        changePasswordButton.snp.makeConstraints { make in
+            make.width.equalTo(315 * UIScreen.main.bounds.width / 375)
+            make.height.equalTo(58 * UIScreen.main.bounds.height / 812)
         }
 
 
