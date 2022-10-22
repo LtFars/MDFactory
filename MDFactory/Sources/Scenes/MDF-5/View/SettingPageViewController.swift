@@ -12,7 +12,7 @@ class SettingPageViewController: UIViewController {
 
     private lazy var userImage: UIImageView = {
         let image = UIImageView()
-//        image.translatesAutoresizingMaskIntoConstraints = false
+       image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 75
@@ -42,19 +42,22 @@ class SettingPageViewController: UIViewController {
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Name"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.text = "Константин"
         return label
     }()
 
     private lazy var familyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Family"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.text = "Константинопольский"
         return label
     }()
 
     private lazy var mailLabel: UILabel = {
         let label = UILabel()
-        label.text = "mail@mail.com"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.text = "mail.konstantin@mail.ru"
         return label
     }()
 
@@ -80,11 +83,6 @@ class SettingPageViewController: UIViewController {
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1).cgColor
         button.setTitleColor(UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1), for: .normal)
-        //        var config = UIButton.Configuration.plain()
-//        config.background.strokeColor = .systemFill
-//        config.cornerStyle = .large
-//        config.title = "выйти из аккаунта"
-//        button.configuration = config
         return button
     }()
 
@@ -139,6 +137,7 @@ class SettingPageViewController: UIViewController {
 
         nameStack.snp.makeConstraints { make in
             make.leading.equalTo(userImage.snp.trailing).offset(20)
+            make.trailing.equalTo(view).inset(20)
             make.top.equalTo(userImage.snp.top)
             make.bottom.equalTo(userImage.snp.bottom)
         }
