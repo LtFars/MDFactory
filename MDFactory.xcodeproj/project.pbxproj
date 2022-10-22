@@ -237,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				8A07E60028FC6EB6009A4E12 /* SettingPageViewController.swift */,
+				8A07E60A29041E25009A4E12 /* ChangePasswordSettingPageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -591,6 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A07E60D290430A2009A4E12 /* SettingPageAssembly.swift in Sources */,
 				8A07E60D290430A2009A4E12 /* SettingModuleAssembly.swift in Sources */,
 				BA62B0B8291CEC4300A22370 /* MainPageAssembler.swift in Sources */,
 				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,

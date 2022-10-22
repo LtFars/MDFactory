@@ -8,7 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol SettingPageViewControllerType: AnyObject {
+    func logoutSucceeded()
+    func logoutFailed(message: String)
+}
+
 class SettingPageViewController: UIViewController {
+
+    var presenter: SettingPagePresenterType?
 
     private lazy var userImage: UIImageView = {
         let image = UIImageView()
@@ -68,10 +75,9 @@ class SettingPageViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.setTitle("изменить пароль", for: .normal)
         button.layer.cornerRadius = 16 * UIScreen.main.bounds.height / 812
-//        button.layer.borderWidth = 2
-//        button.layer.borderColor = UIColor.systemGray.cgColor
         button.layer.backgroundColor = UIColor.systemGray5.cgColor
         button.setTitleColor(UIColor.gray, for: .normal)
+        button.addTarget(self, action: #selector(showChangePasswordVC), for: .touchUpInside)
         return button
     }()
 
@@ -83,6 +89,7 @@ class SettingPageViewController: UIViewController {
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1).cgColor
         button.setTitleColor(UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1), for: .normal)
+        button.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -90,9 +97,20 @@ class SettingPageViewController: UIViewController {
         let button = MainCustomButton(cornerRadius: 16 * UIScreen.main.bounds.height / 812)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitle("удалить аккаунт", for: .normal)
+        //        button.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
         return button
     }()
 
+    @objc private func showChangePasswordVC() {
+        let vc = ChangePasswordSettingPageViewController()
+        navigationController?.pushViewController(vc, animated: true)
+//        present(vc, animated: true)
+    }
+
+    @objc private func logOutButtonTapped() {
+        presenter?.logout()
+    }
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -113,15 +131,32 @@ class SettingPageViewController: UIViewController {
     // MARK: - Setup Hierarchy
 
     func setupHierarchy() {
-        view.addSubview(userImage)
-        view.addSubview(nameStack)
-        view.addSubview(buttonStack)
-        nameStack.addArrangedSubview(nameLabel)
-        nameStack.addArrangedSubview(familyLabel)
-        nameStack.addArrangedSubview(mailLabel)
-        buttonStack.addArrangedSubview(changePasswordButton)
-        buttonStack.addArrangedSubview(exitAccountButton)
-        buttonStack.addArrangedSubview(deleteAccountButton)
+        let subviews = [userImage, nameStack, buttonStack]
+
+        let nameStackSubviews = [
+            nameLabel,
+            familyLabel,
+            mailLabel,
+        ]
+
+        let buttonStackSubviews = [
+            changePasswordButton,
+            exitAccountButton,
+            deleteAccountButton
+        ]
+
+        nameStackSubviews.forEach { nameStack.addArrangedSubview($0) }
+        buttonStackSubviews.forEach { buttonStack.addArrangedSubview($0) }
+        subviews.forEach { view.addSubview($0) }
+//        view.addSubview(userImage)
+//        view.addSubview(nameStack)
+//        view.addSubview(buttonStack)
+//        nameStack.addArrangedSubview(nameLabel)
+//        nameStack.addArrangedSubview(familyLabel)
+//        nameStack.addArrangedSubview(mailLabel)
+//        buttonStack.addArrangedSubview(changePasswordButton)
+//        buttonStack.addArrangedSubview(exitAccountButton)
+//        buttonStack.addArrangedSubview(deleteAccountButton)
     }
 
 // MARK: - Setup Layers
@@ -148,10 +183,20 @@ class SettingPageViewController: UIViewController {
         }
 
         changePasswordButton.snp.makeConstraints { make in
-            make.width.equalTo(315 * UIScreen.main.bounds.width / 375)
+//            make.width.equalTo(315 * UIScreen.main.bounds.width / 375)
             make.height.equalTo(58 * UIScreen.main.bounds.height / 812)
         }
+    }
+}
 
+extension SettingPageViewController: SettingPageViewControllerType {
 
+    func logoutSucceeded() {
+        guard let window = self.view.window else { return }
+        window.switchRootViewController(to: UINavigationController(rootViewController: FirstPageViewController()))
+    }
+
+    func logoutFailed(message: String) {
+        self.showAlert(withTitle: "Ошибка", message: message)
     }
 }
