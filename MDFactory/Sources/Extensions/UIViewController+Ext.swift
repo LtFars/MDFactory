@@ -20,4 +20,11 @@ extension UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alertController, animated: true)
     }
+
+    func showDeleteAlert(with title: String, message: String, alertAction: @escaping (UIAlertAction) -> () ) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: alertAction))
+        alertController.addAction(UIAlertAction(title: "Отменить", style: .default))
+        self.present(alertController, animated: true)
+    }
 }
