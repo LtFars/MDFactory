@@ -19,7 +19,7 @@ class SettingPageViewController: UIViewController {
 
     private lazy var userImage: UIImageView = {
         let image = UIImageView()
-       image.translatesAutoresizingMaskIntoConstraints = false
+        image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 75
@@ -97,18 +97,22 @@ class SettingPageViewController: UIViewController {
         let button = MainCustomButton(cornerRadius: 16 * UIScreen.main.bounds.height / 812)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitle("удалить аккаунт", for: .normal)
-        //        button.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deleteAccauntButtonTapped), for: .touchUpInside)
         return button
     }()
 
     @objc private func showChangePasswordVC() {
         let vc = ChangePasswordSettingPageViewController()
         navigationController?.pushViewController(vc, animated: true)
-//        present(vc, animated: true)
+        //        present(vc, animated: true)
     }
 
     @objc private func logOutButtonTapped() {
         presenter?.logout()
+    }
+
+    @objc private func deleteAccauntButtonTapped() {
+        self.showDeleteAlert(with: "Удалить аккаунт?", message: "Это действие необратимо", alertAction: { _ in print("Delete") })
     }
     
     // MARK: - Lifecycle
@@ -123,7 +127,6 @@ class SettingPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//       view.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9647058824, blue: 0.9882352941, alpha: 1)
         view.backgroundColor = .systemGray6
 
     }
@@ -131,7 +134,11 @@ class SettingPageViewController: UIViewController {
     // MARK: - Setup Hierarchy
 
     func setupHierarchy() {
-        let subviews = [userImage, nameStack, buttonStack]
+        let subviews = [
+            userImage,
+            nameStack,
+            buttonStack
+        ]
 
         let nameStackSubviews = [
             nameLabel,
@@ -148,18 +155,9 @@ class SettingPageViewController: UIViewController {
         nameStackSubviews.forEach { nameStack.addArrangedSubview($0) }
         buttonStackSubviews.forEach { buttonStack.addArrangedSubview($0) }
         subviews.forEach { view.addSubview($0) }
-//        view.addSubview(userImage)
-//        view.addSubview(nameStack)
-//        view.addSubview(buttonStack)
-//        nameStack.addArrangedSubview(nameLabel)
-//        nameStack.addArrangedSubview(familyLabel)
-//        nameStack.addArrangedSubview(mailLabel)
-//        buttonStack.addArrangedSubview(changePasswordButton)
-//        buttonStack.addArrangedSubview(exitAccountButton)
-//        buttonStack.addArrangedSubview(deleteAccountButton)
     }
 
-// MARK: - Setup Layers
+    // MARK: - Setup Layers
 
     func setupLayers() {
 
@@ -183,7 +181,6 @@ class SettingPageViewController: UIViewController {
         }
 
         changePasswordButton.snp.makeConstraints { make in
-//            make.width.equalTo(315 * UIScreen.main.bounds.width / 375)
             make.height.equalTo(58 * UIScreen.main.bounds.height / 812)
         }
     }
