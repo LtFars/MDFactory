@@ -617,6 +617,7 @@
 				0327CEAC28F5A34A0096084C /* AchievementsModel.swift in Sources */,
 				0327CEAD28F5A34A0096084C /* ProfileViewController.swift in Sources */,
 				0327CEAE28F5A34A0096084C /* ColorView.swift in Sources */,
+				BA62B08E2906AE9400A22370 /* CollectionViewCellProtocol.swift in Sources */,
 				0327CEAF28F5A34A0096084C /* CircularView.swift in Sources */,
 				0327CEB028F5A34A0096084C /* ProgressView.swift in Sources */,
 				0327CEB128F5A34A0096084C /* ProfileView.swift in Sources */,
