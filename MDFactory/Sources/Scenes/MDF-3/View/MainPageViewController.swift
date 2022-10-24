@@ -216,7 +216,7 @@ extension MainPageViewController: UICollectionViewDataSource {
         guard let cell = mainCollection.dequeueReusableCell(
             withReuseIdentifier: MainPageModel.gridMode ? CollectionViewCellGrid.identifier : CollectionViewCellList.identifier,
             for: indexPath
-        ) as? CollectionViewCell else {
+        ) as? CollectionViewCellProtocol else {
             return UICollectionViewCell()
         }
         cell.configure(itemIndex: indexPath.item)
@@ -252,13 +252,7 @@ extension MainPageViewController: UICollectionViewDataSource {
 extension MainPageViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("456")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         MainPagePresenter().getItemHandler(index: indexPath.item)
-        print("123")
-        return true
     }
 }
 
@@ -282,8 +276,4 @@ extension MainPageViewController {
         static let greetingsLabelFontSize: CGFloat = 20
         static let continueLabelFontSize: CGFloat = 28
     }
-}
-
-protocol CollectionViewCell: UICollectionViewCell {
-    func configure(itemIndex: Int)
 }
