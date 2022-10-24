@@ -278,7 +278,3 @@ extension MainPageViewController {
         static let continueLabelFontSize: CGFloat = 28
     }
 }
-
-protocol CollectionViewCell: UICollectionViewCell {
-    func configure(itemIndex: Int)
-}
