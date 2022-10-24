@@ -166,7 +166,6 @@ class MainPageViewController: UIViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: HeaderCollectionView.identifier
         )
-        
         collectionView.backgroundColor = .clear
         collectionView.isUserInteractionEnabled = true
         mainCollection = collectionView
@@ -281,5 +280,5 @@ extension MainPageViewController {
 }
 
 protocol CollectionViewCell: UICollectionViewCell {
-    func configure(item: ItemForMain)
+    func configure(itemIndex: Int)
 }

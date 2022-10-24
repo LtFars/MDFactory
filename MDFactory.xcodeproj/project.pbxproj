@@ -600,6 +600,7 @@
 				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
 				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
 				0327CEA128F5A2510096084C /* MainPageModel.swift in Sources */,
+				BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */,
 				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
 				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
 				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
