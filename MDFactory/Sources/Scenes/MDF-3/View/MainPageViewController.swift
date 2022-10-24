@@ -5,7 +5,6 @@ class MainPageViewController: UIViewController {
     static let identifier = "MainPage"
     let userName = "User"
     lazy var layout = getLayout(flag: MainPageModel.gridMode)
-    var model: [ItemForMain] = MainPageModel().itemForCollection()
     
     // MARK: - Top bar
     
@@ -20,7 +19,7 @@ class MainPageViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: Metrics.greetingsLabelFontSize)
         return label
     }()
     
@@ -28,7 +27,7 @@ class MainPageViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.font = .systemFont(ofSize: Metrics.continueLabelFontSize, weight: .bold)
         label.textColor = .black
         return label
     }()
@@ -80,6 +79,7 @@ class MainPageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: Metrics.backgroungColorHex)
         configureCollectionView()
+        mainCollection.delegate = self
         mainCollection.dataSource = self
         setupHierachy()
         setupLayout()
@@ -166,8 +166,8 @@ class MainPageViewController: UIViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: HeaderCollectionView.identifier
         )
-        
         collectionView.backgroundColor = .clear
+        collectionView.isUserInteractionEnabled = true
         mainCollection = collectionView
     }
     
@@ -206,10 +206,10 @@ class MainPageViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MainPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.count
+        return MainPagePresenter().getItemsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -219,7 +219,7 @@ extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDe
         ) as? CollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(item: model[indexPath.row])
+        cell.configure(itemIndex: indexPath.item)
         return cell
     }
     
@@ -247,9 +247,18 @@ extension MainPageViewController: UICollectionViewDataSource, UICollectionViewDe
             assert(false)
         }
     }
+}
+
+extension MainPageViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        print("456")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        MainPagePresenter().getItemHandler(index: indexPath.item)
+        print("123")
+        return true
     }
 }
 
@@ -270,9 +279,11 @@ extension MainPageViewController {
         static let profileButtonTop: CGFloat = 77
         static let cellCount: CGFloat = 4
         static let containerHeight: CGFloat = cellCount * 110
+        static let greetingsLabelFontSize: CGFloat = 20
+        static let continueLabelFontSize: CGFloat = 28
     }
 }
 
 protocol CollectionViewCell: UICollectionViewCell {
-    func configure(item: ItemForMain)
+    func configure(itemIndex: Int)
 }
