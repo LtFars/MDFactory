@@ -30,6 +30,6 @@ class MainPagePresenter: MainPagePresenterProtocol {
     }
     
     func getItemHandler(index: Int) {
-        var _ = model[index].handler
+        model[index].handler(model[index].title)
     }
 }

@@ -1,14 +1,14 @@
 import UIKit
 import SnapKit
 
-class CollectionViewCellGrid: UICollectionViewCell, CollectionViewCell {
+class CollectionViewCellGrid: UICollectionViewCell, CollectionViewCellProtocol {
     static let identifier = "CollectionViewCellGrid"
     
-    private lazy var cellView: UIButton = {
-        let button = UIButton(type: .custom)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 20
-        return button
+    private lazy var cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 20
+        return view
     }()
     
     private let image: UIImageView = {
