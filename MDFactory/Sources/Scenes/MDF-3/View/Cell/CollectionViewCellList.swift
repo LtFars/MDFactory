@@ -74,10 +74,10 @@ class CollectionViewCellList: UICollectionViewCell, CollectionViewCell {
         }
     }
     
-    func configure(item: ItemForMain) {
-        label.text = item.title
-        image.image = item.image
-        sublabel.text = item.description
+    func configure(itemIndex: Int) {
+        label.text = MainPagePresenter().getItemTitle(index: itemIndex)
+        image.image = MainPagePresenter().getItemImage(index: itemIndex)
+        sublabel.text = MainPagePresenter().getItemDescription(index: itemIndex)
     }
 }
 
