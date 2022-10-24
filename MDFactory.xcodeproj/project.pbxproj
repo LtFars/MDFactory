@@ -37,6 +37,7 @@
 		03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C2024F28BA6DC400E5FFF3 /* LaunchScreen.storyboard */; };
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
 		BA62B08228F8CA0F00A22370 /* CollectionViewCellGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62B08128F8CA0F00A22370 /* CollectionViewCellGrid.swift */; };
+		BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62B08B2906811700A22370 /* MainPagePresenter.swift */; };
 		BA2F24B228C730C30043E253 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F24B128C730C30043E253 /* HeaderCollectionView.swift */; };
 		BA2F24B428C77F390043E253 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F24B328C77F390043E253 /* Model.swift */; };
 		BADD53C628C0A1EE0084419D /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD53C528C0A1EE0084419D /* MainPage.swift */; };
@@ -621,6 +622,7 @@
 				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
 				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
 				0327CEA128F5A2510096084C /* MainPageModel.swift in Sources */,
+				BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */,
 				0327CE9F28F5A2510096084C /* CollectionViewCellList.swift in Sources */,
 				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
 				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
