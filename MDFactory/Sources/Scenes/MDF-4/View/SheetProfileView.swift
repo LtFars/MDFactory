@@ -34,7 +34,7 @@ class SheetProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Metods
+    // MARK: - Private functions
     
     private func setupHierarchy() {
         addSubview(sheetProfileView)

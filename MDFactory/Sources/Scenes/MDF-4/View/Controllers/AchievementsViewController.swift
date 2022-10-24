@@ -59,9 +59,9 @@ class AchievementsViewController: UIViewController {
         achievementsCollectionView.frame = view.bounds.offsetBy(dx: 0, dy: MetricConstraints.achievementsCollectionTop)
     }
     
-    // MARK: - Metods
+    // MARK: - Private functions
     
-    @objc func putSheet() {
+    @objc private func putSheet() {
         dismiss(animated: true)
     }
     
@@ -102,7 +102,7 @@ class AchievementsViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        view.layer.cornerRadius = Metric.cornerRadiusView
+        view.layer.cornerRadius = MetricConstraints.cornerRadiusView
     }
     
     private func setupHierarchy() {
@@ -147,6 +147,7 @@ class AchievementsViewController: UIViewController {
         static var achievementsNameTop: CGFloat = 39
         static var cornerRadiusStripImage: CGFloat = 2
         static var achievementsCollectionTop: CGFloat = 50
+        static var cornerRadiusView: CGFloat = 40
     }
     
     enum MetricCollectionView {

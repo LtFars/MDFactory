@@ -17,13 +17,12 @@ final class ProfileScreenPresenter {
     // MARK: - Elements
     
     private weak var view: ProfilePresenterOutput?
-    private var achievements: [AchievementsModel]?
+    private var achievements = [AchievementsModel]()
 
     // MARK: - Lifecycle
     
-    init(view: ProfilePresenterOutput, achievements: [AchievementsModel] ) {
+    init(view: ProfilePresenterOutput) {
         self.view = view
-        self.achievements = achievements
     }
 }
 

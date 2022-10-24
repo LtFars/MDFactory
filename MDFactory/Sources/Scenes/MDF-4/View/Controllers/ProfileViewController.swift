@@ -48,9 +48,9 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = Color.purpl.color
     }
     
-    // MARK: - Metods
+    // MARK: - Private functions
     
-    @objc func showAchievements() {
+    @objc private func showAchievements() {
         presenter?.getUserAchievements()
     }
     
@@ -85,9 +85,8 @@ class ProfileViewController: UIViewController {
 }
 
     // MARK: - ProfilePresenterOutput
-    // MARK: - UISheetPresentationControllerDelegate
 
-extension ProfileViewController: ProfilePresenterOutput, UISheetPresentationControllerDelegate {
+extension ProfileViewController: ProfilePresenterOutput {
    
     func provaidUserAchievements(_ achievements: [AchievementsModel]?) {
         
@@ -116,4 +115,5 @@ extension ProfileViewController: ProfilePresenterOutput, UISheetPresentationCont
         navigationController?.present(achievementsController, animated: true)
     }
 }
+
 
