@@ -38,6 +38,7 @@
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
 		BA62B08228F8CA0F00A22370 /* CollectionViewCellGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62B08128F8CA0F00A22370 /* CollectionViewCellGrid.swift */; };
 		BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62B08B2906811700A22370 /* MainPagePresenter.swift */; };
+		BA62B08E2906AE9400A22370 /* CollectionViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62B08D2906AE9400A22370 /* CollectionViewCellProtocol.swift */; };
 		BA2F24B228C730C30043E253 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F24B128C730C30043E253 /* HeaderCollectionView.swift */; };
 		BA2F24B428C77F390043E253 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F24B328C77F390043E253 /* Model.swift */; };
 		BADD53C628C0A1EE0084419D /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD53C528C0A1EE0084419D /* MainPage.swift */; };
@@ -613,6 +614,7 @@
 				0327CEAC28F5A34A0096084C /* AchievementsModel.swift in Sources */,
 				0327CEAD28F5A34A0096084C /* ProfileViewController.swift in Sources */,
 				0327CEAE28F5A34A0096084C /* ColorView.swift in Sources */,
+				BA62B08E2906AE9400A22370 /* CollectionViewCellProtocol.swift in Sources */,
 				0327CEAF28F5A34A0096084C /* CircularView.swift in Sources */,
 				0327CEB028F5A34A0096084C /* ProgressView.swift in Sources */,
 				0327CEB128F5A34A0096084C /* ProfileView.swift in Sources */,
