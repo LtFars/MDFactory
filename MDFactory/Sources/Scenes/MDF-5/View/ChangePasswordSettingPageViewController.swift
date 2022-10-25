@@ -9,6 +9,8 @@ import UIKit
 
 class ChangePasswordSettingPageViewController: UIViewController {
 
+    // MARK: - Private Properties
+
     private lazy var passwordTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "Новый пароль")
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +53,8 @@ class ChangePasswordSettingPageViewController: UIViewController {
         return stack
     }()
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
