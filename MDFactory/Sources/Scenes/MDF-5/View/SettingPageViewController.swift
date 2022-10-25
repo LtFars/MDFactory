@@ -112,7 +112,12 @@ class SettingPageViewController: UIViewController {
     }
 
     @objc private func deleteAccauntButtonTapped() {
-        self.showDeleteAlert(with: "Удалить аккаунт?", message: "Это действие необратимо", alertAction: { _ in print("Delete") })
+        self.showDeleteAlert(with: "Удалить аккаунт?",
+                             message: "Это действие необратимо",
+                             alertAction: { _ in
+            self.presenter?.deleteUser()
+//            print("Delete")
+        })
     }
     
     // MARK: - Lifecycle
@@ -128,7 +133,6 @@ class SettingPageViewController: UIViewController {
         super.viewWillAppear(animated)
 
         view.backgroundColor = .systemGray6
-
     }
 
     // MARK: - Setup Hierarchy
@@ -196,4 +200,7 @@ extension SettingPageViewController: SettingPageViewControllerType {
     func logoutFailed(message: String) {
         self.showAlert(withTitle: "Ошибка", message: message)
     }
+
+
+    
 }
