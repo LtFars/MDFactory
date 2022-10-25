@@ -47,7 +47,6 @@ class FirebaseService {
                 }
                 return
             }
-
             completion(.success(true))
         }
     }
