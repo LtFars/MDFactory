@@ -259,6 +259,7 @@ extension MainPageViewController: UICollectionViewDelegate {
 // MARK: - Metrics
 
 extension MainPageViewController {
+    
     enum Metrics {
         static var tabBarHeight: CGFloat = 98
         static let topBarRadius: CGFloat = 40
