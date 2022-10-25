@@ -39,17 +39,14 @@ extension SettingPagePresenter: SettingPagePresenterType {
     }
 
     func deleteUser() {
-//        FirebaseService().deleteUser { [weak self] result in
-//            switch result {
-//            case .success(_):
-//                print("\nПользователь удален\n")
-//                guard let window = self?.view.window else { return }
-//                window.switchRootViewController(to: UINavigationController(rootViewController: FirstPageViewController()))
-//            case .failure(let error):
-//                self?.showAlert(withTitle: "Ошибка", message: "\(error.localizedDescription)")
-//            }
-//        }
+        FirebaseService().deleteUser { [weak self] result in
+            switch result {
+            case .success(_):
+                print("\nПользователь удален\n")
+                self?.view?.logoutSucceeded()
+            case .failure(let error):
+                self?.view?.logoutFailed(message: "\(error.localizedDescription)")
+            }
+        }
     }
-
-
 }
