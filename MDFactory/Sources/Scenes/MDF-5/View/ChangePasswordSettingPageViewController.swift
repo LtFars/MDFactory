@@ -33,7 +33,7 @@ class ChangePasswordSettingPageViewController: UIViewController {
         let button = MainCustomButton(cornerRadius: 16 * UIScreen.main.bounds.height / 812)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitle("изменить пароль", for: .normal)
-        //        button.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(changePasswordButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -64,6 +64,18 @@ class ChangePasswordSettingPageViewController: UIViewController {
 
     @objc private func backAction() {
         navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func changePasswordButtonTapped() {
+        guard !passwordTextField.text!.isEmpty, !passwordAgainTextField.text!.isEmpty else {
+print("is Empty")
+            return }
+
+        guard passwordAgainTextField.text == passwordTextField.text else {
+            print("password not equatable")
+            return
+        }
+        print("ch Pssw")
     }
 
     private func setupView() {
