@@ -61,10 +61,6 @@ class AchievementsViewController: UIViewController {
     
     // MARK: - Private functions
     
-    @objc private func putSheet() {
-        dismiss(animated: true)
-    }
-    
     private func createLayout() -> UICollectionViewLayout {
         
         let spacing: CGFloat = MetricCollectionView.spacing
@@ -137,6 +133,12 @@ class AchievementsViewController: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
+    @objc private func putSheet() {
+        dismiss(animated: true)
+    }
+    
     // MARK: - Metrics
     
     enum MetricConstraints {
@@ -161,21 +163,23 @@ class AchievementsViewController: UIViewController {
 extension AchievementsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return achievements?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let cover = achievements?[indexPath.row]
+        let _ = achievements?[indexPath.row]
     }
 }
 
     // MARK: - UICollectionViewDataSource
 
 extension AchievementsViewController: UICollectionViewDataSource {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        achievements?.count ?? 0
+    }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath

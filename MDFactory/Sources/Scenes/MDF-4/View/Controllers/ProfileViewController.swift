@@ -50,10 +50,6 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Private functions
     
-    @objc private func showAchievements() {
-        presenter?.getUserAchievements()
-    }
-    
     private func setupHierarchy() {
         view.addSubview(sheetProfileView)
         view.addSubview(achievementsButton)
@@ -70,6 +66,12 @@ class ProfileViewController: UIViewController {
             make.height.equalTo(MetricConstraints.achievementsButtonHeight)
             make.width.equalTo(MetricConstraints.achievementsButtonWidth)
         }
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func showAchievements() {
+        presenter?.getUserAchievements()
     }
     
     // MARK: - Metrics
@@ -115,5 +117,3 @@ extension ProfileViewController: ProfilePresenterOutput {
         navigationController?.present(achievementsController, animated: true)
     }
 }
-
-
