@@ -96,10 +96,6 @@
 		A0C90E8928C0F86900630E61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A0D96F9628F712E00071E255 /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
 		A0D9872728D3AF380040C9E5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		DD3C696A28F5A04F001DA207 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
-		DD64000828F6DD1B00C68EAE /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		DD64000A28F6DD2900C68EAE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		BA2F24B128C730C30043E253 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
 		BA2F24B328C77F390043E253 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BA62B08128F8CA0F00A22370 /* CollectionViewCellGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellGrid.swift; sourceTree = "<group>"; };
@@ -206,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				03C2024328BA6DC100E5FFF3 /* MDFactory */,
-				DD3C696A28F5A04F001DA207 /* GoogleService-Info.plist */,
 				03C2024228BA6DC100E5FFF3 /* Products */,
 				B3F02D1E21566D468A29EC8A /* Pods */,
 				0327CE9628F5A0950096084C /* Recovered References */,
@@ -389,31 +384,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		BADD53EA28C61FFB0084419D /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				BADD53EB28C620470084419D /* UIColor+Extension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		DD64000628F6DCB600C68EAE /* MDF-7 */ = {
-			isa = PBXGroup;
-			children = (
-				DD64000728F6DCC800C68EAE /* View */,
-			);
-			path = "MDF-7";
-			sourceTree = "<group>";
-		};
-		DD64000728F6DCC800C68EAE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DD64000A28F6DD2900C68EAE /* TestView.swift */,
-				DD64000828F6DD1B00C68EAE /* TestViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		DD73E7F228F4219D00931654 /* MDF-6 */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,7 +403,6 @@
 		DD73E7F928F42EF400931654 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */,
 				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
 			);
 			path = Services;
@@ -485,7 +454,6 @@
 				84709F6E28D9B0870036A4AB /* MDF-2 */,
 				A0C90E8828C0F79F00630E61 /* MDF-4 */,
 				DD73E7F228F4219D00931654 /* MDF-6 */,
-				DD64000628F6DCB600C68EAE /* MDF-7 */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -552,7 +520,6 @@
 			files = (
 				03C2025128BA6DC400E5FFF3 /* LaunchScreen.storyboard in Resources */,
 				03C2024E28BA6DC400E5FFF3 /* Assets.xcassets in Resources */,
-				DD3C696B28F5A04F001DA207 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,9 +600,6 @@
 				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
 				0327CEA028F5A2510096084C /* HeaderCollectionView.swift in Sources */,
 				BADD53C628C0A1EE0084419D /* MainPage.swift in Sources */,
-				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
-				BADD53EE28C6291E0084419D /* CollectionViewCell.swift in Sources */,
-				BA2F24B228C730C30043E253 /* HeaderCollectionView.swift in Sources */,
 				DDB01FD228BFBD2100E67A34 /* MainTabBarController.swift in Sources */,
 				BADD53EE28C6291E0084419D /* CollectionViewCell.swift in Sources */,
 				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
