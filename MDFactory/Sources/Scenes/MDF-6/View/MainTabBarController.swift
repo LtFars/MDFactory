@@ -14,7 +14,6 @@ class MainTabBarController: UITabBarController {
     private var mainViewController: UIViewController?
     private var profileViewController: UIViewController?
     private var settingsViewController: UIViewController?
-    private var testViewController: UIViewController?
 
     // MARK: - Lifecycle
 
@@ -32,8 +31,7 @@ class MainTabBarController: UITabBarController {
         let viewControllers = [
             mainViewController,
             profileViewController,
-            settingsViewController,
-            testViewController
+            settingsViewController
         ]
 
         self.viewControllers = viewControllers.map {
@@ -63,12 +61,6 @@ class MainTabBarController: UITabBarController {
 
         settingsViewController = UIViewController()
         settingsViewController?.setupTabBar(title: "Настройки",
-                                            imageName: "gearshape",
-                                            selectedImageName: "gearshape.fill",
-                                            tag: 2)
-
-        testViewController = TestViewController()
-        testViewController?.setupTabBar(title: "FB test",
                                             imageName: "gearshape",
                                             selectedImageName: "gearshape.fill",
                                             tag: 2)

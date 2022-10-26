@@ -30,7 +30,6 @@ class LoginPageViewController: UIViewController {
     private lazy var loginTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "E-mail")
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.autocapitalizationType = .none
         textField.returnKeyType = UIReturnKeyType.next
         textField.tag = 0
         return textField
@@ -137,23 +136,32 @@ class LoginPageViewController: UIViewController {
     
     @objc func loginAction() {
         // To access tabBar use
-        // userName: test@test.com
-        // password: password
+        // userName: "Admin"
+        // password: "admin"
 
-        guard let email = loginTextField.text, !email.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty
-        else {
-            showAlert(withTitle: "Ошибка", message: "Заполнены не все поля.")
-            return
+        let userName = loginTextField.text ?? ""
+        let userPassword = passwordTextField.text ?? ""
+        var validPassword: String? = nil
+
+        let workItem = DispatchWorkItem {
+            do {
+                validPassword = try SecureStore.readPassword(userName: userName)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
 
-        FirebaseService().signIn(email: email, password: password) { [weak self] result in
-            switch result {
-            case .success:
-                guard let window = self?.view.window else { return }
+        DispatchQueue.global(qos: .background).async {
+            workItem.perform()
+        }
+
+        workItem.notify(queue: DispatchQueue.main) {
+            if userPassword == validPassword {
+                guard let window = self.view.window else { return }
                 window.switchRootViewController(to: MainTabBarController())
-            case .failure(let error):
-                self?.showAlert(withTitle: "Ошибка", message: "\(error.localizedDescription)")
+            } else {
+                // TODO: handle error
+                print("Invalid password")
             }
         }
     }
@@ -194,7 +202,6 @@ extension LoginPageViewController {
 }
 
 // MARK: - Extension
-
 extension LoginPageViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor = UIColor.darkGray.cgColor
