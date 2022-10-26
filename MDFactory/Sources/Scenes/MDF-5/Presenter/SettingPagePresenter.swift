@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SettingPagePresenterType: AnyObject {
+    var user: User { get set }
     func updatePassword()
     func logout()
     func deleteUser()
@@ -17,12 +18,16 @@ final class SettingPagePresenter {
 
     private weak var view: SettingPageViewControllerType?
 
+    var user: User
+
     init(view: SettingPageViewControllerType) {
         self.view = view
+        self.user = User.fetchData
     }
 }
 
 extension SettingPagePresenter: SettingPagePresenterType {
+
     func updatePassword() {
         //
     }
