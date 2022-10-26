@@ -15,8 +15,6 @@ class MainTabBarController: UITabBarController {
     private var profileViewController: UIViewController?
     private var settingsViewController: UIViewController?
 
-
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
