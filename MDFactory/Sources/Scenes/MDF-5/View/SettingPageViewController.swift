@@ -23,7 +23,10 @@ class SettingPageViewController: UIViewController {
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 75
-        image.image = UIImage(named: "emoji")
+        if let userAvatar = presenter?.user.avatar {
+            image.image = UIImage(named: userAvatar) }
+        else {
+            image.image = UIImage(systemName: "moon") }
         image.tintColor = .systemGray
         return image
     }()
@@ -50,21 +53,30 @@ class SettingPageViewController: UIViewController {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17)
-        label.text = "Константин"
+        if let userName = presenter?.user.name {
+            label.text = userName }
+        else {
+            label.text = "no name" }
         return label
     }()
 
-    private lazy var familyLabel: UILabel = {
+    private lazy var surnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17)
-        label.text = "Константинопольский"
+        if let userName = presenter?.user.surname {
+            label.text = userName }
+        else {
+            label.text = "no name" }
         return label
     }()
 
     private lazy var mailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.text = "mail.konstantin@mail.ru"
+        label.font = UIFont.systemFont(ofSize: 16)
+        if let userMail = presenter?.user.email {
+            label.text = userMail }
+        else {
+            label.text = "no name" }
         return label
     }()
 
@@ -146,7 +158,7 @@ class SettingPageViewController: UIViewController {
 
         let nameStackSubviews = [
             nameLabel,
-            familyLabel,
+            surnameLabel,
             mailLabel,
         ]
 
