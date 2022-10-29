@@ -31,6 +31,11 @@ class SettingPageViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
+        image.layer.cornerRadius = 75
+        if let userAvatar = presenter?.user.avatar {
+            image.image = UIImage(named: userAvatar) }
+        else {
+            image.image = UIImage(systemName: "moon") }
         image.layer.cornerRadius = SettingModuleMetrics.avatarImageWidthHeight / 2
 
         image.tintColor = .systemGray
@@ -103,6 +108,23 @@ class SettingPageViewController: UIViewController {
         return button
     }()
 
+    @objc private func showChangePasswordVC() {
+        navigationController?.pushViewController(ChangePasswordAssembly.createChangePasswordModule(), animated: true)
+    }
+
+    @objc private func logOutButtonTapped() {
+        presenter?.logout()
+    }
+
+    @objc private func deleteAccauntButtonTapped() {
+        self.showDeleteAlert(with: "Удалить аккаунт?",
+                             message: "Это действие необратимо",
+                             alertAction: { _ in
+            self.presenter?.deleteUser()
+//            print("Delete")
+        })
+    }
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
