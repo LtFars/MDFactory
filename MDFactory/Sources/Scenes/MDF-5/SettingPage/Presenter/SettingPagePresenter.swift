@@ -9,7 +9,6 @@ import Foundation
 
 protocol SettingPagePresenterType: AnyObject {
     var user: User { get set }
-    func updatePassword()
     func logout()
     func deleteUser()
 }
@@ -17,7 +16,6 @@ protocol SettingPagePresenterType: AnyObject {
 final class SettingPagePresenter {
 
     private weak var view: SettingPageViewControllerType?
-
     var user: User
 
     init(view: SettingPageViewControllerType) {
@@ -26,11 +24,9 @@ final class SettingPagePresenter {
     }
 }
 
-extension SettingPagePresenter: SettingPagePresenterType {
+// MARK: - SettingPagePresenter Methods
 
-    func updatePassword() {
-        //
-    }
+extension SettingPagePresenter: SettingPagePresenterType {
 
     func logout() {
         FirebaseService().logOut { [weak self]result in

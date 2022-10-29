@@ -1,5 +1,5 @@
 //
-//  SettingPageModel.swift
+//  SettingPageUserModel.swift
 //  MDFactory
 //
 //  Created by Dmitry Dorodniy on 26.10.2022.
