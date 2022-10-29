@@ -7,7 +7,14 @@
 
 import UIKit
 
-class ChangePasswordSettingPageViewController: UIViewController {
+protocol ChangePasswordViewControllerType: AnyObject {
+    func updatePasswordSucceeded()
+    func updatePasswordFailed(message: String)
+}
+
+class ChangePasswordViewController: UIViewController {
+
+    var presenter: ChangePasswordPresenterType?
 
     // MARK: - Private Properties
 
@@ -67,14 +74,18 @@ class ChangePasswordSettingPageViewController: UIViewController {
     }
 
     @objc private func changePasswordButtonTapped() {
-        guard !passwordTextField.text!.isEmpty, !passwordAgainTextField.text!.isEmpty else {
-print("is Empty")
+        guard !passwordTextField.text!.isEmpty,
+              !passwordAgainTextField.text!.isEmpty else {
+            print("is Empty")
             return }
 
         guard passwordAgainTextField.text == passwordTextField.text else {
             print("password not equatable")
             return }
-        print("ch Pssw")
+
+        if let newPassword = passwordTextField.text {
+            presenter?.updatePassword(to: newPassword)
+        }
     }
 
     private func setupView() {
@@ -106,5 +117,21 @@ print("is Empty")
             make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
             make.leading.trailing.equalTo(view).inset(20)
         }
+    }
+}
+
+extension ChangePasswordViewController: ChangePasswordViewControllerType {
+    func updatePasswordSucceeded() {
+        CATransaction.begin()
+        navigationController?.popViewController(animated: true)
+        CATransaction.setCompletionBlock({ [weak self] in
+            guard let self = self else { return }
+            self.showAlert(withTitle: "Пароль упешно изменен", message: "")
+                })
+        CATransaction.commit()
+    }
+
+    func updatePasswordFailed(message: String) {
+        showAlert(withTitle: "Ошибка", message: message)
     }
 }
