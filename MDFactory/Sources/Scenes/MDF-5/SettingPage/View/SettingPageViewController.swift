@@ -59,9 +59,11 @@ class SettingPageViewController: UIViewController {
         return stack
     }()
 
+    // MARK: - Create Labels
+
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize)
+        label.font = UIFont.systemFont(ofSize: 17)
         return label
     }()
 
@@ -109,7 +111,7 @@ class SettingPageViewController: UIViewController {
     }()
 
     @objc private func showChangePasswordVC() {
-        navigationController?.pushViewController(ChangePasswordAssembly.createChangePasswordModule(), animated: true)
+        presenter?.updatePassword()
     }
 
     @objc private func logOutButtonTapped() {
@@ -117,11 +119,10 @@ class SettingPageViewController: UIViewController {
     }
 
     @objc private func deleteAccauntButtonTapped() {
-        self.showDeleteAlert(with: "Удалить аккаунт?",
+        showDeleteAlert(with: "Удалить аккаунт?",
                              message: "Это действие необратимо",
                              alertAction: { _ in
             self.presenter?.deleteUser()
-//            print("Delete")
         })
     }
     

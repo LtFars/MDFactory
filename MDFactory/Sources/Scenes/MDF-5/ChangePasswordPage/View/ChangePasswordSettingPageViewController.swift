@@ -115,7 +115,7 @@ class ChangePasswordViewController: UIViewController {
 
         buttonStack.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
-            make.leading.trailing.equalTo(view).inset(20)
+            make.leading.trailing.equalTo(view).inset(30)
         }
     }
 }
