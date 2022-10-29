@@ -14,7 +14,7 @@ protocol SettingPageViewControllerType: AnyObject {
     func pushUpdatePassordScreen(to vc: UIViewController)
     func logoutSucceeded()
     func logoutFailed(message: String)
-    func setUser(avatar: String,
+    func setUser(avatar: String?,
                  name: String,
                  surname: String,
                  email: String)
@@ -32,6 +32,7 @@ class SettingPageViewController: UIViewController {
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 75
+
         image.tintColor = .systemGray
         return image
     }()
@@ -197,12 +198,17 @@ class SettingPageViewController: UIViewController {
 
 extension SettingPageViewController: SettingPageViewControllerType {
 
-    func setUser(avatar: String,
+    func setUser(avatar: String?,
                  name: String,
                  surname: String,
                  email: String) {
 
-        userImageView.image = UIImage(named: avatar)
+        if let avatar = avatar {
+            userImageView.image = UIImage(named: avatar)
+        } else {
+            userImageView.image = UIImage(systemName: "moon")
+        }
+
         userNameLabel.text = name
         userSurnameLabel.text = surname
         userEmailLabel.text = email
