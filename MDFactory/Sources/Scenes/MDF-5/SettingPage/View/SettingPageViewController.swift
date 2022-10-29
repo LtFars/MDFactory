@@ -114,9 +114,7 @@ class SettingPageViewController: UIViewController {
     }()
 
     @objc private func showChangePasswordVC() {
-        let vc = ChangePasswordSettingPageViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        //        present(vc, animated: true)
+        navigationController?.pushViewController(ChangePasswordAssembly.createChangePasswordModule(), animated: true)
     }
 
     @objc private func logOutButtonTapped() {
@@ -202,6 +200,8 @@ class SettingPageViewController: UIViewController {
     }
 }
 
+// MARK: - SettingPageViewController Methods
+
 extension SettingPageViewController: SettingPageViewControllerType {
 
     func logoutSucceeded() {
@@ -212,7 +212,4 @@ extension SettingPageViewController: SettingPageViewControllerType {
     func logoutFailed(message: String) {
         self.showAlert(withTitle: "Ошибка", message: message)
     }
-
-
-    
 }

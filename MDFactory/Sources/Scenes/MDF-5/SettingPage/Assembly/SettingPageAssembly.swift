@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingPageAssembly {
+final class SettingPageAssembly {
     static func createSettingPageModule() -> UIViewController {
         let view = SettingPageViewController()
         let presenter = SettingPagePresenter(view: view)
