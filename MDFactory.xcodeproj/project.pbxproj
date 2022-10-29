@@ -268,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				8A07E60329040ECF009A4E12 /* Model */,
-				8A07E60529040EF5009A4E12 /* Assembly */,
 				8A07E60429040EEC009A4E12 /* Presenter */,
 				8A07E60228FC70F2009A4E12 /* View */,
 			);
@@ -278,7 +277,6 @@
 		8A07E611290A72A6009A4E12 /* ChangePasswordPage */ = {
 			isa = PBXGroup;
 			children = (
-				8A07E613290A72E0009A4E12 /* Assembly */,
 				8A07E614290A72E9009A4E12 /* Presenter */,
 				8A07E612290A72D4009A4E12 /* View */,
 			);

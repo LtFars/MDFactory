@@ -31,9 +31,8 @@ final class SettingPagePresenter: SettingPagePresenterType {
 
 extension SettingPagePresenter: SettingPagePresenterType {
     func getUser() {
-        let avatar = user.avatar ?? "moon"
-        
-        view?.setUser(avatar: avatar,
+//        let avatar = user.avatar ?? "moon"
+        view?.setUser(avatar: user.avatar,
                       name: user.name,
                       surname: user.surname,
                       email: user.email)
