@@ -33,16 +33,15 @@ final class SettingPagePresenter {
 
 extension SettingPagePresenter: SettingPagePresenterType {
     func getUser() {
-        let avatar = user.avatar ?? "moon"
-        
-        view?.setUser(avatar: avatar,
+//        let avatar = user.avatar ?? "moon"
+        view?.setUser(avatar: user.avatar,
                       name: user.name,
                       surname: user.surname,
                       email: user.email)
     }
 
     func updatePassword() {
-        let vc = ChangePasswordAssembly.createChangePasswordModule()
+        let vc = SettingPageAssembly.createChangePasswordModule()
         view?.pushUpdatePassordScreen(to: vc)
     }
 
