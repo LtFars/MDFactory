@@ -8,25 +8,30 @@
 import UIKit
 import SnapKit
 
+// MARK: - SettingPageViewControllerType
+
 protocol SettingPageViewControllerType: AnyObject {
+    func pushUpdatePassordScreen(to vc: UIViewController)
     func logoutSucceeded()
     func logoutFailed(message: String)
+    func setUser(avatar: String,
+                 name: String,
+                 surname: String,
+                 email: String)
 }
+
+// MARK: - SettingPageViewController
 
 class SettingPageViewController: UIViewController {
 
     var presenter: SettingPagePresenterType?
 
-    private lazy var userImage: UIImageView = {
+    private lazy var userImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 75
-        if let userAvatar = presenter?.user.avatar {
-            image.image = UIImage(named: userAvatar) }
-        else {
-            image.image = UIImage(systemName: "moon") }
         image.tintColor = .systemGray
         return image
     }()
@@ -50,33 +55,21 @@ class SettingPageViewController: UIViewController {
 
     // MARK: - Create Labels
 
-    private lazy var nameLabel: UILabel = {
+    private lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17)
-        if let userName = presenter?.user.name {
-            label.text = userName }
-        else {
-            label.text = "no name" }
         return label
     }()
 
-    private lazy var surnameLabel: UILabel = {
+    private lazy var userSurnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17)
-        if let userName = presenter?.user.surname {
-            label.text = userName }
-        else {
-            label.text = "no name" }
         return label
     }()
 
-    private lazy var mailLabel: UILabel = {
+    private lazy var userEmailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        if let userMail = presenter?.user.email {
-            label.text = userMail }
-        else {
-            label.text = "no name" }
         return label
     }()
 
@@ -114,7 +107,7 @@ class SettingPageViewController: UIViewController {
     }()
 
     @objc private func showChangePasswordVC() {
-        navigationController?.pushViewController(ChangePasswordAssembly.createChangePasswordModule(), animated: true)
+        presenter?.updatePassword()
     }
 
     @objc private func logOutButtonTapped() {
@@ -122,11 +115,10 @@ class SettingPageViewController: UIViewController {
     }
 
     @objc private func deleteAccauntButtonTapped() {
-        self.showDeleteAlert(with: "Удалить аккаунт?",
+        showDeleteAlert(with: "Удалить аккаунт?",
                              message: "Это действие необратимо",
                              alertAction: { _ in
             self.presenter?.deleteUser()
-//            print("Delete")
         })
     }
     
@@ -143,21 +135,22 @@ class SettingPageViewController: UIViewController {
         super.viewWillAppear(animated)
 
         view.backgroundColor = .systemGray6
+        presenter?.getUser()
     }
 
     // MARK: - Setup Hierarchy
 
     func setupHierarchy() {
         let subviews = [
-            userImage,
+            userImageView,
             nameStack,
             buttonStack
         ]
 
         let nameStackSubviews = [
-            nameLabel,
-            surnameLabel,
-            mailLabel,
+            userNameLabel,
+            userSurnameLabel,
+            userEmailLabel,
         ]
 
         let buttonStackSubviews = [
@@ -175,7 +168,7 @@ class SettingPageViewController: UIViewController {
 
     func setupLayers() {
 
-        userImage.snp.makeConstraints { make in
+        userImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
             make.width.equalTo(150)
@@ -183,15 +176,15 @@ class SettingPageViewController: UIViewController {
         }
 
         nameStack.snp.makeConstraints { make in
-            make.leading.equalTo(userImage.snp.trailing).offset(20)
+            make.leading.equalTo(userImageView.snp.trailing).offset(20)
             make.trailing.equalTo(view).inset(20)
-            make.top.equalTo(userImage.snp.top)
-            make.bottom.equalTo(userImage.snp.bottom)
+            make.top.equalTo(userImageView.snp.top)
+            make.bottom.equalTo(userImageView.snp.bottom)
         }
 
         buttonStack.snp.makeConstraints { make in
             make.top.equalTo(nameStack.snp.bottom).offset(100)
-            make.leading.trailing.equalTo(view).inset(20)
+            make.leading.trailing.equalTo(view).inset(30)
         }
 
         changePasswordButton.snp.makeConstraints { make in
@@ -203,6 +196,21 @@ class SettingPageViewController: UIViewController {
 // MARK: - SettingPageViewController Methods
 
 extension SettingPageViewController: SettingPageViewControllerType {
+
+    func setUser(avatar: String,
+                 name: String,
+                 surname: String,
+                 email: String) {
+
+        userImageView.image = UIImage(named: avatar)
+        userNameLabel.text = name
+        userSurnameLabel.text = surname
+        userEmailLabel.text = email
+    }
+
+    func pushUpdatePassordScreen(to vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     func logoutSucceeded() {
         guard let window = self.view.window else { return }

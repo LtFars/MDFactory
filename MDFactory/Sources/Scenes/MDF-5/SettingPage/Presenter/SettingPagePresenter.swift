@@ -8,25 +8,44 @@
 import Foundation
 
 protocol SettingPagePresenterType: AnyObject {
-    var user: User { get set }
+//    var user: User { get set }
+    init(view: SettingPageViewControllerType,
+         user: User)
+
+    func updatePassword()
     func logout()
     func deleteUser()
+    func getUser()
 }
 
 final class SettingPagePresenter {
 
     private weak var view: SettingPageViewControllerType?
-    var user: User
+    private var user: User
 
-    init(view: SettingPageViewControllerType) {
+    init(view: SettingPageViewControllerType, user: User) {
         self.view = view
-        self.user = User.fetchData
+        self.user = user
     }
 }
 
 // MARK: - SettingPagePresenter Methods
 
 extension SettingPagePresenter: SettingPagePresenterType {
+    func getUser() {
+        let avatar = user.avatar ?? "moon"
+        
+        view?.setUser(avatar: avatar,
+                      name: user.name,
+                      surname: user.surname,
+                      email: user.email)
+    }
+
+    func updatePassword() {
+        let vc = ChangePasswordAssembly.createChangePasswordModule()
+        view?.pushUpdatePassordScreen(to: vc)
+    }
+
 
     func logout() {
         FirebaseService().logOut { [weak self]result in
