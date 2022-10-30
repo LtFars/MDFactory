@@ -1,5 +1,5 @@
 //
-//  ChangePasswordSettingPageViewController.swift
+//  ChangePasswordViewController.swift
 //  MDFactory
 //
 //  Created by Dmitry Dorodniy on 22.10.2022.
@@ -37,8 +37,8 @@ class ChangePasswordViewController: UIViewController {
     }()
 
     private lazy var changePasswordButton: UIButton = {
-        let button = MainCustomButton(cornerRadius: 16 * UIScreen.main.bounds.height / 812)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        let button = MainCustomButton(cornerRadius: SettingModuleMetrics.buttonCornerRadius)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: SettingModuleMetrics.buttonFontSize)
         button.setTitle("изменить пароль", for: .normal)
         button.addTarget(self, action: #selector(changePasswordButtonTapped), for: .touchUpInside)
         return button
@@ -56,7 +56,7 @@ class ChangePasswordViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 20
+        stack.spacing = SettingModuleMetrics.buttonStackSpacing
         return stack
     }()
 
@@ -110,12 +110,14 @@ class ChangePasswordViewController: UIViewController {
 
     private func setupLayout() {
         passwordTextField.snp.makeConstraints { make in
-            make.height.equalTo(58 * UIScreen.main.bounds.height / 812)
+            make.height.equalTo(SettingModuleMetrics.buttonHeight)
         }
 
         buttonStack.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
-            make.leading.trailing.equalTo(view).inset(30)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(
+                SettingModuleMetrics.buttonStackLeadingTrailingOffset)
+            make.leading.trailing.equalTo(view).inset(
+                SettingModuleMetrics.buttonStackLeadingTrailingOffset)
         }
     }
 }
