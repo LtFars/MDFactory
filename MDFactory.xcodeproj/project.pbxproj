@@ -22,7 +22,7 @@
 		8A07E60128FC6EB6009A4E12 /* SettingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60028FC6EB6009A4E12 /* SettingPageViewController.swift */; };
 		8A07E607290411BA009A4E12 /* SettingPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E606290411BA009A4E12 /* SettingPagePresenter.swift */; };
 		8A07E60B29041E25009A4E12 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60A29041E25009A4E12 /* ChangePasswordViewController.swift */; };
-		8A07E60D290430A2009A4E12 /* SettingPageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */; };
+		8A07E60D290430A2009A4E12 /* SettingModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60C290430A2009A4E12 /* SettingModuleAssembly.swift */; };
 		8A07E60F2908FB6D009A4E12 /* SettingPageUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60E2908FB6D009A4E12 /* SettingPageUserModel.swift */; };
 		8A07E616290A7356009A4E12 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */; };
 		8A07E61B290EC4BA009A4E12 /* SettingModuleMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */; };
@@ -64,7 +64,7 @@
 		8A07E60028FC6EB6009A4E12 /* SettingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageViewController.swift; sourceTree = "<group>"; };
 		8A07E606290411BA009A4E12 /* SettingPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPagePresenter.swift; sourceTree = "<group>"; };
 		8A07E60A29041E25009A4E12 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageAssembly.swift; sourceTree = "<group>"; };
+		8A07E60C290430A2009A4E12 /* SettingModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleAssembly.swift; sourceTree = "<group>"; };
 		8A07E60E2908FB6D009A4E12 /* SettingPageUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageUserModel.swift; sourceTree = "<group>"; };
 		8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
 		8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleMetrics.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		8A07E60529040EF5009A4E12 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */,
+				8A07E60C290430A2009A4E12 /* SettingModuleAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -562,7 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A07E60D290430A2009A4E12 /* SettingPageAssembly.swift in Sources */,
+				8A07E60D290430A2009A4E12 /* SettingModuleAssembly.swift in Sources */,
 				8A07E616290A7356009A4E12 /* ChangePasswordPresenter.swift in Sources */,
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
 				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,
