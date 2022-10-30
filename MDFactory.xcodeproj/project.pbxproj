@@ -37,10 +37,12 @@
 		89C0DEB817BEB9F0BE58910C /* Pods_MDFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26796C3D8F30B29587004E94 /* Pods_MDFactory.framework */; };
 		8A07E60128FC6EB6009A4E12 /* SettingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60028FC6EB6009A4E12 /* SettingPageViewController.swift */; };
 		8A07E607290411BA009A4E12 /* SettingPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E606290411BA009A4E12 /* SettingPagePresenter.swift */; };
-		8A07E60B29041E25009A4E12 /* ChangePasswordSettingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60A29041E25009A4E12 /* ChangePasswordSettingPageViewController.swift */; };
+		8A07E60B29041E25009A4E12 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60A29041E25009A4E12 /* ChangePasswordViewController.swift */; };
 		8A07E60D290430A2009A4E12 /* SettingPageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */; };
 		8A07E60F2908FB6D009A4E12 /* SettingPageUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60E2908FB6D009A4E12 /* SettingPageUserModel.swift */; };
 		8A07E616290A7356009A4E12 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */; };
+		8A07E61B290EC4BA009A4E12 /* SettingModuleMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */; };
+		8A07E61D290EC4CF009A4E12 /* SettingModuleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E61C290EC4CF009A4E12 /* SettingModuleColors.swift */; };
 		A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E312228CB8C5500EC6FA5 /* ColorView.swift */; };
 		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
 		A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */; };
@@ -85,10 +87,12 @@
 		84709F7328D9E1560036A4AB /* WelcomeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLabel.swift; sourceTree = "<group>"; };
 		8A07E60028FC6EB6009A4E12 /* SettingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageViewController.swift; sourceTree = "<group>"; };
 		8A07E606290411BA009A4E12 /* SettingPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPagePresenter.swift; sourceTree = "<group>"; };
-		8A07E60A29041E25009A4E12 /* ChangePasswordSettingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordSettingPageViewController.swift; sourceTree = "<group>"; };
+		8A07E60A29041E25009A4E12 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageAssembly.swift; sourceTree = "<group>"; };
 		8A07E60E2908FB6D009A4E12 /* SettingPageUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageUserModel.swift; sourceTree = "<group>"; };
 		8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
+		8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleMetrics.swift; sourceTree = "<group>"; };
+		8A07E61C290EC4CF009A4E12 /* SettingModuleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleColors.swift; sourceTree = "<group>"; };
 		A00E312228CB8C5500EC6FA5 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProfileView.swift; sourceTree = "<group>"; };
 		A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 		8A07E5FF28FC6E66009A4E12 /* MDF-5 */ = {
 			isa = PBXGroup;
 			children = (
+				8A07E619290EC45E009A4E12 /* Enums */,
 				8A07E60529040EF5009A4E12 /* Assembly */,
 				8A07E611290A72A6009A4E12 /* ChangePasswordPage */,
 				8A07E610290A7282009A4E12 /* SettingPage */,
@@ -352,7 +357,7 @@
 		8A07E612290A72D4009A4E12 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A07E60A29041E25009A4E12 /* ChangePasswordSettingPageViewController.swift */,
+				8A07E60A29041E25009A4E12 /* ChangePasswordViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +368,15 @@
 				8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A07E619290EC45E009A4E12 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */,
+				8A07E61C290EC4CF009A4E12 /* SettingModuleColors.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		A04C036E28D8EE3E004E4D80 /* Controllers */ = {
@@ -740,11 +754,12 @@
 				A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */,
 				A00E312328CB8C5600EC6FA5 /* ColorView.swift in Sources */,
 				03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */,
-				8A07E60B29041E25009A4E12 /* ChangePasswordSettingPageViewController.swift in Sources */,
+				8A07E60B29041E25009A4E12 /* ChangePasswordViewController.swift in Sources */,
 				A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */,
 				A0D96F9728F712E00071E255 /* AchievementsViewController.swift in Sources */,
 				A09372DB28FF29B900C5C121 /* ProfileScreenAssembly.swift in Sources */,
 				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,
+				8A07E61D290EC4CF009A4E12 /* SettingModuleColors.swift in Sources */,
 				DD64000B28F6DD2900C68EAE /* TestView.swift in Sources */,
 				844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */,
 				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
@@ -756,6 +771,7 @@
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
 				DD3C696D28F5A5CF001DA207 /* FirebaseService.swift in Sources */,
+				8A07E61B290EC4BA009A4E12 /* SettingModuleMetrics.swift in Sources */,
 				8A07E607290411BA009A4E12 /* SettingPagePresenter.swift in Sources */,
 				A0D9872828D3AF380040C9E5 /* ProgressView.swift in Sources */,
 				DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */,
