@@ -22,7 +22,7 @@
 		8A07E60128FC6EB6009A4E12 /* SettingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60028FC6EB6009A4E12 /* SettingPageViewController.swift */; };
 		8A07E607290411BA009A4E12 /* SettingPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E606290411BA009A4E12 /* SettingPagePresenter.swift */; };
 		8A07E60B29041E25009A4E12 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60A29041E25009A4E12 /* ChangePasswordViewController.swift */; };
-		8A07E60D290430A2009A4E12 /* SettingPageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */; };
+		8A07E60D290430A2009A4E12 /* SettingModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60C290430A2009A4E12 /* SettingModuleAssembly.swift */; };
 		8A07E60F2908FB6D009A4E12 /* SettingPageUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E60E2908FB6D009A4E12 /* SettingPageUserModel.swift */; };
 		8A07E616290A7356009A4E12 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */; };
 		8A07E61B290EC4BA009A4E12 /* SettingModuleMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */; };
@@ -67,7 +67,7 @@
 		8A07E60028FC6EB6009A4E12 /* SettingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageViewController.swift; sourceTree = "<group>"; };
 		8A07E606290411BA009A4E12 /* SettingPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPagePresenter.swift; sourceTree = "<group>"; };
 		8A07E60A29041E25009A4E12 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageAssembly.swift; sourceTree = "<group>"; };
+		8A07E60C290430A2009A4E12 /* SettingModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleAssembly.swift; sourceTree = "<group>"; };
 		8A07E60E2908FB6D009A4E12 /* SettingPageUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageUserModel.swift; sourceTree = "<group>"; };
 		8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
 		8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleMetrics.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 		8A07E60529040EF5009A4E12 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				8A07E60C290430A2009A4E12 /* SettingPageAssembly.swift */,
+				8A07E60C290430A2009A4E12 /* SettingModuleAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -587,6 +587,87 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A07E60D290430A2009A4E12 /* SettingModuleAssembly.swift in Sources */,
+				BA62B0B8291CEC4300A22370 /* MainPageAssembler.swift in Sources */,
+				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
+				0327CEA528F5A34A0096084C /* UIViewController+Extension.swift in Sources */,
+				BA62B08228F8CA0F00A22370 /* MainPageCollectionViewCellGrid.swift in Sources */,
+				0327CEA628F5A34A0096084C /* UIWindow+Extension.swift in Sources */,
+				0327CEA728F5A34A0096084C /* CustomLoginTextField.swift in Sources */,
+				0327CEA828F5A34A0096084C /* LoginPageViewController.swift in Sources */,
+				0327CEA928F5A34A0096084C /* FirstPageViewController.swift in Sources */,
+				0327CEAA28F5A34A0096084C /* WelcomeLabel.swift in Sources */,
+				0327CEAB28F5A34A0096084C /* MainCusomButton.swift in Sources */,
+				0327CEAC28F5A34A0096084C /* AchievementsModel.swift in Sources */,
+				0327CEAD28F5A34A0096084C /* ProfileViewController.swift in Sources */,
+				0327CEAE28F5A34A0096084C /* Color.swift in Sources */,
+				0327CEAF28F5A34A0096084C /* CircularView.swift in Sources */,
+				0327CEB028F5A34A0096084C /* ProgressView.swift in Sources */,
+				0327CEB128F5A34A0096084C /* ProfileView.swift in Sources */,
+				0327CEB228F5A34A0096084C /* SheetProfileView.swift in Sources */,
+				0327CEB328F5A34A0096084C /* ProfileCollectionViewCell.swift in Sources */,
+				0327CEB428F5A34A0096084C /* MainTabBarController.swift in Sources */,
+				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
+				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
+				BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */,
+				0327CE9F28F5A2510096084C /* MainPageCollectionViewCellList.swift in Sources */,
+				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
+				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
+				0327CEA028F5A2510096084C /* MainPageCollectionViewHeader.swift in Sources */,
+				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
+				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
+				0327CEA528F5A34A0096084C /* UIViewController+Extension.swift in Sources */,
+				BA62B08228F8CA0F00A22370 /* MainPageCollectionViewCellGrid.swift in Sources */,
+				0327CEA628F5A34A0096084C /* UIWindow+Extension.swift in Sources */,
+				0327CEA728F5A34A0096084C /* CustomLoginTextField.swift in Sources */,
+				0327CEA828F5A34A0096084C /* LoginPageViewController.swift in Sources */,
+				0327CEA928F5A34A0096084C /* FirstPageViewController.swift in Sources */,
+				0327CEAA28F5A34A0096084C /* WelcomeLabel.swift in Sources */,
+				0327CEAB28F5A34A0096084C /* MainCusomButton.swift in Sources */,
+				0327CEAC28F5A34A0096084C /* AchievementsModel.swift in Sources */,
+				0327CEAD28F5A34A0096084C /* ProfileViewController.swift in Sources */,
+				0327CEAE28F5A34A0096084C /* Color.swift in Sources */,
+				BA62B08E2906AE9400A22370 /* (null) in Sources */,
+				0327CEAF28F5A34A0096084C /* CircularView.swift in Sources */,
+				0327CEB028F5A34A0096084C /* ProgressView.swift in Sources */,
+				0327CEB128F5A34A0096084C /* ProfileView.swift in Sources */,
+				0327CEB228F5A34A0096084C /* SheetProfileView.swift in Sources */,
+				0327CEB328F5A34A0096084C /* ProfileCollectionViewCell.swift in Sources */,
+				0327CEB428F5A34A0096084C /* MainTabBarController.swift in Sources */,
+				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
+				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
+				BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */,
+				0327CE9F28F5A2510096084C /* MainPageCollectionViewCellList.swift in Sources */,
+				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
+				0327CE9828F5A21C0096084C /* UIColor+Extension.swift in Sources */,
+				0327CEA028F5A2510096084C /* MainPageCollectionViewHeader.swift in Sources */,
+				0327CEA428F5A34A0096084C /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
+				0327CEA528F5A34A0096084C /* UIViewController+Extension.swift in Sources */,
+				03DA798E291F9B3900AC4FE0 /* MainPageModel.swift in Sources */,
+				BA62B08228F8CA0F00A22370 /* MainPageCollectionViewCellGrid.swift in Sources */,
+				0327CEA628F5A34A0096084C /* UIWindow+Extension.swift in Sources */,
+				0327CEA728F5A34A0096084C /* CustomLoginTextField.swift in Sources */,
+				0327CEA828F5A34A0096084C /* LoginPageViewController.swift in Sources */,
+				0327CEA928F5A34A0096084C /* FirstPageViewController.swift in Sources */,
+				0327CEAA28F5A34A0096084C /* WelcomeLabel.swift in Sources */,
+				0327CEAB28F5A34A0096084C /* MainCusomButton.swift in Sources */,
+				0327CEAC28F5A34A0096084C /* AchievementsModel.swift in Sources */,
+				0327CEAD28F5A34A0096084C /* ProfileViewController.swift in Sources */,
+				0327CEAE28F5A34A0096084C /* Color.swift in Sources */,
+				BA62B08E2906AE9400A22370 /* (null) in Sources */,
+				0327CEAF28F5A34A0096084C /* CircularView.swift in Sources */,
+				0327CEB028F5A34A0096084C /* ProgressView.swift in Sources */,
+				0327CEB128F5A34A0096084C /* ProfileView.swift in Sources */,
+				0327CEB228F5A34A0096084C /* SheetProfileView.swift in Sources */,
+				0327CEB328F5A34A0096084C /* ProfileCollectionViewCell.swift in Sources */,
+				0327CEB428F5A34A0096084C /* MainTabBarController.swift in Sources */,
+				0327CEB528F5A34A0096084C /* SecureStore.swift in Sources */,
+				0327CEA328F5A2EE0096084C /* AppDelegate.swift in Sources */,
+				BA62B08C2906811700A22370 /* MainPagePresenter.swift in Sources */,
+				0327CE9F28F5A2510096084C /* MainPageCollectionViewCellList.swift in Sources */,
+				0327CEA228F5A2510096084C /* MainPageViewController.swift in Sources */,
+				0327CEA028F5A2510096084C /* MainPageCollectionViewHeader.swift in Sources */,
+				03C2024728BA6DC100E5FFF3 /* SceneDelegate.swift in Sources */,
 				A09372DD28FF2AAE00C5C121 /* ProfileScreenPresenter.swift in Sources */,
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
 				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,

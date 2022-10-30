@@ -38,7 +38,7 @@ final class SettingPagePresenter: SettingPagePresenterType {
     }
 
     func updatePassword() {
-        let vc = SettingPageAssembly.createChangePasswordModule()
+        let vc = SettingModuleAssembly.createChangePasswordModule()
         view?.pushUpdatePassordScreen(to: vc)
     }
 
