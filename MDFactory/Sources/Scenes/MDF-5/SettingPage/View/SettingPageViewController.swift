@@ -31,7 +31,7 @@ class SettingPageViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
-        image.layer.cornerRadius = 75
+        image.layer.cornerRadius = SettingModuleMetrics.avatarImageWidthHeight / 2
 
         image.tintColor = .systemGray
         return image
@@ -50,7 +50,7 @@ class SettingPageViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 20
+        stack.spacing = SettingModuleMetrics.buttonStackSpacing
         return stack
     }()
 
@@ -58,19 +58,19 @@ class SettingPageViewController: UIViewController {
 
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize)
         return label
     }()
 
     private lazy var userSurnameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize)
         return label
     }()
 
     private lazy var userEmailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize - 1)
         return label
     }()
 
@@ -78,10 +78,10 @@ class SettingPageViewController: UIViewController {
 
     private lazy var changePasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: SettingModuleMetrics.buttonFontSize)
         button.setTitle("изменить пароль", for: .normal)
-        button.layer.cornerRadius = 16 * UIScreen.main.bounds.height / 812
-        button.layer.backgroundColor = UIColor.systemGray5.cgColor
+        button.layer.cornerRadius = SettingModuleMetrics.buttonCornerRadius
+        button.layer.backgroundColor = SettingModuleColors.buttonBackground.cgColor
         button.setTitleColor(UIColor.gray, for: .normal)
         button.addTarget(self, action: #selector(showChangePasswordVC), for: .touchUpInside)
         return button
@@ -89,19 +89,19 @@ class SettingPageViewController: UIViewController {
 
     private lazy var exitAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: SettingModuleMetrics.buttonFontSize)
         button.setTitle("выйти из аккаунта", for: .normal)
-        button.layer.cornerRadius = 16 * UIScreen.main.bounds.height / 812
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1).cgColor
-        button.setTitleColor(UIColor(hue: 252/360, saturation: 0.79, brightness: 1, alpha: 1), for: .normal)
+        button.layer.cornerRadius = SettingModuleMetrics.buttonCornerRadius
+        button.layer.borderWidth = SettingModuleMetrics.buttonBorderWidth
+        button.layer.borderColor = SettingModuleColors.buttonBorder.cgColor
+        button.setTitleColor(SettingModuleColors.buttonTitle, for: .normal)
         button.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var deleteAccountButton: UIButton = {
-        let button = MainCustomButton(cornerRadius: 16 * UIScreen.main.bounds.height / 812)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        let button = MainCustomButton(cornerRadius: SettingModuleMetrics.buttonCornerRadius)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: SettingModuleMetrics.buttonFontSize)
         button.setTitle("удалить аккаунт", for: .normal)
         button.addTarget(self, action: #selector(deleteAccauntButtonTapped), for: .touchUpInside)
         return button
@@ -171,25 +171,29 @@ class SettingPageViewController: UIViewController {
 
         userImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
-            make.width.equalTo(150)
-            make.height.equalTo(150)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(
+                SettingModuleMetrics.avatarLeadingOffset)
+            make.width.height.equalTo(SettingModuleMetrics.avatarImageWidthHeight)
         }
 
         nameStack.snp.makeConstraints { make in
-            make.leading.equalTo(userImageView.snp.trailing).offset(20)
-            make.trailing.equalTo(view).inset(20)
+            make.leading.equalTo(userImageView.snp.trailing).offset(
+                SettingModuleMetrics.nameStackLeadingTrailingOffset)
+            make.trailing.equalTo(view).inset(
+                SettingModuleMetrics.nameStackLeadingTrailingOffset)
             make.top.equalTo(userImageView.snp.top)
             make.bottom.equalTo(userImageView.snp.bottom)
         }
 
         buttonStack.snp.makeConstraints { make in
-            make.top.equalTo(nameStack.snp.bottom).offset(100)
-            make.leading.trailing.equalTo(view).inset(30)
+            make.top.equalTo(nameStack.snp.bottom).offset(
+                SettingModuleMetrics.buttonStackTopOffset)
+            make.leading.trailing.equalTo(view).inset(
+                SettingModuleMetrics.buttonStackLeadingTrailingOffset)
         }
 
         changePasswordButton.snp.makeConstraints { make in
-            make.height.equalTo(58 * UIScreen.main.bounds.height / 812)
+            make.height.equalTo(SettingModuleMetrics.buttonHeight)
         }
     }
 }
