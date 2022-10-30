@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SettingPagePresenterType: AnyObject {
-//    var user: User { get set }
+
     init(view: SettingPageViewControllerType,
          user: User)
 
@@ -18,7 +18,7 @@ protocol SettingPagePresenterType: AnyObject {
     func getUser()
 }
 
-final class SettingPagePresenter {
+final class SettingPagePresenter: SettingPagePresenterType {
 
     private weak var view: SettingPageViewControllerType?
     private var user: User
@@ -27,13 +27,10 @@ final class SettingPagePresenter {
         self.view = view
         self.user = user
     }
-}
 
 // MARK: - SettingPagePresenter Methods
 
-extension SettingPagePresenter: SettingPagePresenterType {
     func getUser() {
-//        let avatar = user.avatar ?? "moon"
         view?.setUser(avatar: user.avatar,
                       name: user.name,
                       surname: user.surname,
@@ -44,7 +41,6 @@ extension SettingPagePresenter: SettingPagePresenterType {
         let vc = SettingPageAssembly.createChangePasswordModule()
         view?.pushUpdatePassordScreen(to: vc)
     }
-
 
     func logout() {
         FirebaseService().logOut { [weak self]result in
