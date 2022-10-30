@@ -20,5 +20,6 @@ extension User {
          name: "Константин",
          surname: "Константинопольский",
          email: "mail.konstantin@mail.ru")
+
 }
 

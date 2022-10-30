@@ -221,6 +221,7 @@
 		8A07E5FF28FC6E66009A4E12 /* MDF-5 */ = {
 			isa = PBXGroup;
 			children = (
+				8A07E619290EC45E009A4E12 /* Enums */,
 				8A07E60529040EF5009A4E12 /* Assembly */,
 				8A07E60429040EEC009A4E12 /* Presenter */,
 				8A07E60329040ECF009A4E12 /* Model */,
