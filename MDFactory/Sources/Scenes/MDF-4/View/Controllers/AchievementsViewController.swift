@@ -91,7 +91,6 @@ class AchievementsViewController: UIViewController {
         section.interGroupSpacing = MetricCollectionView.spacingGroup
         
         let layout = UICollectionViewCompositionalLayout(section: section)
-        layout.configuration.scrollDirection = .vertical
         
         return layout
     }
@@ -109,10 +108,7 @@ class AchievementsViewController: UIViewController {
     }
     
     private func setupLoyaut() {
-        achievementsCollectionView.snp.makeConstraints { make in
-            make.trailing.leading.bottom.equalTo(0)
-        }
-        
+
         stripImageView.snp.makeConstraints { make in
             make.top.equalTo(view.snp.top).offset(MetricConstraints.stripTop)
             make.centerX.equalToSuperview()
@@ -148,7 +144,7 @@ class AchievementsViewController: UIViewController {
         static var stripTop: CGFloat = 14
         static var achievementsNameTop: CGFloat = 39
         static var cornerRadiusStripImage: CGFloat = 2
-        static var achievementsCollectionTop: CGFloat = 50
+        static var achievementsCollectionTop: CGFloat = 65
         static var cornerRadiusView: CGFloat = 40
     }
     
