@@ -99,6 +99,7 @@ class CircularView: UIView {
         dotRed.strokeColor = Color.redDark.color.cgColor
         dotRed.fillColor = Color.redDark.color.cgColor
         dotRed.path = dot.cgPath
+        
         layer.addSublayer(dotRed)
     }
 }

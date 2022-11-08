@@ -16,6 +16,8 @@ class MainTabBarController: UITabBarController {
     private var settingsViewController: UIViewController?
     private var testViewController: UIViewController?
 
+
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -55,7 +57,7 @@ class MainTabBarController: UITabBarController {
                                         selectedImageName: "circle.grid.cross.fill",
                                         tag: 0)
 
-        profileViewController = ProfileViewController()
+        profileViewController = ProfileScreenAssembly.assembly()
         profileViewController?.setupTabBar(title: "Профиль",
                                            imageName: "person",
                                            selectedImageName: "person.fill",

@@ -1,5 +1,5 @@
 //
-//  ColorView.swift
+//  Color.swift
 //  MDFactory
 //
 //  Created by Andrei Maskal on 09/09/2022.
@@ -13,6 +13,7 @@ enum Color {
     case green
     case gray
     case redDark
+    case purpl
     
     var color: UIColor {
         
@@ -27,6 +28,8 @@ enum Color {
             return #colorLiteral(red: 0.07450980392, green: 0.9450980392, blue: 0.662745098, alpha: 1)
         case .redDark:
             return #colorLiteral(red: 0.8705882353, green: 0.231372549, blue: 0.1960784314, alpha: 1)
+        case .purpl:
+            return #colorLiteral(red: 0.3449338675, green: 0.3682180047, blue: 0.5184274912, alpha: 0.6555774007)
         }
     }
 }
