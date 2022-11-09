@@ -59,8 +59,6 @@ class SettingPageViewController: UIViewController {
         return stack
     }()
 
-    // MARK: - Create Labels
-
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize)
@@ -110,22 +108,6 @@ class SettingPageViewController: UIViewController {
         return button
     }()
 
-    @objc private func showChangePasswordVC() {
-        presenter?.updatePassword()
-    }
-
-    @objc private func logOutButtonTapped() {
-        presenter?.logout()
-    }
-
-    @objc private func deleteAccauntButtonTapped() {
-        showDeleteAlert(with: "Удалить аккаунт?",
-                             message: "Это действие необратимо",
-                             alertAction: { _ in
-            self.presenter?.deleteUser()
-        })
-    }
-    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
