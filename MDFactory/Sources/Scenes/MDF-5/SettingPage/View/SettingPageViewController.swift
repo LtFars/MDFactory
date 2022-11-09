@@ -37,7 +37,7 @@ class SettingPageViewController: UIViewController {
         return image
     }()
 
-    // MARK: - Create stacks
+    // MARK: - Elements
 
     private lazy var nameStack: UIStackView = {
         let stack = UIStackView()
@@ -53,8 +53,6 @@ class SettingPageViewController: UIViewController {
         stack.spacing = SettingModuleMetrics.buttonStackSpacing
         return stack
     }()
-
-    // MARK: - Create Labels
 
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
@@ -73,8 +71,6 @@ class SettingPageViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize - 1)
         return label
     }()
-
-    // MARK: - Create buttons
 
     private lazy var changePasswordButton: UIButton = {
         let button = UIButton(type: .system)
@@ -107,22 +103,6 @@ class SettingPageViewController: UIViewController {
         return button
     }()
 
-    @objc private func showChangePasswordVC() {
-        presenter?.updatePassword()
-    }
-
-    @objc private func logOutButtonTapped() {
-        presenter?.logout()
-    }
-
-    @objc private func deleteAccauntButtonTapped() {
-        showDeleteAlert(with: "Удалить аккаунт?",
-                             message: "Это действие необратимо",
-                             alertAction: { _ in
-            self.presenter?.deleteUser()
-        })
-    }
-    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -195,6 +175,24 @@ class SettingPageViewController: UIViewController {
         changePasswordButton.snp.makeConstraints { make in
             make.height.equalTo(SettingModuleMetrics.buttonHeight)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func showChangePasswordVC() {
+        presenter?.updatePassword()
+    }
+
+    @objc private func logOutButtonTapped() {
+        presenter?.logout()
+    }
+
+    @objc private func deleteAccauntButtonTapped() {
+        showDeleteAlert(with: "Удалить аккаунт?",
+                        message: "Это действие необратимо",
+                        alertAction: { _ in
+            self.presenter?.deleteUser()
+        })
     }
 }
 

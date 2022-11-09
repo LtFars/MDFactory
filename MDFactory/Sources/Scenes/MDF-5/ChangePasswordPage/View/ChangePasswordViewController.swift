@@ -16,7 +16,7 @@ class ChangePasswordViewController: UIViewController {
 
     var presenter: ChangePasswordPresenterType?
 
-    // MARK: - Private Properties
+    // MARK: - Elements
 
     private lazy var passwordTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "Новый пароль")
@@ -69,24 +69,7 @@ class ChangePasswordViewController: UIViewController {
         setupLayout()
     }
 
-    @objc private func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
-
-    @objc private func changePasswordButtonTapped() {
-        guard !passwordTextField.text!.isEmpty,
-              !passwordAgainTextField.text!.isEmpty else {
-            print("is Empty")
-            return }
-
-        guard passwordAgainTextField.text == passwordTextField.text else {
-            print("password not equatable")
-            return }
-
-        if let newPassword = passwordTextField.text {
-            presenter?.updatePassword(to: newPassword)
-        }
-    }
+// MARK: - SetupView
 
     private func setupView() {
 
@@ -108,6 +91,8 @@ class ChangePasswordViewController: UIViewController {
         }
     }
 
+    // MARK: - Setup Layout
+
     private func setupLayout() {
         passwordTextField.snp.makeConstraints { make in
             make.height.equalTo(SettingModuleMetrics.buttonHeight)
@@ -120,7 +105,30 @@ class ChangePasswordViewController: UIViewController {
                 SettingModuleMetrics.buttonStackLeadingTrailingOffset)
         }
     }
+
+    // MARK: - Actions
+
+    @objc private func backAction() {
+        navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func changePasswordButtonTapped() {
+        guard !passwordTextField.text!.isEmpty,
+              !passwordAgainTextField.text!.isEmpty else {
+            print("is Empty")
+            return }
+
+        guard passwordAgainTextField.text == passwordTextField.text else {
+            print("password not equatable")
+            return }
+
+        if let newPassword = passwordTextField.text {
+            presenter?.updatePassword(to: newPassword)
+        }
+    }
 }
+
+// MARK: - ChangePasswordViewController Methods
 
 extension ChangePasswordViewController: ChangePasswordViewControllerType {
     func updatePasswordSucceeded() {
