@@ -21,4 +21,4 @@ enum SettingModuleMetrics {
     static var buttonHeight: CGFloat = 58 * UIScreen.main.bounds.height / 812
     static var buttonCornerRadius: CGFloat = 16 * UIScreen.main.bounds.height / 812
     static var buttonBorderWidth: CGFloat = 2
-    }
+}

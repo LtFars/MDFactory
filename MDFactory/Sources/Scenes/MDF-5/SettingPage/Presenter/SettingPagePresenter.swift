@@ -9,8 +9,7 @@ import Foundation
 
 protocol SettingPagePresenterType: AnyObject {
 
-    init(view: SettingPageViewControllerType,
-         user: User)
+    init(view: SettingPageViewControllerType, user: User)
 
     func updatePassword()
     func logout()
@@ -23,12 +22,12 @@ final class SettingPagePresenter: SettingPagePresenterType {
     private weak var view: SettingPageViewControllerType?
     private var user: User
 
-    init(view: SettingPageViewControllerType, user: User) {
+    required init(view: SettingPageViewControllerType, user: User) {
         self.view = view
         self.user = user
     }
 
-// MARK: - SettingPagePresenter Methods
+    // MARK: - SettingPagePresenter Methods
 
     func getUser() {
         view?.setUser(avatar: user.avatar,
