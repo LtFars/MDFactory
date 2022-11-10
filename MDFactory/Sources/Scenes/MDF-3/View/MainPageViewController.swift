@@ -1,10 +1,11 @@
 import UIKit
 import SnapKit
 
-class MainPageViewController: UIViewController {
+class MainPageViewController: UIViewController, MainPageViewControllerInput {
     static let identifier = "MainPage"
     let userName = "User"
     lazy var layout = getLayout(flag: MainPageModel.gridMode)
+    var presenter: MainPageViewControllerOutput?
     
     // MARK: - Top bar
     
@@ -152,13 +153,13 @@ class MainPageViewController: UIViewController {
         )
         
         collectionView.register(
-            CollectionViewCellList.self,
-            forCellWithReuseIdentifier: CollectionViewCellList.identifier
+            MainPageCollectionViewCellList.self,
+            forCellWithReuseIdentifier: MainPageCollectionViewCellList.identifier
         )
         
         collectionView.register(
-            CollectionViewCellGrid.self,
-            forCellWithReuseIdentifier: CollectionViewCellGrid.identifier
+            MainPageCollectionViewCellGrid.self,
+            forCellWithReuseIdentifier: MainPageCollectionViewCellGrid.identifier
         )
         
         collectionView.register(
@@ -202,6 +203,9 @@ class MainPageViewController: UIViewController {
         }
         return layout
     }
+    func getCell(index: Int) -> ItemForMain {
+        return MainPageModel().itemForCollection()[index]
+    }    
 }
 
 // MARK: - Extensions
@@ -209,17 +213,17 @@ class MainPageViewController: UIViewController {
 extension MainPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MainPagePresenter().getItemsCount()
+        return presenter?.getItemsCount() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollection.dequeueReusableCell(
-            withReuseIdentifier: MainPageModel.gridMode ? CollectionViewCellGrid.identifier : CollectionViewCellList.identifier,
+            withReuseIdentifier: MainPageModel.gridMode ? MainPageCollectionViewCellGrid.identifier : MainPageCollectionViewCellList.identifier,
             for: indexPath
-        ) as? CollectionViewCellProtocol else {
+        ) as? MainPageCollectionViewCellProtocol else {
             return UICollectionViewCell()
         }
-        cell.configure(itemIndex: indexPath.item)
+        cell.configure(cell: getCell(index: indexPath.row))
         return cell
     }
     
@@ -252,7 +256,7 @@ extension MainPageViewController: UICollectionViewDataSource {
 extension MainPageViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        MainPagePresenter().getItemHandler(index: indexPath.item)
+        presenter?.getItemHandler(index: indexPath.item)
     }
 }
 
