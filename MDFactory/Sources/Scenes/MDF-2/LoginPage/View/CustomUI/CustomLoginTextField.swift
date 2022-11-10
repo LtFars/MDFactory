@@ -33,7 +33,7 @@ final class CustomLoginTextField: UITextField {
         button.contentMode = .center
         button.setImage(imageNormal, for: .normal)
         button.setImage(imageSelect, for: .selected)
-        button.addTarget(CustomLoginTextField.self,
+        button.addTarget(self,
                          action: #selector(secureEntryModeSwitcher),
                          for: .touchUpInside)
         return button
