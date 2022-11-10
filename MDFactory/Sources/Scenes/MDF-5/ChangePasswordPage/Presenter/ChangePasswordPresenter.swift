@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ChangePasswordPresenterType: AnyObject {
+    func reauthenticate()
     func updatePassword(to newPassword: String)
 }
 
@@ -21,6 +22,10 @@ final class ChangePasswordPresenter {
 }
 
 extension ChangePasswordPresenter: ChangePasswordPresenterType {
+    func reauthenticate() {
+        //
+    }
+
     func updatePassword(to newPassword: String) {
         print("Password updated to: \(newPassword)")
 
