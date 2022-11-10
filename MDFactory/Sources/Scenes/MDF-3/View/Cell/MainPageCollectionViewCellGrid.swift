@@ -1,14 +1,15 @@
 import UIKit
 import SnapKit
 
-class CollectionViewCellGrid: UICollectionViewCell, CollectionViewCellProtocol {
-    static let identifier = "CollectionViewCellGrid"
+class MainPageCollectionViewCellGrid: UICollectionViewCell, MainPageCollectionViewCellProtocol {
+    static let identifier = "MainPageCollectionViewCellGrid"
+    var presenter: MainPageViewControllerOutput?
     
     private lazy var cellView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 20
-        return view
         view.backgroundColor = .white
+        return view
     }()
     
     private let image: UIImageView = {
@@ -75,10 +76,10 @@ class CollectionViewCellGrid: UICollectionViewCell, CollectionViewCellProtocol {
         }
     }
     
-    func configure(itemIndex: Int) {
-        label.text = MainPagePresenter().getItemTitle(index: itemIndex)
-        image.image = MainPagePresenter().getItemImage(index: itemIndex)
-        sublabel.text = MainPagePresenter().getItemDescription(index: itemIndex)
+    func configure(cell: ItemForMain) {
+        label.text = cell.title
+        image.image = cell.image
+        sublabel.text = cell.description
     }
 }
 

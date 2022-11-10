@@ -1,35 +1,51 @@
 import UIKit
 
-protocol MainPagePresenterProtocol {
-    var model: [ItemForMain] { get }
+protocol MainPageViewControllerOutput {
     func getItemsCount() -> Int
     func getItemTitle(index: Int) -> String
     func getItemDescription(index: Int) -> String
     func getItemImage(index: Int) -> UIImage?
     func getItemHandler(index: Int)
-    
 }
 
-class MainPagePresenter: MainPagePresenterProtocol {
-    var model: [ItemForMain] = MainPageModel().itemForCollection()
+protocol MainPageViewControllerInput: AnyObject {
+    func getCell(index: Int) -> ItemForMain
+}
+
+final class MainPagePresenter {
+    
+    // MARK: - Elements
+    
+    private weak var view: MainPageViewControllerInput?
+    
+    // MARK: - Lifecycle
+    
+    init(view: MainPageViewControllerInput) {
+        self.view = view
+    }
+}
+
+extension MainPagePresenter: MainPageViewControllerOutput {
     
     func getItemsCount() -> Int {
-        return model.count
+        return MainPageModel().itemForCollection().count
     }
     
     func getItemTitle(index: Int) -> String {
-        return model[index].title
+        return MainPageModel().itemForCollection()[index].title
     }
     
     func getItemDescription(index: Int) -> String {
-        return model[index].description
+        return MainPageModel().itemForCollection()[index].description
     }
     
     func getItemImage(index: Int) -> UIImage? {
-        return model[index].image
+        return MainPageModel().itemForCollection()[index].image
     }
     
     func getItemHandler(index: Int) {
-        model[index].handler(model[index].title)
+        MainPageModel().itemForCollection()[index].handler(
+            MainPageModel().itemForCollection()[index].title
+        )
     }
 }
