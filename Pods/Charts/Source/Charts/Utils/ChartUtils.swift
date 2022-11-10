@@ -119,7 +119,7 @@ extension CGPoint
 extension CGContext
 {
 
-    open func drawImage(_ image: NSUIImage, atCenter center: CGPoint, size: CGSize)
+    public func drawImage(_ image: NSUIImage, atCenter center: CGPoint, size: CGSize)
     {
         var drawOffset = CGPoint()
         drawOffset.x = center.x - (size.width / 2)
@@ -175,7 +175,7 @@ extension CGContext
         }
     }
     
-    open func drawText(_ text: String, at point: CGPoint, anchor: CGPoint = CGPoint(x: 0.5, y: 0.5), angleRadians: CGFloat, attributes: [NSAttributedString.Key : Any]?)
+    public func drawText(_ text: String, at point: CGPoint, anchor: CGPoint = CGPoint(x: 0.5, y: 0.5), angleRadians: CGFloat, attributes: [NSAttributedString.Key : Any]?)
     {
         var drawOffset = CGPoint()
 

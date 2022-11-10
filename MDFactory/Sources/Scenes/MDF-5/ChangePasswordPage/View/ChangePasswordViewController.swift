@@ -18,21 +18,27 @@ class ChangePasswordViewController: UIViewController {
 
     // MARK: - Elements
 
-    private lazy var passwordTextField: CustomLoginTextField = {
+    private lazy var currentPasswordTextField: CustomLoginTextField = {
+        let textField = CustomLoginTextField(labelText: "Текуший пароль", secureTextMode: true)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
+        textField.returnKeyType = UIReturnKeyType.next
+        return textField
+    }()
+    
+    private lazy var newPasswordTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "Новый пароль")
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.returnKeyType = UIReturnKeyType.next
-        textField.tag = 0
         return textField
     }()
 
-    private lazy var passwordAgainTextField: CustomLoginTextField = {
+    private lazy var newPasswordAgainTextField: CustomLoginTextField = {
         let textField = CustomLoginTextField(labelText: "Новый пароль ещё раз")
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
-        textField.returnKeyType = UIReturnKeyType.next
-        textField.tag = 0
+        textField.returnKeyType = UIReturnKeyType.go
         return textField
     }()
 
@@ -81,8 +87,9 @@ class ChangePasswordViewController: UIViewController {
         view.addSubview(buttonStack)
 
         let buttonStackSubview = [
-            passwordTextField,
-            passwordAgainTextField,
+            currentPasswordTextField,
+            newPasswordTextField,
+            newPasswordAgainTextField,
             changePasswordButton
         ]
 
@@ -94,7 +101,7 @@ class ChangePasswordViewController: UIViewController {
     // MARK: - Setup Layout
 
     private func setupLayout() {
-        passwordTextField.snp.makeConstraints { make in
+        newPasswordTextField.snp.makeConstraints { make in
             make.height.equalTo(SettingModuleMetrics.buttonHeight)
         }
 
@@ -113,16 +120,17 @@ class ChangePasswordViewController: UIViewController {
     }
 
     @objc private func changePasswordButtonTapped() {
-        guard !passwordTextField.text!.isEmpty,
-              !passwordAgainTextField.text!.isEmpty else {
+        guard !currentPasswordTextField.text!.isEmpty,
+              !newPasswordTextField.text!.isEmpty,
+              !newPasswordAgainTextField.text!.isEmpty else {
             print("is Empty")
             return }
 
-        guard passwordAgainTextField.text == passwordTextField.text else {
+        guard newPasswordAgainTextField.text == newPasswordTextField.text else {
             print("password not equatable")
             return }
 
-        if let newPassword = passwordTextField.text {
+        if let newPassword = newPasswordTextField.text {
             presenter?.updatePassword(to: newPassword)
         }
     }
