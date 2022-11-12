@@ -391,6 +391,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BA62B08528FEC2CF00A22370 /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				BA62B0B7291CEC4300A22370 /* MainPageAssembler.swift */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
+		BA62B08628FEC2EF00A22370 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				BA62B08B2906811700A22370 /* MainPagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		BADD53EA28C61FFB0084419D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
