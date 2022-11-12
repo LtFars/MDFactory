@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class HeaderCollectionView: UICollectionReusableView {
+class MainPageCollectionViewHeader: UICollectionReusableView {
     static let identifier = "HeaderCollectionView"
     
     private let label: UILabel = {
@@ -44,15 +44,19 @@ class HeaderCollectionView: UICollectionReusableView {
         setupLayout()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
     // MARK: - Settings
     
-    func setupHierarchy() {
+    private func setupHierarchy() {
         addSubview(label)
         addSubview(buttonRow)
         addSubview(buttonGrid)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         label.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(30)
@@ -69,12 +73,7 @@ class HeaderCollectionView: UICollectionReusableView {
         }
     }
     
-    func configure() {
-        label.text = Strings.headerTitle
-        changeMode()
-    }
-    
-    func changeMode() {
+    private func changeMode() {
         if MainPageModel.gridMode {
             buttonRow.backgroundColor = UIColor(hex: Strings.deselectedBGColor)
             buttonGrid.backgroundColor = UIColor(hex: Strings.selectedBGColor)
@@ -86,9 +85,14 @@ class HeaderCollectionView: UICollectionReusableView {
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    // MARK: - Configuration
+    
+    func configure() {
+        label.text = Strings.headerTitle
+        changeMode()
     }
+    
+    // MARK: - Actions
     
     @objc func changeMode(_ sender: UIButton) {
         MainPageModel.gridMode = sender == buttonGrid
@@ -98,7 +102,7 @@ class HeaderCollectionView: UICollectionReusableView {
     }
 }
 
-extension HeaderCollectionView {
+extension MainPageCollectionViewHeader {
     enum Strings {
         static let headerTitle = "Your Lessons"
         static let listButtonImageName = "rectangle.grid.1x2.fill"
