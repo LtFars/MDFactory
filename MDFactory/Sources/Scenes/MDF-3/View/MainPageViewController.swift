@@ -164,9 +164,9 @@ class MainPageViewController: UIViewController {
         )
         
         collectionView.register(
-            HeaderCollectionView.self,
+            MainPageCollectionViewHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: HeaderCollectionView.identifier
+            withReuseIdentifier: MainPageCollectionViewHeader.identifier
         )
         collectionView.backgroundColor = .clear
         collectionView.isUserInteractionEnabled = true
@@ -237,9 +237,9 @@ extension MainPageViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader {
             guard let header = mainCollection.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: HeaderCollectionView.identifier,
+                withReuseIdentifier: MainPageCollectionViewHeader.identifier,
                 for: indexPath
-            ) as? HeaderCollectionView else {
+            ) as? MainPageCollectionViewHeader else {
                 return UICollectionReusableView()
             }
             header.configure()
