@@ -11,7 +11,7 @@ struct ItemForMain {
 struct MainPageModel {
     static var gridMode: Bool = false
     
-    func itemForCollection() -> [ItemForMain] {
+    static func itemForCollection() -> [ItemForMain] {
         return [
             ItemForMain(
                 title: "Lessons",
@@ -40,6 +40,3 @@ struct MainPageModel {
         ]
     }
 }
-
-
-
