@@ -91,11 +91,9 @@ class HeaderCollectionView: UICollectionReusableView {
     }
     
     @objc func changeMode(_ sender: UIButton) {
-        if sender == buttonGrid {
-            MainPageModel.gridMode = true
-        } else {
-            MainPageModel.gridMode = false
-        }
+        MainPageModel.gridMode = sender == buttonGrid
+        ? true
+        : false
         changeMode()
     }
 }

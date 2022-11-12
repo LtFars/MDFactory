@@ -1,10 +1,11 @@
 import UIKit
 import SnapKit
 
-class MainPageViewController: UIViewController, MainPageViewControllerInput {
-    static let identifier = "MainPage"
-    let userName = "User"
-    lazy var layout = getLayout(flag: MainPageModel.gridMode)
+class MainPageViewController: UIViewController {
+    
+    private let userName = "User"
+    private lazy var layout = getLayout(flag: MainPageModel.gridMode)
+    private var model = MainPageModel.itemForCollection()
     var presenter: MainPageViewControllerOutput?
     
     // MARK: - Top bar
@@ -88,7 +89,7 @@ class MainPageViewController: UIViewController, MainPageViewControllerInput {
     
     // MARK: - Settings
     
-    func setupHierachy() {
+    private func setupHierachy() {
         view.addSubview(topBar)
         topBar.addSubview(profileButton)
         profileButton.addSubview(profileImage)
@@ -99,7 +100,7 @@ class MainPageViewController: UIViewController, MainPageViewControllerInput {
         conteinerView.addSubview(mainCollection)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         topBar.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview().offset(-(Metrics.topBarRadius / 2))
@@ -146,7 +147,7 @@ class MainPageViewController: UIViewController, MainPageViewControllerInput {
         }
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout
@@ -172,7 +173,7 @@ class MainPageViewController: UIViewController, MainPageViewControllerInput {
         mainCollection = collectionView
     }
     
-    func getLayout(flag: Bool) -> UICollectionViewFlowLayout {
+    private func getLayout(flag: Bool) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         if flag {
             layout.scrollDirection = .vertical
@@ -203,17 +204,17 @@ class MainPageViewController: UIViewController, MainPageViewControllerInput {
         }
         return layout
     }
-    func getCell(index: Int) -> ItemForMain {
-        return MainPageModel().itemForCollection()[index]
-    }    
 }
 
-// MARK: - Extensions
+// MARK: - UICollectionViewDataSource
 
 extension MainPageViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.getItemsCount() ?? 0
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -223,7 +224,8 @@ extension MainPageViewController: UICollectionViewDataSource {
         ) as? MainPageCollectionViewCellProtocol else {
             return UICollectionViewCell()
         }
-        cell.configure(cell: getCell(index: indexPath.row))
+        let model = model[indexPath.row]
+        cell.configure(cell: model)
         return cell
     }
     
@@ -253,11 +255,20 @@ extension MainPageViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension MainPageViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.getItemHandler(index: indexPath.item)
+        let title = model[indexPath.item].title
+        model[indexPath.item].handler(title)
     }
+}
+
+// MARK: - MainPageViewControllerInput
+
+extension MainPageViewController: MainPageViewControllerInput {
+    
 }
 
 // MARK: - Metrics

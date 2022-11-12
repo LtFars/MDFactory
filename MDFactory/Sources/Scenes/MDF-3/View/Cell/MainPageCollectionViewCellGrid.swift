@@ -1,9 +1,12 @@
 import UIKit
 import SnapKit
 
-class MainPageCollectionViewCellGrid: UICollectionViewCell, MainPageCollectionViewCellProtocol {
+protocol MainPageCollectionViewCellProtocol: UICollectionViewCell {
+     func configure(cell: ItemForMain)
+ }
+
+class MainPageCollectionViewCellGrid: UICollectionViewCell {
     static let identifier = "MainPageCollectionViewCellGrid"
-    var presenter: MainPageViewControllerOutput?
     
     private lazy var cellView: UIView = {
         let view = UIView()
@@ -52,7 +55,7 @@ class MainPageCollectionViewCellGrid: UICollectionViewCell, MainPageCollectionVi
     
     // MARK: - Settings
     
-    func setupHierarchy() {
+    private func setupHierarchy() {
         contentView.addSubview(cellView)
         cellView.addSubview(image)
         cellView.addSubview(stack)
@@ -60,7 +63,7 @@ class MainPageCollectionViewCellGrid: UICollectionViewCell, MainPageCollectionVi
         stack.addArrangedSubview(sublabel)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         cellView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -75,11 +78,14 @@ class MainPageCollectionViewCellGrid: UICollectionViewCell, MainPageCollectionVi
             make.width.equalToSuperview().offset(-10)
         }
     }
-    
+}
+
+// MARK: - MainPageCollectionViewCellProtocol
+
+extension MainPageCollectionViewCellGrid: MainPageCollectionViewCellProtocol {
     func configure(cell: ItemForMain) {
         label.text = cell.title
         image.image = cell.image
         sublabel.text = cell.description
     }
 }
-
