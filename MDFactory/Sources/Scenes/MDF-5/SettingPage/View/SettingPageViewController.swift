@@ -32,12 +32,7 @@ class SettingPageViewController: UIViewController {
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 75
-        if let userAvatar = presenter?.user.avatar {
-            image.image = UIImage(named: userAvatar) }
-        else {
-            image.image = UIImage(systemName: "moon") }
         image.layer.cornerRadius = SettingModuleMetrics.avatarImageWidthHeight / 2
-
         image.tintColor = .systemGray
         return image
     }()

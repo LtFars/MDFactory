@@ -139,14 +139,14 @@ class LoginPageViewController: UIViewController {
         // To access tabBar use
         // userName: test@test.com
         // password: password
-
+        
         guard let email = loginTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty
         else {
             showAlert(withTitle: "Ошибка", message: "Заполнены не все поля.")
             return
         }
-
+        
         FirebaseService().signIn(email: email, password: password) { [weak self] result in
             switch result {
             case .success:
@@ -156,8 +156,9 @@ class LoginPageViewController: UIViewController {
             case .failure(let error):
                 self?.showAlert(withTitle: "Ошибка", message: "\(error.localizedDescription)")
             }
+        }
     }
-
+    
     private func savePasswordToSecure(email: String, password: String) {
         do {
             try SecureStore.deletePassword(userName: email)
