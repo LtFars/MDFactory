@@ -59,7 +59,6 @@ class MainTabBarController: UITabBarController {
                                            selectedImageName: "person.fill",
                                            tag: 1)
 
-//        settingsViewController = SettingPageViewController()
         settingsViewController = SettingModuleAssembly.createSettingPageModule()
         settingsViewController?.setupTabBar(title: "Настройки",
                                             imageName: "gearshape",

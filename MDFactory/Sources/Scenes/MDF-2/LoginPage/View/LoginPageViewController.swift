@@ -151,10 +151,22 @@ class LoginPageViewController: UIViewController {
             }
         }
 
-        DispatchQueue.global(qos: .background).async {
+        FirebaseService().signIn(email: email, password: password) { [weak self] result in
+            switch result {
+            case .success:
+                self?.savePasswordToSecure(email: email, password: password)
+                guard let window = self?.view.window else { return }
+                window.switchRootViewController(to: MainTabBarController())
+            } else {
+                // TODO: handle error
+                print("Invalid password")
+            }
+        }
+		
+		DispatchQueue.global(qos: .background).async {
             workItem.perform()
         }
-
+		
         workItem.notify(queue: DispatchQueue.main) {
             if userPassword == validPassword {
                 guard let window = self.view.window else { return }
@@ -163,6 +175,16 @@ class LoginPageViewController: UIViewController {
                 // TODO: handle error
                 print("Invalid password")
             }
+    }
+
+    private func savePasswordToSecure(email: String, password: String) {
+        do {
+            try SecureStore.deletePassword(userName: email)
+            print("LOGIN: old password for \(email) has been deleted")
+            try SecureStore.save(userName: email, password: password)
+            print("LOGIN: new password \(password) for \(email) has been saved")
+        } catch {
+            print("\(error)")
         }
     }
 }
