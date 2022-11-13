@@ -223,7 +223,8 @@ extension LoginPageViewController {
     }
 }
 
-// MARK: - Extension
+// MARK: - UITextFieldDelegate
+
 extension LoginPageViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor = UIColor.darkGray.cgColor
