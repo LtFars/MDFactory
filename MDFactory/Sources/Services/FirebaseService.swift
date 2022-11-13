@@ -14,10 +14,6 @@ class FirebaseService {
 
     private let user = Auth.auth().currentUser
 
-    var userName: String {
-        return user?.email ?? ""
-    }
-
     func signIn(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             guard error == nil else {
@@ -26,6 +22,7 @@ class FirebaseService {
                 }
                 return
             }
+
             completion(.success(true))
         }
     }
@@ -47,6 +44,7 @@ class FirebaseService {
                 }
                 return
             }
+
             completion(.success(true))
         }
     }
@@ -59,6 +57,7 @@ class FirebaseService {
                 }
                 return
             }
+
             completion(.success(true))
         }
     }
