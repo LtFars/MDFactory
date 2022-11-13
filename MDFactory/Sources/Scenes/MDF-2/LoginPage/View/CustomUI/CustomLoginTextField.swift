@@ -26,7 +26,7 @@ final class CustomLoginTextField: UITextField {
         return label
     }()
     
-    private let textEntryModeSwitchButton: UIButton = {
+    private lazy var textEntryModeSwitchButton: UIButton = {
         let button = UIButton()
         let imageNormal = UIImage(systemName: "eye.slash")?.withRenderingMode(.alwaysOriginal).withTintColor(.gray)
         let imageSelect = UIImage(systemName: "eye")?.withRenderingMode(.alwaysOriginal).withTintColor(.gray)
@@ -112,14 +112,14 @@ final class CustomLoginTextField: UITextField {
     }
     
     @objc func secureEntryModeSwitcher() {
-        textEntryModeSwitchButton.isSelected.toggle()
+       textEntryModeSwitchButton.isSelected.toggle()
         DispatchQueue.main.async {
             if self.textEntryModeSwitchButton.state == .normal {
                 self.isSecureTextEntry = true
             } else if self.textEntryModeSwitchButton.state == .selected {
                 self.isSecureTextEntry = false
             }
-        
+
         }
     }
 }
