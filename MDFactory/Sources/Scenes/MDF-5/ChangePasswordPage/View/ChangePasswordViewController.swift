@@ -27,7 +27,7 @@ class ChangePasswordViewController: UIViewController {
     }()
     
     private lazy var newPasswordTextField: CustomLoginTextField = {
-        let textField = CustomLoginTextField(labelText: "Новый пароль")
+        let textField = CustomLoginTextField(labelText: "Новый пароль", secureTextMode: true)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.returnKeyType = UIReturnKeyType.next
@@ -35,7 +35,7 @@ class ChangePasswordViewController: UIViewController {
     }()
 
     private lazy var newPasswordAgainTextField: CustomLoginTextField = {
-        let textField = CustomLoginTextField(labelText: "Новый пароль ещё раз")
+        let textField = CustomLoginTextField(labelText: "Новый пароль ещё раз", secureTextMode: true)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.returnKeyType = UIReturnKeyType.go
@@ -120,14 +120,19 @@ class ChangePasswordViewController: UIViewController {
     }
 
     @objc private func changePasswordButtonTapped() {
-        guard !currentPasswordTextField.text!.isEmpty,
-              !newPasswordTextField.text!.isEmpty,
-              !newPasswordAgainTextField.text!.isEmpty else {
+        guard let currentPassword = currentPasswordTextField.text, !currentPassword.isEmpty,
+              newPasswordTextField.text?.isEmpty == false,
+              newPasswordAgainTextField.text?.isEmpty == false else {
             print("is Empty")
             return }
 
+        guard ((presenter?.checkCurrentPassword(currentPassword: currentPassword)) != false) else {
+            print("current and stored passwords are not equal")
+            return
+        }
+
         guard newPasswordAgainTextField.text == newPasswordTextField.text else {
-            print("password not equatable")
+            print("new passwords are not equal")
             return }
 
         if let newPassword = newPasswordTextField.text {

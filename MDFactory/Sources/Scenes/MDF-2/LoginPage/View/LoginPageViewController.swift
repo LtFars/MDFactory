@@ -155,6 +155,16 @@ class LoginPageViewController: UIViewController {
             case .failure(let error):
                 self?.showAlert(withTitle: "Ошибка", message: "\(error.localizedDescription)")
             }
+    }
+
+    private func savePasswordToSecure(email: String, password: String) {
+        do {
+            try SecureStore.deletePassword(userName: email)
+            print("LOGIN: old password for \(email) has been deleted")
+            try SecureStore.save(userName: email, password: password)
+            print("LOGIN: new password \(password) for \(email) has been saved")
+        } catch {
+            print("\(error)")
         }
     }
 }

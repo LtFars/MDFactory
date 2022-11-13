@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ChangePasswordPresenterType: AnyObject {
-    func reauthenticate()
+    func checkCurrentPassword(currentPassword: String) -> Bool
     func updatePassword(to newPassword: String)
 }
 
@@ -22,8 +22,20 @@ final class ChangePasswordPresenter {
 }
 
 extension ChangePasswordPresenter: ChangePasswordPresenterType {
-    func reauthenticate() {
-        //
+    func checkCurrentPassword(currentPassword: String) -> Bool {
+        let login = FirebaseService().userName
+        print("get user name: \(login) from FB")
+        var storedPassword = String()
+        do {
+            storedPassword = try SecureStore.readPassword(userName: login)
+            print("get storedPassword: \(storedPassword) from FB")
+        } catch {
+            print("\(error)")
+        }
+        if currentPassword == storedPassword {
+            return true
+        }
+        return false
     }
 
     func updatePassword(to newPassword: String) {
@@ -32,6 +44,15 @@ extension ChangePasswordPresenter: ChangePasswordPresenterType {
         FirebaseService().updatePassword(to: newPassword) { [weak self] result in
             switch result {
             case .success(_):
+                let userName = FirebaseService().userName
+                do {
+                    try SecureStore.deletePassword(userName: userName)
+                    print("old password for \(userName) has been deleted")
+                    try SecureStore.save(userName: userName, password: newPassword)
+                    print("new password \(newPassword) for \(userName) has been saved")
+                } catch {
+                    print("saving password \(error)")
+                }
                 self?.view?.updatePasswordSucceeded()
             case .failure(let error):
                 self?.view?.updatePasswordFailed(message: "\(error.localizedDescription)")
