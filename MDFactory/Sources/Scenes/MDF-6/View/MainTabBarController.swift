@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController {
             mainViewController,
             profileViewController,
             settingsViewController,
-            testViewController
+//            testViewController
         ]
 
         self.viewControllers = viewControllers.map {
@@ -61,18 +61,17 @@ class MainTabBarController: UITabBarController {
                                            selectedImageName: "person.fill",
                                            tag: 1)
 
-//        settingsViewController = SettingPageViewController()
         settingsViewController = SettingModuleAssembly.createSettingPageModule()
         settingsViewController?.setupTabBar(title: "Настройки",
                                             imageName: "gearshape",
                                             selectedImageName: "gearshape.fill",
                                             tag: 2)
-
-        testViewController = TestViewController()
-        testViewController?.setupTabBar(title: "FB test",
-                                            imageName: "gearshape",
-                                            selectedImageName: "gearshape.fill",
-                                            tag: 3)
+//
+//        testViewController = TestViewController()
+//        testViewController?.setupTabBar(title: "FB test",
+//                                            imageName: "gearshape",
+//                                            selectedImageName: "gearshape.fill",
+//                                            tag: 3)
     }
 
     private func setupTabBarAppearance() {
