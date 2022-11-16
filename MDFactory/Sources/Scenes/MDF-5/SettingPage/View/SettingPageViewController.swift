@@ -77,7 +77,7 @@ class SettingPageViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: SettingModuleMetrics.buttonFontSize)
         button.setTitle("изменить пароль", for: .normal)
         button.layer.cornerRadius = SettingModuleMetrics.buttonCornerRadius
-        button.layer.backgroundColor = SettingModuleColors.buttonBackground.cgColor
+        button.layer.backgroundColor = SettingModuleColors.buttonGrayBackground.cgColor
         button.setTitleColor(UIColor.gray, for: .normal)
         button.addTarget(self, action: #selector(showChangePasswordVC), for: .touchUpInside)
         return button
@@ -115,7 +115,7 @@ class SettingPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .systemBackground
         presenter?.getUser()
     }
 

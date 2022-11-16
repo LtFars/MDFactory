@@ -79,7 +79,7 @@ class ChangePasswordViewController: UIViewController {
 
     private func setupView() {
 
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .systemBackground
         navigationItem.title = "Изменить пароль"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
