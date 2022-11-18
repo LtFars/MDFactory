@@ -48,6 +48,49 @@ class MainPageViewController: UIViewController {
         return image
     }()
     
+    private let headerLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: Metrics.headerTitleFontSize, weight: .bold)
+        label.text = Strings.headerTitle
+        return label
+    }()
+    
+    private lazy var buttonRow: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: Strings.listButtonImageName), for: .normal)
+        button.imageView?.tintColor = UIColor(hex: Strings.imageColor)
+        button.layer.cornerRadius = Metrics.headerButtonCornerRadius
+        button.addTarget(self, action: #selector(changeMode(_:)), for: .touchUpInside)
+        button.backgroundColor = MainPageModel.gridMode ? UIColor(hex: Strings.deselectedBGColor) : UIColor(hex: Strings.selectedBGColor)
+        return button
+    }()
+    
+    private lazy var buttonGrid: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: Strings.gridButtonImageName), for: .normal)
+        button.imageView?.tintColor = UIColor(hex: Strings.imageColor)
+        button.layer.cornerRadius = Metrics.headerButtonCornerRadius
+        button.addTarget(self, action: #selector(changeMode(_:)), for: .touchUpInside)
+        button.backgroundColor = MainPageModel.gridMode ? UIColor(hex: Strings.selectedBGColor) : UIColor(hex: Strings.deselectedBGColor)
+        return button
+    }()
+    
+    @objc func changeMode(_ sender: UIButton) {
+        MainPageModel.gridMode = sender == buttonGrid ? true : false
+        layout = getLayout(flag: MainPageModel.gridMode)
+        if MainPageModel.gridMode {
+            buttonRow.backgroundColor = UIColor(hex: Strings.deselectedBGColor)
+            buttonGrid.backgroundColor = UIColor(hex: Strings.selectedBGColor)
+        } else {
+            buttonGrid.backgroundColor = UIColor(hex: Strings.deselectedBGColor)
+            buttonRow.backgroundColor = UIColor(hex: Strings.selectedBGColor)
+        }
+        self.mainCollection.reloadItems(at: self.mainCollection.indexPathsForVisibleItems)
+        self.mainCollection.setCollectionViewLayout(layout, animated: true)
+    }
+    
     @objc func openProfile() {
         self.tabBarController?.selectedIndex = 1
     }
@@ -98,6 +141,9 @@ class MainPageViewController: UIViewController {
         view.addSubview(bottomBar)
         view.addSubview(conteinerView)
         conteinerView.addSubview(mainCollection)
+        mainCollection.addSubview(headerLabel)
+        mainCollection.addSubview(buttonRow)
+        mainCollection.addSubview(buttonGrid)
     }
     
     private func setupLayout() {
@@ -145,6 +191,23 @@ class MainPageViewController: UIViewController {
         mainCollection.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        headerLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(25)
+            make.left.equalToSuperview().offset(35)
+        }
+        
+        buttonRow.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.right.equalTo(view.snp.right).offset(-30)
+            make.height.width.equalTo(Metrics.buttonHeight)
+        }
+        
+        buttonGrid.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.right.equalTo(buttonRow.snp.left).offset(-5)
+            make.height.width.equalTo(Metrics.buttonHeight)
+        }
     }
     
     private func configureCollectionView() {
@@ -163,11 +226,6 @@ class MainPageViewController: UIViewController {
             forCellWithReuseIdentifier: MainPageCollectionViewCellGrid.identifier
         )
         
-        collectionView.register(
-            MainPageCollectionViewHeader.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: MainPageCollectionViewHeader.identifier
-        )
         collectionView.backgroundColor = .clear
         collectionView.isUserInteractionEnabled = true
         mainCollection = collectionView
@@ -228,31 +286,6 @@ extension MainPageViewController: UICollectionViewDataSource {
         cell.configure(cell: model)
         return cell
     }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        viewForSupplementaryElementOfKind kind: String,
-        at indexPath: IndexPath
-    ) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            guard let header = mainCollection.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: MainPageCollectionViewHeader.identifier,
-                for: indexPath
-            ) as? MainPageCollectionViewHeader else {
-                return UICollectionReusableView()
-            }
-            header.configure()
-            header.changeViewCollectionCompletion = { [unowned self] in
-                layout = getLayout(flag: MainPageModel.gridMode)
-                self.mainCollection.reloadItems(at: self.mainCollection.indexPathsForVisibleItems)
-                self.mainCollection.setCollectionViewLayout(layout, animated: true)
-            }
-            return header
-        } else {
-            assert(false)
-        }
-    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -275,6 +308,15 @@ extension MainPageViewController: MainPageViewControllerInput {
 
 extension MainPageViewController {
     
+    enum Strings {
+        static let headerTitle = "Your Lessons"
+        static let listButtonImageName = "rectangle.grid.1x2.fill"
+        static let gridButtonImageName = "circle.grid.2x2.fill"
+        static let imageColor = "#9DA8C3FF"
+        static let selectedBGColor = "#E0E6F3FF"
+        static let deselectedBGColor = "#00000000"
+    }
+    
     enum Metrics {
         static var tabBarHeight: CGFloat = 98
         static let topBarRadius: CGFloat = 40
@@ -291,5 +333,8 @@ extension MainPageViewController {
         static let containerHeight: CGFloat = cellCount * 110
         static let greetingsLabelFontSize: CGFloat = 20
         static let continueLabelFontSize: CGFloat = 28
+        static let headerTitleFontSize: CGFloat = 21
+        static let headerButtonCornerRadius: CGFloat = 11
+        static let buttonHeight: CGFloat = 40
     }
 }

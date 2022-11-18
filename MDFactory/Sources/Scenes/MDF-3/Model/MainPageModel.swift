@@ -7,7 +7,6 @@ struct ItemForMain {
     let handler: ((String) -> Void)
 }
 
-
 struct MainPageModel {
     static var gridMode: Bool = false
     

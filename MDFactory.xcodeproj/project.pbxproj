@@ -17,7 +17,6 @@
 		03B01CA22921952A00B2A2A1 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B01CA12921952A00B2A2A1 /* MainPagePresenter.swift */; };
 		03B01CA52921953700B2A2A1 /* MainPageCollectionViewCellList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B01CA32921953700B2A2A1 /* MainPageCollectionViewCellList.swift */; };
 		03B01CA62921953700B2A2A1 /* MainPageCollectionViewCellGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B01CA42921953700B2A2A1 /* MainPageCollectionViewCellGrid.swift */; };
-		03B01CA82921953D00B2A2A1 /* MainPageCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B01CA72921953D00B2A2A1 /* MainPageCollectionViewHeader.swift */; };
 		03B01CAA2921954400B2A2A1 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B01CA92921954400B2A2A1 /* MainPageViewController.swift */; };
 		03B01CAC2921962700B2A2A1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B01CAB2921962700B2A2A1 /* UIColor+Extension.swift */; };
 		03C2024528BA6DC100E5FFF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C2024428BA6DC100E5FFF3 /* AppDelegate.swift */; };
@@ -66,7 +65,6 @@
 		03B01CA12921952A00B2A2A1 /* MainPagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 		03B01CA32921953700B2A2A1 /* MainPageCollectionViewCellList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageCollectionViewCellList.swift; sourceTree = "<group>"; };
 		03B01CA42921953700B2A2A1 /* MainPageCollectionViewCellGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageCollectionViewCellGrid.swift; sourceTree = "<group>"; };
-		03B01CA72921953D00B2A2A1 /* MainPageCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageCollectionViewHeader.swift; sourceTree = "<group>"; };
 		03B01CA92921954400B2A2A1 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		03B01CAB2921962700B2A2A1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		03C2024128BA6DC100E5FFF3 /* MDFactory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDFactory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,17 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				03B01C9C292194A600B2A2A1 /* Cell */,
-				03B01C9B2921949F00B2A2A1 /* Header */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		03B01C9B2921949F00B2A2A1 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				03B01CA72921953D00B2A2A1 /* MainPageCollectionViewHeader.swift */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		03B01C9C292194A600B2A2A1 /* Cell */ = {
@@ -707,7 +696,6 @@
 				841121DE28DA2D3400983ACA /* MainCusomButton.swift in Sources */,
 				DD73E7F528F421E600931654 /* MainTabBarController.swift in Sources */,
 				03B01C9329218C1A00B2A2A1 /* SettingPagePresenter.swift in Sources */,
-				03B01CA82921953D00B2A2A1 /* MainPageCollectionViewHeader.swift in Sources */,
 				844B109D28DF1DAC0043FEB8 /* CustomLoginTextField.swift in Sources */,
 				03B01C8F29218C0500B2A2A1 /* SettingPageViewController.swift in Sources */,
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
