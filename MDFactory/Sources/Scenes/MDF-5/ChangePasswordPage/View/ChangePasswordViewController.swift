@@ -128,10 +128,12 @@ class ChangePasswordViewController: UIViewController {
 
         guard ((presenter?.checkCurrentPassword(currentPassword: currentPassword)) != false) else {
             print("current and stored passwords are not equal")
+            showAlert(withTitle: "Неверный текущий пароль", message: "Попробуйте ещё раз")
             return
         }
 
         guard newPasswordAgainTextField.text == newPasswordTextField.text else {
+            showAlert(withTitle: "Новый пароль не совпадает", message: "Попробуйте ещё раз")
             print("new passwords are not equal")
             return }
 
