@@ -77,11 +77,9 @@ class MainPageCollectionViewHeader: UICollectionReusableView {
         if MainPageModel.gridMode {
             buttonRow.backgroundColor = UIColor(hex: Strings.deselectedBGColor)
             buttonGrid.backgroundColor = UIColor(hex: Strings.selectedBGColor)
-            changeViewCollectionCompletion?()
         } else {
             buttonGrid.backgroundColor = UIColor(hex: Strings.deselectedBGColor)
             buttonRow.backgroundColor = UIColor(hex: Strings.selectedBGColor)
-            changeViewCollectionCompletion?()
         }
     }
     
@@ -99,6 +97,7 @@ class MainPageCollectionViewHeader: UICollectionReusableView {
         ? true
         : false
         changeMode()
+        changeViewCollectionCompletion?()
     }
 }
 
