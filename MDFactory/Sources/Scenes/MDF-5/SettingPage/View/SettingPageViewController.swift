@@ -57,18 +57,24 @@ class SettingPageViewController: UIViewController {
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
         return label
     }()
 
     private lazy var userSurnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
         return label
     }()
 
     private lazy var userEmailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize - 1)
+        label.font = UIFont.systemFont(ofSize: SettingModuleMetrics.userLabelFontSize)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
         return label
     }()
 
