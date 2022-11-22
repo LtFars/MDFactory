@@ -53,6 +53,7 @@
 		DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F728F426F900931654 /* UIViewController+Ext.swift */; };
 		DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FA28F42F3000931654 /* SecureStore.swift */; };
 		DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */; };
+		DD830EDA292CECA9006CB34E /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD830ED9292CECA9006CB34E /* KeychainError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		DD73E7FA28F42F3000931654 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ext.swift"; sourceTree = "<group>"; };
+		DD830ED9292CECA9006CB34E /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,10 +496,27 @@
 		DD73E7F928F42EF400931654 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DD830ED5292BA88C006CB34E /* SecureStorage */,
 				DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */,
-				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		DD830ED5292BA88C006CB34E /* SecureStorage */ = {
+			isa = PBXGroup;
+			children = (
+				DD830ED8292CEC70006CB34E /* Enum */,
+				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
+			);
+			path = SecureStorage;
+			sourceTree = "<group>";
+		};
+		DD830ED8292CEC70006CB34E /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				DD830ED9292CECA9006CB34E /* KeychainError.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		DDB01FC928BFBC4F00E67A34 /* Resources */ = {
@@ -697,6 +716,7 @@
 				841121E028DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
 				0327CE7128F2E7680096084C /* AchievementsModel.swift in Sources */,
 				A0D96F9728F712E00071E255 /* AchievementsViewController.swift in Sources */,
+				DD830EDA292CECA9006CB34E /* KeychainError.swift in Sources */,
 				A09372DB28FF29B900C5C121 /* ProfileScreenAssembly.swift in Sources */,
 				03B01CA52921953700B2A2A1 /* MainPageCollectionViewCellList.swift in Sources */,
 				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,

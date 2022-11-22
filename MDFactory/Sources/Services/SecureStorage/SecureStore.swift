@@ -9,6 +9,7 @@ import Foundation
 
 class SecureStore {
 
+    //to be deleted after merge MDF-9
     /// Save user's password to secure storage
     /// - Parameters:
     ///   - userName: user's name
@@ -31,6 +32,7 @@ class SecureStore {
         }
     }
 
+    //to be deleted after merge MDF-9
     /// Read user's password from secure storage
     /// - Parameters:
     ///   - userName: user's name
@@ -75,32 +77,6 @@ class SecureStore {
 
         guard status == errSecSuccess else {
             throw KeychainError.unexpectedStatus(status)
-        }
-    }
-}
-
-// MARK: - KeychainError
-
-enum KeychainError: Error {
-    case itemNotFound
-    case duplicateItem
-    case invalidItemFormat
-    case unexpectedStatus(OSStatus)
-}
-
-// MARK: - KeychainError Description
-
-extension KeychainError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .itemNotFound:
-            return NSLocalizedString("Item not found", comment: "")
-        case .duplicateItem:
-            return NSLocalizedString("Trying to set existing item", comment: "")
-        case .invalidItemFormat:
-            return NSLocalizedString("Invalid item format", comment: "")
-        case .unexpectedStatus(let status):
-            return NSLocalizedString("Unexpected error \(status.description)", comment: "")
         }
     }
 }
