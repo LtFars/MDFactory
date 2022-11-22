@@ -107,6 +107,7 @@
 		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		DD73E7FA28F42F3000931654 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ext.swift"; sourceTree = "<group>"; };
+		DD830ED6292BA91D006CB34E /* LoginModuleSecureStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleSecureStorageService.swift; sourceTree = "<group>"; };
 		DD830ED9292CECA9006CB34E /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -506,6 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				DD830ED8292CEC70006CB34E /* Enum */,
+				DD830ED6292BA91D006CB34E /* LoginModuleSecureStorageService.swift */,
 				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
 			);
 			path = SecureStorage;
@@ -699,6 +701,7 @@
 				8A07E60D290430A2009A4E12 /* SettingModuleAssembly.swift in Sources */,
 				8A07E616290A7356009A4E12 /* ChangePasswordPresenter.swift in Sources */,
 				03B01CA22921952A00B2A2A1 /* MainPagePresenter.swift in Sources */,
+				DD830ED7292BA91D006CB34E /* LoginModuleSecureStorageService.swift in Sources */,
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
 				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,
 				DD64000928F6DD1B00C68EAE /* TestViewController.swift in Sources */,
