@@ -1,5 +1,5 @@
 //
-//  SecureStore.swift
+//  SecureStorage.swift
 //  MDFactory
 //
 //  Created by Vadim Kim on 10.10.2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SecureStore {
+class SecureStorage {
 
     /// Save user's password to secure storage
     /// - Parameters:

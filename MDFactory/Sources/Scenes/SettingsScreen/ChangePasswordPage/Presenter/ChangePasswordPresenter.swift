@@ -27,7 +27,7 @@ extension ChangePasswordPresenter: ChangePasswordPresenterType {
         print("get user name: \(login) from FB")
         var storedPassword = String()
         do {
-            storedPassword = try SecureStore.readPassword(userName: login)
+            storedPassword = try SecureStorage.readPassword(userName: login)
             print("get storedPassword: \(storedPassword) from FB")
         } catch {
             print("\(error)")
@@ -46,9 +46,9 @@ extension ChangePasswordPresenter: ChangePasswordPresenterType {
             case .success(_):
                 let userName = FirebaseService().userName
                 do {
-                    try SecureStore.deletePassword(userName: userName)
+                    try SecureStorage.deletePassword(userName: userName)
                     print("old password for \(userName) has been deleted")
-                    try SecureStore.save(userName: userName, password: newPassword)
+                    try SecureStorage.save(userName: userName, password: newPassword)
                     print("new password \(newPassword) for \(userName) has been saved")
                 } catch {
                     print("saving password \(error)")
