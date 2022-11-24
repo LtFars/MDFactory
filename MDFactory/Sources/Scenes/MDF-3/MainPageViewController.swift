@@ -69,21 +69,16 @@ class MainPageViewController: UIViewController {
     }()
     
     private lazy var mainCollection: UICollectionView = {
-        let collectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: layout
-        )
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.register(
             MainPageCollectionViewCellList.self,
             forCellWithReuseIdentifier: MainPageCollectionViewCellList.identifier
         )
-        
         collectionView.register(
             MainPageCollectionViewCellGrid.self,
             forCellWithReuseIdentifier: MainPageCollectionViewCellGrid.identifier
         )
-        
         collectionView.register(
             MainPageCollectionViewHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
