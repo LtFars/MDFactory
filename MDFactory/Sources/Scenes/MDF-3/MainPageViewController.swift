@@ -68,7 +68,32 @@ class MainPageViewController: UIViewController {
         return view
     }()
     
-    private var mainCollection: UICollectionView!
+    private lazy var mainCollection: UICollectionView = {
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        
+        collectionView.register(
+            MainPageCollectionViewCellList.self,
+            forCellWithReuseIdentifier: MainPageCollectionViewCellList.identifier
+        )
+        
+        collectionView.register(
+            MainPageCollectionViewCellGrid.self,
+            forCellWithReuseIdentifier: MainPageCollectionViewCellGrid.identifier
+        )
+        
+        collectionView.register(
+            MainPageCollectionViewHeader.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: MainPageCollectionViewHeader.identifier
+        )
+        
+        collectionView.backgroundColor = .clear
+        collectionView.isUserInteractionEnabled = true
+        return collectionView
+    }()
     
     // MARK: - Lifecycle
     
@@ -80,7 +105,6 @@ class MainPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: Metrics.backgroungColorHex)
-        configureCollectionView()
         mainCollection.delegate = self
         mainCollection.dataSource = self
         setupHierachy()
@@ -145,32 +169,6 @@ class MainPageViewController: UIViewController {
         mainCollection.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-    }
-    
-    private func configureCollectionView() {
-        let collectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: layout
-        )
-        
-        collectionView.register(
-            MainPageCollectionViewCellList.self,
-            forCellWithReuseIdentifier: MainPageCollectionViewCellList.identifier
-        )
-        
-        collectionView.register(
-            MainPageCollectionViewCellGrid.self,
-            forCellWithReuseIdentifier: MainPageCollectionViewCellGrid.identifier
-        )
-        
-        collectionView.register(
-            MainPageCollectionViewHeader.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: MainPageCollectionViewHeader.identifier
-        )
-        collectionView.backgroundColor = .clear
-        collectionView.isUserInteractionEnabled = true
-        mainCollection = collectionView
     }
     
     private func getLayout(flag: Bool) -> UICollectionViewFlowLayout {
