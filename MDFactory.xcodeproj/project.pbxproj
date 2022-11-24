@@ -53,9 +53,6 @@
 		DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F728F426F900931654 /* UIViewController+Ext.swift */; };
 		DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FA28F42F3000931654 /* SecureStore.swift */; };
 		DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */; };
-		DD830ED7292BA91D006CB34E /* LoginModuleSecureStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD830ED6292BA91D006CB34E /* LoginModuleSecureStorageService.swift */; };
-		DD830EDA292CECA9006CB34E /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD830ED9292CECA9006CB34E /* KeychainError.swift */; };
-		DD830EDC292CEE4A006CB34E /* SettingsModuleSecureStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD830EDB292CEE4A006CB34E /* SettingsModuleSecureStorageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,9 +106,6 @@
 		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		DD73E7FA28F42F3000931654 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ext.swift"; sourceTree = "<group>"; };
-		DD830ED6292BA91D006CB34E /* LoginModuleSecureStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleSecureStorageService.swift; sourceTree = "<group>"; };
-		DD830ED9292CECA9006CB34E /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
-		DD830EDB292CEE4A006CB34E /* SettingsModuleSecureStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleSecureStorageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,20 +503,9 @@
 		DD830ED5292BA88C006CB34E /* SecureStorage */ = {
 			isa = PBXGroup;
 			children = (
-				DD830ED8292CEC70006CB34E /* Enum */,
-				DD830ED6292BA91D006CB34E /* LoginModuleSecureStorageService.swift */,
-				DD830EDB292CEE4A006CB34E /* SettingsModuleSecureStorageService.swift */,
 				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
 			);
 			path = SecureStorage;
-			sourceTree = "<group>";
-		};
-		DD830ED8292CEC70006CB34E /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-				DD830ED9292CECA9006CB34E /* KeychainError.swift */,
-			);
-			path = Enum;
 			sourceTree = "<group>";
 		};
 		DDB01FC928BFBC4F00E67A34 /* Resources */ = {
@@ -705,7 +688,6 @@
 				8A07E60D290430A2009A4E12 /* SettingModuleAssembly.swift in Sources */,
 				8A07E616290A7356009A4E12 /* ChangePasswordPresenter.swift in Sources */,
 				03B01CA22921952A00B2A2A1 /* MainPagePresenter.swift in Sources */,
-				DD830ED7292BA91D006CB34E /* LoginModuleSecureStorageService.swift in Sources */,
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
 				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,
 				DD64000928F6DD1B00C68EAE /* TestViewController.swift in Sources */,
@@ -723,7 +705,6 @@
 				841121E028DA4ADA00983ACA /* UIView+ExtensionWithCoreGraphics.swift in Sources */,
 				0327CE7128F2E7680096084C /* AchievementsModel.swift in Sources */,
 				A0D96F9728F712E00071E255 /* AchievementsViewController.swift in Sources */,
-				DD830EDA292CECA9006CB34E /* KeychainError.swift in Sources */,
 				A09372DB28FF29B900C5C121 /* ProfileScreenAssembly.swift in Sources */,
 				03B01CA52921953700B2A2A1 /* MainPageCollectionViewCellList.swift in Sources */,
 				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,
@@ -739,7 +720,6 @@
 				03B01C8F29218C0500B2A2A1 /* SettingPageViewController.swift in Sources */,
 				A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */,
 				A0BF832828C67C32001E6469 /* CircularView.swift in Sources */,
-				DD830EDC292CEE4A006CB34E /* SettingsModuleSecureStorageService.swift in Sources */,
 				03B01C9E2921951B00B2A2A1 /* MainPageAssembler.swift in Sources */,
 				DD3C696D28F5A5CF001DA207 /* FirebaseService.swift in Sources */,
 				8A07E61B290EC4BA009A4E12 /* SettingModuleMetrics.swift in Sources */,
