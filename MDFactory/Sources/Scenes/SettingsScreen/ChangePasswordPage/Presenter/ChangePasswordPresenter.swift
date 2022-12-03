@@ -46,9 +46,7 @@ extension ChangePasswordPresenter: ChangePasswordPresenterType {
             case .success(_):
                 let userName = FirebaseService().userName
                 do {
-                    try SecureStorage.deletePassword(userName: userName)
-                    print("old password for \(userName) has been deleted")
-                    try SecureStorage.save(userName: userName, password: newPassword)
+                    try SecureStorage.updatePassword(userName: userName, to: newPassword)
                     print("new password \(newPassword) for \(userName) has been saved")
                 } catch {
                     print("saving password \(error)")
