@@ -161,10 +161,13 @@ class LoginPageViewController: UIViewController {
     
     private func savePasswordToSecure(email: String, password: String) {
         do {
-            try SecureStore.deletePassword(userName: email)
-            print("LOGIN: old password for \(email) has been deleted")
-            try SecureStore.save(userName: email, password: password)
-            print("LOGIN: new password \(password) for \(email) has been saved")
+            if try SecureStorage.isExists(userName: email) {
+                try SecureStorage.updatePassword(userName: email, to: password)
+                print("LOGIN: password for \(email) has been updated")
+            } else {
+                try SecureStorage.save(userName: email, password: password)
+                print("LOGIN: new password \(password) for \(email) has been saved")
+            }
         } catch {
             print("\(error)")
         }

@@ -51,7 +51,7 @@
 		DD64000B28F6DD2900C68EAE /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64000A28F6DD2900C68EAE /* TestView.swift */; };
 		DD73E7F528F421E600931654 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F428F421E600931654 /* MainTabBarController.swift */; };
 		DD73E7F828F426F900931654 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7F728F426F900931654 /* UIViewController+Ext.swift */; };
-		DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FA28F42F3000931654 /* SecureStore.swift */; };
+		DD73E7FB28F42F3000931654 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FA28F42F3000931654 /* SecureStorage.swift */; };
 		DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +104,7 @@
 		DD64000A28F6DD2900C68EAE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		DD73E7F428F421E600931654 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD73E7F728F426F900931654 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
-		DD73E7FA28F42F3000931654 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		DD73E7FA28F42F3000931654 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		DD73E7FC28F445B600931654 /* UIWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -494,8 +494,8 @@
 		DD73E7F928F42EF400931654 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DD73E7FA28F42F3000931654 /* SecureStorage.swift */,
 				DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */,
-				DD73E7FA28F42F3000931654 /* SecureStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -699,7 +699,7 @@
 				A0D96F9728F712E00071E255 /* AchievementsViewController.swift in Sources */,
 				A09372DB28FF29B900C5C121 /* ProfileScreenAssembly.swift in Sources */,
 				03B01CA52921953700B2A2A1 /* MainPageCollectionViewCellList.swift in Sources */,
-				DD73E7FB28F42F3000931654 /* SecureStore.swift in Sources */,
+				DD73E7FB28F42F3000931654 /* SecureStorage.swift in Sources */,
 				8A07E61D290EC4CF009A4E12 /* SettingModuleColors.swift in Sources */,
 				DD64000B28F6DD2900C68EAE /* TestView.swift in Sources */,
 				844B109A28DF07610043FEB8 /* LoginPageViewController.swift in Sources */,
