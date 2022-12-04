@@ -163,7 +163,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		03B01C962921946F00B2A2A1 /* MDF-3 */ = {
+		03B01C962921946F00B2A2A1 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
 				03B01C972921948600B2A2A1 /* Assembler */,
@@ -172,7 +172,7 @@
 				03B01CA92921954400B2A2A1 /* MainPageViewController.swift */,
 				03B01C982921948A00B2A2A1 /* Model */,
 			);
-			path = "MDF-3";
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		03B01C972921948600B2A2A1 /* Assembler */ = {
@@ -286,13 +286,13 @@
 			path = CustomUI;
 			sourceTree = "<group>";
 		};
-		84709F6E28D9B0870036A4AB /* MDF-2 */ = {
+		84709F6E28D9B0870036A4AB /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
 				844B109728DF06F60043FEB8 /* LoginPage */,
 				84709F6F28D9BB510036A4AB /* FirstPage */,
 			);
-			path = "MDF-2";
+			path = LoginScreen;
 			sourceTree = "<group>";
 		};
 		84709F6F28D9BB510036A4AB /* FirstPage */ = {
@@ -321,7 +321,7 @@
 			path = CustomUI;
 			sourceTree = "<group>";
 		};
-		8A07E5FF28FC6E66009A4E12 /* MDF-5 */ = {
+		8A07E5FF28FC6E66009A4E12 /* SettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
 				8A07E60529040EF5009A4E12 /* Assembly */,
@@ -329,7 +329,7 @@
 				8A07E611290A72A6009A4E12 /* ChangePasswordPage */,
 				8A07E610290A7282009A4E12 /* SettingPage */,
 			);
-			path = "MDF-5";
+			path = SettingsScreen;
 			sourceTree = "<group>";
 		};
 		8A07E60529040EF5009A4E12 /* Assembly */ = {
@@ -429,7 +429,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A0C90E8828C0F79F00630E61 /* MDF-4 */ = {
+		A0C90E8828C0F79F00630E61 /* UserProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
 				A09372D828FF28EA00C5C121 /* Assembler */,
@@ -437,7 +437,7 @@
 				0327CE6F28F2E7500096084C /* Models */,
 				A0BDD44D28C3904800786300 /* View */,
 			);
-			path = "MDF-4";
+			path = UserProfileScreen;
 			sourceTree = "<group>";
 		};
 		A0D9872628D3AF0C0040C9E5 /* Circular */ = {
@@ -458,12 +458,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DD64000628F6DCB600C68EAE /* MDF-7 */ = {
+		DD64000628F6DCB600C68EAE /* TestFirebaseScreen */ = {
 			isa = PBXGroup;
 			children = (
 				DD64000728F6DCC800C68EAE /* View */,
 			);
-			path = "MDF-7";
+			path = TestFirebaseScreen;
 			sourceTree = "<group>";
 		};
 		DD64000728F6DCC800C68EAE /* View */ = {
@@ -475,12 +475,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DD73E7F228F4219D00931654 /* MDF-6 */ = {
+		DD73E7F228F4219D00931654 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
 				DD73E7F328F421AD00931654 /* View */,
 			);
-			path = "MDF-6";
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		DD73E7F328F421AD00931654 /* View */ = {
@@ -541,13 +541,13 @@
 		DDB01FCD28BFBC7E00E67A34 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				8A07E5FF28FC6E66009A4E12 /* MDF-5 */,
 				A0B6209C28CFDDFD00BB5192 /* EnumColors */,
-				84709F6E28D9B0870036A4AB /* MDF-2 */,
-				03B01C962921946F00B2A2A1 /* MDF-3 */,
-				A0C90E8828C0F79F00630E61 /* MDF-4 */,
-				DD73E7F228F4219D00931654 /* MDF-6 */,
-				DD64000628F6DCB600C68EAE /* MDF-7 */,
+				84709F6E28D9B0870036A4AB /* LoginScreen */,
+				03B01C962921946F00B2A2A1 /* MainScreen */,
+				8A07E5FF28FC6E66009A4E12 /* SettingsScreen */,
+				DD73E7F228F4219D00931654 /* Tabbar */,
+				DD64000628F6DCB600C68EAE /* TestFirebaseScreen */,
+				A0C90E8828C0F79F00630E61 /* UserProfileScreen */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
