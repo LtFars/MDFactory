@@ -28,6 +28,15 @@ final class SettingPagePresenter: SettingPagePresenterType {
     }
 
     // MARK: - SettingPagePresenter Methods
+    private func deleteUserKeychainData() {
+        let login = FirebaseService().userName
+        do {
+            try SecureStorage.deletePassword(userName: login)
+            print("user \(login) deleted from keychain")
+        } catch {
+            print("\(error)")
+        }
+    }
 
     func getUser() {
         view?.setUser(avatar: user.avatar,
@@ -42,9 +51,10 @@ final class SettingPagePresenter: SettingPagePresenterType {
     }
 
     func logout() {
-        FirebaseService().logOut { [weak self]result in
+        FirebaseService().logOut { [weak self] result in
             switch result {
             case .success(_):
+                self?.deleteUserKeychainData()
                 self?.view?.logoutSucceeded()
             case .failure(let error):
                 self?.view?.logoutFailed(message: "\(error.localizedDescription)")
