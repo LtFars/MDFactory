@@ -16,8 +16,6 @@ class MainTabBarController: UITabBarController {
     private var settingsViewController: UIViewController?
     private var testViewController: UIViewController?
 
-
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -44,7 +42,6 @@ class MainTabBarController: UITabBarController {
 
     private func setupView() {
         setupTabBarAppearance()
-        tabBar.tintColor = Colors.customPurple
     }
 
     // MARK: - Private functions -
@@ -52,8 +49,8 @@ class MainTabBarController: UITabBarController {
     private func setupViewControllers() {
         mainViewController = MainPageAssembly.assembly()
         mainViewController?.setupTabBar(title: "Главная",
-                                        imageName: "circle.grid.cross",
-                                        selectedImageName: "circle.grid.cross.fill",
+                                        imageName: "circle.grid.2x2",
+                                        selectedImageName: "circle.grid.2x2.fill",
                                         tag: 0)
 
         profileViewController = ProfileScreenAssembly.assembly()
@@ -70,12 +67,20 @@ class MainTabBarController: UITabBarController {
     }
 
     private func setupTabBarAppearance() {
-        if #available(iOS 15, *) {
-            let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithDefaultBackground()
-            UITabBar.appearance().standardAppearance = tabBarAppearance
-            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-        }
+        let positionOnX: CGFloat = 10
+        let width = tabBar.bounds.width - positionOnX * 2
+        let shapeLayer = CAShapeLayer()
+
+        tabBar.layer.insertSublayer(shapeLayer, at: 0)
+        tabBar.itemWidth = width / 5
+        tabBar.itemPositioning = .centered
+
+        shapeLayer.fillColor = UIColor.black.cgColor
+        tabBar.tintColor = Colors.customPurple
+        tabBar.unselectedItemTintColor = UIColor.lightGray
+
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11, weight: .semibold)]
+        UITabBarItem.appearance().setTitleTextAttributes(systemFontAttributes, for: .normal)
     }
 }
 
