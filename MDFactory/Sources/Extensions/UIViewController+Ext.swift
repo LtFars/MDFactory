@@ -9,8 +9,13 @@ import UIKit
 
 extension UIViewController {
     func setupTabBar(title: String, imageName: String, selectedImageName: String, tag: Int) {
-        self.tabBarItem = UITabBarItem(title: title, image: UIImage(systemName: imageName), tag: tag)
-        self.tabBarItem.selectedImage = UIImage(systemName: selectedImageName)
+        let config = UIImage.SymbolConfiguration(pointSize: 28, weight: .light, scale: .small)
+        self.tabBarItem = UITabBarItem(title: title,
+                                       image: UIImage(systemName: imageName,
+                                                      withConfiguration: config),
+                                       tag: tag)
+        self.tabBarItem.selectedImage = UIImage(systemName: selectedImageName,
+                                                withConfiguration: config)
         self.view.backgroundColor = .systemBackground
     }
 
