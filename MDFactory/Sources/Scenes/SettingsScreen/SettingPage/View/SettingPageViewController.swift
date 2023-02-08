@@ -22,7 +22,7 @@ protocol SettingPageViewControllerType: AnyObject {
 
 // MARK: - SettingPageViewController
 
-class SettingPageViewController: UIViewController {
+final class SettingPageViewController: UIViewController {
 
     var presenter: SettingPagePresenterType?
 
@@ -115,7 +115,7 @@ class SettingPageViewController: UIViewController {
         super.viewDidLoad()
 
         setupHierarchy()
-        setupLayers()
+        setupLayouts()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -127,7 +127,7 @@ class SettingPageViewController: UIViewController {
 
     // MARK: - Setup Hierarchy
 
-    func setupHierarchy() {
+    private func setupHierarchy() {
         let subviews = [
             userImageView,
             nameStack,
@@ -153,7 +153,7 @@ class SettingPageViewController: UIViewController {
 
     // MARK: - Setup Layers
 
-    func setupLayers() {
+   private func setupLayouts() {
 
         userImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)

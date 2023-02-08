@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingModuleAssembly {
+final class SettingModuleAssembly {
     static func createSettingPageModule() -> UIViewController {
         
         let view = SettingPageViewController()
