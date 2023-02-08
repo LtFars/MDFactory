@@ -36,6 +36,7 @@
 		8A07E616290A7356009A4E12 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */; };
 		8A07E61B290EC4BA009A4E12 /* SettingModuleMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */; };
 		8A07E61D290EC4CF009A4E12 /* SettingModuleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07E61C290EC4CF009A4E12 /* SettingModuleColors.swift */; };
+		8A4DBF2A294C76CB00363F7B /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DBF29294C76CB00363F7B /* NetworkMonitor.swift */; };
 		A04C036D28D7AFB9004E4D80 /* SheetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */; };
 		A04C037A28E05D90004E4D80 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */; };
 		A09372DB28FF29B900C5C121 /* ProfileScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09372DA28FF29B900C5C121 /* ProfileScreenAssembly.swift */; };
@@ -89,6 +90,7 @@
 		8A07E615290A7356009A4E12 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
 		8A07E61A290EC4BA009A4E12 /* SettingModuleMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleMetrics.swift; sourceTree = "<group>"; };
 		8A07E61C290EC4CF009A4E12 /* SettingModuleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModuleColors.swift; sourceTree = "<group>"; };
+		8A4DBF29294C76CB00363F7B /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		A04C036C28D7AFB8004E4D80 /* SheetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProfileView.swift; sourceTree = "<group>"; };
 		A04C037928E05D90004E4D80 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A09372DA28FF29B900C5C121 /* ProfileScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenAssembly.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			children = (
 				DD73E7FA28F42F3000931654 /* SecureStorage.swift */,
 				DD3C696C28F5A5CF001DA207 /* FirebaseService.swift */,
+				8A4DBF29294C76CB00363F7B /* NetworkMonitor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				A09372DD28FF2AAE00C5C121 /* ProfileScreenPresenter.swift in Sources */,
 				84709F7428D9E1560036A4AB /* WelcomeLabel.swift in Sources */,
 				DD73E7FD28F445B600931654 /* UIWindow+Ext.swift in Sources */,
+				8A4DBF2A294C76CB00363F7B /* NetworkMonitor.swift in Sources */,
 				DD64000928F6DD1B00C68EAE /* TestViewController.swift in Sources */,
 				A0BDD45128C3AA1B00786300 /* ProfileView.swift in Sources */,
 				A0C90E8A28C0F86900630E61 /* ProfileViewController.swift in Sources */,

@@ -18,8 +18,8 @@ class FirebaseService {
         return user?.email ?? ""
     }
 
-    func signIn(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+    func signIn(email: String, password: String, completion: @escaping (Result<Bool, AuthErrorCode.Code>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
             guard error == nil else {
                 if let errorCode = AuthErrorCode.Code(rawValue: error!._code) {
                     completion(.failure(errorCode))
