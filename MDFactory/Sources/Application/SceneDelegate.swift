@@ -70,6 +70,8 @@ extension SceneDelegate {
                     self?.window?.switchRootViewController(to: navigationController)
                     self?.isNetworkAvailable = true
                     break
+
+               // TODO: - Добавить метод для удаления пароля юзера из keyChain
                 }
             }
         }
