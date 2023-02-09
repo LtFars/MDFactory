@@ -12,7 +12,7 @@ protocol ChangePasswordViewControllerType: AnyObject {
     func updatePasswordFailed(message: String)
 }
 
-class ChangePasswordViewController: UIViewController {
+final class ChangePasswordViewController: UIViewController {
 
     var presenter: ChangePasswordPresenterType?
 
