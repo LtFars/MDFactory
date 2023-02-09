@@ -19,6 +19,6 @@ extension User {
     User(avatar: "emoji",
          name: "Константин",
          surname: "Константинопольский",
-         email: "mail.konstantin@mail.ru")
+         email: FirebaseService().userName)
 }
 
